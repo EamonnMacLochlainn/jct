@@ -1,0 +1,61 @@
+form.login {
+    display: none;
+    max-width: 18rem;
+    margin: 5rem auto;
+    box-shadow: 2px 2px 4px #125822;
+    padding-top: 5rem;
+    position: relative;
+}
+.buttonset {
+    text-align: right;
+}
+.new-password {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px dotted #ccc;
+    text-align: right;
+}
+.new-password button {
+    margin: 0 0.25em;
+}
+.new-password button.login-help-trigger {
+    margin-right: 0;
+}
+.left-iconed-input i {
+    color: #5d738a;
+}
+
+
+.icon-ctn {
+    width: 7rem;
+    border: 1rem solid #fff;
+    position: absolute;
+    top: -3rem;
+    background: #fff;
+    border-radius: 50%;
+    left: calc(50% - 3.5rem);
+    box-shadow: 2px 2px 8px #666;
+}
+.icon-ctn img {
+    width: 100%;
+    vertical-align: top;
+}
+
+
+.request-form {
+    max-width: 18rem;
+    text-align: center;
+    margin: 0.25em auto;
+}
+label.country-code {
+    display: inline-block;
+    width: 5em;
+    vertical-align: top;
+    margin: 0 0.5em 0.25em 0;
+}
+.request-form label.contact-num {
+    display: inline-block;
+    width: calc(100% - 5.5em);
+    vertical-align: top;
+    margin: 0 0 0.25em;
+}

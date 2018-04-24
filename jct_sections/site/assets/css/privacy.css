@@ -1,0 +1,17 @@
+.light-panel {
+    margin-top: 1rem;
+}
+
+.inner {
+    max-width: 50rem;
+    margin: 4rem auto;
+}
+h3 {
+    margin: 4rem 0 0;
+}
+p {
+    text-align: justify;
+}
+li {
+    text-align: justify;
+}

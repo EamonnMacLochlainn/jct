@@ -1,0 +1,2 @@
+Options -Indexes
+SetEnv no-gzip dont-vary

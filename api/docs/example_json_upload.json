@@ -1,0 +1,112 @@
+{
+  "guid": "",
+  "version": "0.2",
+  "token": "",
+  "datetime": "YYYY:MM:DD HH:MM:SS",
+
+
+  "group_leader": [
+    {
+      "id": "",
+      "fname": "8-22",
+      "lname": "",
+      "alias": "Ms Cavanagh / Ms Rapple",
+      "mobile": "",
+      "email": ""
+    },
+    {
+      "id": "",
+      "fname": "",
+      "lname": "",
+      "alias": "",
+      "mobile": "+353 87 123 4567",
+      "email": "name@example.com"
+    }
+  ],
+  "ls_teacher": [
+    {
+      "id": "",
+      "fname": "",
+      "lname": "",
+      "alias": "",
+      "mobile": "",
+      "email": ""
+    }
+  ],
+  "sna": [
+    {
+      "id": "",
+      "fname": "",
+      "lname": "",
+      "alias": "",
+      "mobile": "",
+      "email": ""
+    }
+  ],
+  "member": [
+    {
+      "id": "",
+      "fname": "",
+      "lname": "",
+      "group_class_id": "",
+      "ls_teacher_id": "",
+      "sna_id": "",
+      "support_category_id": "",
+      "support_sub_category_id": "",
+      "default_guardian_id": "",
+      "sibling_ids": []
+    }
+  ],
+  "guardian_default": [
+    {
+      "id": "",
+      "fname": "",
+      "lname": "",
+      "mobile": "",
+      "email": ""
+    }
+  ],
+  "guardian_other": [
+    {
+      "guardian_of": "",
+      "fname": "",
+      "lname": "",
+      "mobile": "",
+      "email": ""
+    }
+  ],
+  "group_super": [
+    {
+      "id": "",
+      "title": "",
+      "abbr": "",
+      "current": ""
+    }
+  ],
+  "group_class": [
+    {
+      "id": "",
+      "title": "",
+      "abbr": "",
+      "group_super_id": "",
+      "group_leader_id": "",
+      "gender": "",
+    }
+  ],
+  "group_staff": {
+    "id": "",
+    "title": "",
+    "abbr": ""
+  },
+  "staff": [
+    {
+      "id": "",
+      "fname": "",
+      "lname": "",
+      "alias": "",
+      "mobile": "",
+      "email": "",
+      "group_staff_id": ""
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+<component name="libraryTable">
+  <library name="jQuery 3.3.1" type="javaScript">
+    <properties>
+      <option name="frameworkName" value="jQuery" />
+      <option name="frameworkVersion" value="" />
+    </properties>
+    <CLASSES>
+      <root url="file://$PROJECT_DIR$/jct_sections/assets/js/jquery-3.3.1.min.js" />
+    </CLASSES>
+    <SOURCES />
+  </library>
+</component>

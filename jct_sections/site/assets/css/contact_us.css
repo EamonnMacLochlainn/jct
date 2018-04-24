@@ -1,0 +1,87 @@
+.light-panel {
+    margin-top: 1rem;
+}
+
+form {
+    padding: 3rem 0 6rem;
+    max-width: 40rem;
+    margin: 0 auto;
+}
+label {
+    display: block;
+    margin: 0 0 1rem;
+}
+span.label-text {
+    display: block;
+}
+input {
+    display: block;
+    max-width: 100%;
+    box-shadow: inset -2px 2px 2px #ccc;
+    background: #eee;
+}
+textarea {
+    display: block;
+    max-width: 100%;
+    box-shadow: inset -2px 2px 2px #ccc;
+    background: #eee;
+    min-height: 9rem;
+}
+
+
+
+
+p:first-child {
+    margin: 0 0 3rem;
+    text-align: center;
+}
+.contact-by-phone span.label-text {
+    display: inline-block;
+    margin-right: 0.5em;
+}
+
+.g-recaptcha {
+    position: relative;
+    min-height: 100px;
+}
+.g-recaptcha > div {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    margin-left: -152px;
+    transform: scale(0.70);
+    transform-origin: center;
+}
+input[type="submit"] {
+    line-height: 1.8em;
+    padding: 0 0.75em;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    min-height: 2em;
+    margin: 0 auto;
+    outline: none;
+    background: #5d738a;
+    color: #fff;
+    box-shadow: none;
+    display: block;
+    width: auto;
+}
+
+@media (min-width: 768px)
+{
+    label.contact-number {
+        display: inline-block;
+        margin-right: 1rem;
+    }
+    label.contact-by-phone {
+        display: inline-block;
+    }
+
+    .g-recaptcha > div {
+        position: relative;
+        transform: scale(1);
+        display: block;
+        margin: 0 auto;
+        left: auto;
+    }
+}

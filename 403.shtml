@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DataBiz Solutions</title>
+</head>
+<body style="font-family:arial,sans-serif; font-size:100%">
+
+<div style="padding-top:10%; text-align:center;color: #888;">
+    <h1 style="font-size: 3rem;color: teal;margin: 0 0 1rem;line-height: 1.1em;">403: Forbidden</h1>
+    <p style="line-height: 1.2em;margin: 0 0 0.5em;">Perhaps you are missing a part of the web-address?</p>
+    <p style="line-height: 1.2em;margin: 0 0 0.5em;">Click <a href="//databizsolutions.ie">here</a> to return to the DataBiz Solutions home page, or <a href="##" onClick="history.go(-1); return false;">here</a> to go back to the previous screen.</p>
+</div>
+
+</body>
+</html>
