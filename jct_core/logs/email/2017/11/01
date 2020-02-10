@@ -1,0 +1,16 @@
+05:55:38 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS SMTP Error: data not accepted.SMTP server error: DATA END command failed Detail: 5.7.60 SMTP; Client does not have permissions to send as this sender [HE1PR0101MB2105.eurprd01.prod.exchangelabs.com]
+ SMTP code: 550
+06:08:27 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS SMTP Error: data not accepted.SMTP server error: DATA END command failed Detail: 5.7.60 SMTP; Client does not have permissions to send as this sender [DB5PR0101MB2104.eurprd01.prod.exchangelabs.com]
+ SMTP code: 550
+06:09:13 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS SMTP Error: data not accepted.SMTP server error: DATA END command failed Detail: 5.7.60 SMTP; Client does not have permissions to send as this sender [AM4PR0101MB2097.eurprd01.prod.exchangelabs.com]
+ SMTP code: 550
+06:14:19 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS SMTP Error: data not accepted.SMTP server error: DATA END command failed Detail: 5.7.60 SMTP; Client does not have permissions to send as this sender [VI1PR0101MB2109.eurprd01.prod.exchangelabs.com]
+ SMTP code: 550
+06:22:02 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS SMTP Error: data not accepted.SMTP server error: DATA END command failed Detail: 5.7.60 SMTP; Client does not have permissions to send as this sender [VI1PR0101MB2112.eurprd01.prod.exchangelabs.com]
+ SMTP code: 550
+06:23:16 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS SMTP Error: data not accepted.SMTP server error: DATA END command failed Detail: 5.7.60 SMTP; Client does not have permissions to send as this sender [DB5PR0101MB2103.eurprd01.prod.exchangelabs.com]
+ SMTP code: 550
+06:26:27 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS SMTP Error: data not accepted.SMTP server error: DATA END command failed Detail: 5.7.60 SMTP; Client does not have permissions to send as this sender [VI1PR0101MB2110.eurprd01.prod.exchangelabs.com]
+ SMTP code: 550
+06:28:03 :: FROM parentmeeting@olgps.ie; TO eamonn@databizsolutions.ie; STATUS No error
+06:32:21 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS No error

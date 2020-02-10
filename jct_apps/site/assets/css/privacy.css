@@ -1,0 +1,23 @@
+.screen-content {
+    max-width: 60rem;
+    margin: 0 auto;
+}
+.light-panel {
+    min-height: 25rem;
+    margin-top: 1rem;
+}
+
+
+.inner {
+    max-width: 50rem;
+    margin: 4rem auto;
+}
+h3 {
+    margin: 4rem 0 0;
+}
+p {
+    text-align: justify;
+}
+li {
+    text-align: justify;
+}

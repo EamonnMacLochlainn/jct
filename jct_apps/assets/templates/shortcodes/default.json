@@ -1,0 +1,22 @@
+{
+  "org_crest":"The crest or logo of your Organisation.",
+  "org_name":"The name of your Organisation.",
+  "org_address":"The address of your Organisation, separated by line breaks.",
+  "org_address_str":"The address of your Organisation, in a single line.",
+  "org_email":"The email address of your Organisation.",
+  "org_landline":"The landline telephone number of your Organisation.",
+  "org_mobile":"The mobile telephone number of your Organisation.",
+
+
+  "person_name":"The full name of the subject person (e.g. 'Mary Doyle'). Be aware of possessive apostrophes in your sentence structure.",
+  "person_fname":"The first name of the subject person (e.g. 'Mary'). Be aware of possessive apostrophes in your sentence structure.",
+  "person_lname":"The last name of the subject person (e.g. 'Doyle'). Be aware of possessive apostrophes in your sentence structure.",
+
+  "super_group_title":"The title of the subject person's Super Group (e.g. 'First Class'). Be aware of possessive apostrophes in your sentence structure.",
+  "class_group_title":"The title of the subject person's Class Group (e.g. 'First Class A'). Be aware of possessive apostrophes in your sentence structure.",
+  "custom_group_title":"The title of the subject person's subject Custom Group (e.g. 'Swimming Group'). Be aware of possessive apostrophes in your sentence structure.",
+
+
+  "class_group_leader_name":"The name that the leader of the subject person's Class Group is known by (e.g. 'Mrs. Grogan'). Be aware of possessive apostrophes in your sentence structure.",
+  "custom_group_leader_name":"The name that the leader of the subject person's subject Custom Group is known by (e.g. 'Mrs. Grogan'). Be aware of possessive apostrophes in your sentence structure."
+}

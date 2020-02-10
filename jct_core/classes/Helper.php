@@ -126,6 +126,11 @@ class Helper
         return $char;
     }
 
+    static function strip_all_white_space($string)
+    {
+        return preg_replace('/\s+/', '', $string);
+    }
+
     static function clean_unicode_literals($string)
     {
         return preg_replace_callback('@\\\(x)?([0-9a-zA-Z]{2,3})@',
@@ -196,30 +201,235 @@ class Helper
         return password_hash($pass, CRYPT_BLOWFISH, ['cost'=>8]);
     }
 
-    static function array_chunk(Array $array, $num_chunks, $chunk_limit = null)
+    static function array_chunk(Array $array, $num_chunks = -1, $nodes_in_chunk = null)
     {
         $array_len = count($array);
+        $nodes_in_chunk = ($nodes_in_chunk !== null) ? intval($nodes_in_chunk) : null;
 
-        if( ($num_chunks === -1) && (!is_null($chunk_limit)) )
-        {
-            $chunk_len = intval($chunk_limit);
-            $num_chunks = ceil($array_len / $chunk_limit);
-        }
+        if($num_chunks < 1)
+            $num_chunks = ceil($array_len / $nodes_in_chunk);
         else
-            $chunk_len = floor($array_len / $num_chunks);
+        {
+            if($nodes_in_chunk === null)
+                $nodes_in_chunk = ceil($array_len / $num_chunks);
+            else
+            {
+                // if num_chunks specified, and nodes_in_chunk specified,
+                // and their sum is less than the total nodes in the array,
+                // reduce the array to their sum
+                $node_limit = $num_chunks * $nodes_in_chunk;
+                if($array_len > $node_limit)
+                {
+                    $array = array_slice($array, 0, $node_limit);
+                    $array_len = $node_limit;
+                }
+            }
+        }
 
-        $chunk_remainder = $array_len % $num_chunks;
+
+        // if nodes are to be left remaining after chunking, then
+        // attach them at the end
+
+        $last_chunk = [];
+        $node_limit = $num_chunks * $nodes_in_chunk;
+        $nodes_remaining_after_chunking = ($array_len > $node_limit) ? $array_len - $node_limit : 0;
+        if($nodes_remaining_after_chunking > 0)
+        {
+            $n = 0 - $nodes_remaining_after_chunking;
+            $last_chunk = array_slice($array, $n);
+            $array = array_slice($array, 0, $n);
+        }
+
+
 
         $chunked_array = [];
         $mark = 0;
         for($i = 0; $i < $num_chunks; $i ++)
         {
-            $incr = ($i < $chunk_remainder) ? $chunk_len + 1 : $chunk_len;
-            $chunked_array[$i] = array_slice($array, $mark, $incr);
-            $mark += $incr;
+            $chunked_array[$i] = array_slice($array, $mark, $nodes_in_chunk);
+            $mark += $nodes_in_chunk;
         }
 
+        if(!empty($last_chunk))
+            $chunked_array[] = $last_chunk;
+
         return $chunked_array;
+    }
+
+    /**
+     *
+     * Separate first and last name(s).
+     * The default behaviour is that the very last value *only* is the lname
+     * (all remaining parts are assumed to be the fname), unless
+     * the first value happens to be a patronymic/matronymic or nobiliary particle.
+     * If such a particle is found, then that array key marks the beginning of the
+     * lname and we split fname and lname there
+     *
+     * Abbreviated middle name values are added to the fname by default, unless
+     * they are 'o', in which case they are added to the lname.
+     *
+     * @param $name
+     * @param bool $remove_abbr - remove abbreviated values (strlen == 1, or ended with a dot)
+     * @param bool $remove_patronymics
+     * @param $preferred_key - set which key to use (fname or lname) when a single value (e.g. 'John') is submitted
+     * @return array
+     */
+    static function normalise_name($name, $remove_abbr = false, $remove_patronymics = false, $preferred_key = 'fname')
+    {
+        $resp = [
+            'fname' => null,
+            'lname' => null
+        ];
+
+        $name = trim($name);
+        $name = str_replace('d\'', 'd', $name); // concatenate Latin abbreviated particle
+        $name = str_replace('\'', ' ', $name); // replace remaining apostrophes with spaces
+        $name = preg_replace('!\s+!', ' ', $name); // replace multiple spaces with single spaces
+        $name = str_replace([' -','- '], '-', $name); // replace spaced hyphens with hyphens
+        $name = str_replace('-', '', $name); // concatenate hyphenated names
+        $split = preg_split( "/[\s]+/", $name); // divide according to spaces
+        $split = array_map('self::latinise_string', $split); // remove accents
+        $original_case_split = $split; // store in original case for later
+        $split = array_map('strtolower', $split); // make lowercase
+
+        // if only one value, return it
+        if(count($split) === 1)
+        {
+            $resp[$preferred_key] = $split[0];
+            return $resp;
+        }
+
+        if($remove_abbr)
+        {
+            // remove any abbreviated middle/last names ('John C. Reilly' => 'John Reilly')
+
+            foreach($split as $i => $s)
+            {
+                if($s === 'o') // have to allow for 'o', for Irish names
+                    continue;
+                if(strpos($s,'.') !== false)
+                {
+                    unset($split[$i]);
+                    if($i === 0)
+                        array_unshift($split, null);
+                    continue;
+                }
+                if(strlen($s) === 1)
+                {
+                    unset($split[$i]);
+                    if($i === 0)
+                        array_unshift($split, null);
+                }
+            }
+            $split = array_values($split);
+        }
+
+        // Check for patronymics, and mark position.
+        // We also check for vowel-ending Irish patronymics while
+        // we're at it, for use later, as well as removing dots (abbr checkpoint passed).
+
+        $patronymics = ['mac','mc','nic','ni','o','ui','af','von','zu','van','de','du','des','do','dos','da','das','dom','del','di','der'];
+        $particle_key = 0;
+        $has_particle = false;
+        $vowel_ending_ir_patronymics = ['ni','o','ui'];
+        $has_vowel_ending_ir_patronym = false;
+        foreach($split as $i => $s)
+        {
+            $split[$i] = str_replace('.', '', $s);
+            if(!in_array($s, $patronymics))
+                continue;
+            $particle_key = $i;
+            $has_particle = true;
+            $has_vowel_ending_ir_patronym = (in_array($s, $vowel_ending_ir_patronymics));
+            break;
+        }
+
+        if(!$has_particle) // doesn't have a particle, resort to default behaviour and return.
+        {
+            $x = count($split) - 1;
+            $resp['lname'] = $split[$x];
+            unset($split[$x]);
+            $resp['fname'] = implode('', $split);
+            return $resp;
+        }
+
+        $n = intval('-' . ($particle_key + 1));
+        $fnames = ($particle_key > 0) ? array_slice($split, 0, $n) : null;
+        $resp['fname'] = ($fnames === null) ? null : implode('', $fnames);
+        $split = ($particle_key > 0) ? array_slice($split, $particle_key) : $split;
+
+        // if only left with one lname value, or doesn't have a vowel-ending
+        // Irish patronym, return it
+
+        if( (count($split) === 1) || (!$has_vowel_ending_ir_patronym) )
+        {
+            if($remove_patronymics)
+                $split = array_slice($split, 1);
+            $resp['lname'] = implode('', $split);
+            return $resp;
+        }
+
+        // Now only left with names that have multiple parts to their
+        // last name, AND that have a vowel-ending Irish patronym
+        // check for possible sheimhiús, and remove them
+
+        $very_last_name_key = count($split) - 1;
+        $very_last_name = $split[ $very_last_name_key ];
+        $first_char = substr($very_last_name, 0, 1);
+        $second_char = substr($very_last_name, 1, 1);
+        if( ($first_char !== 'h') && ($second_char !== 'h') ) // no possible sheimhiú, so return
+        {
+            if($remove_patronymics)
+                $split = array_slice($split, 1);
+            $resp['lname'] = implode('', $split);
+            return $resp;
+        }
+
+        if($first_char === 'h')
+        {
+            // as a safety, check first if 'h' was originally capitalised. If so, leave it, just return
+
+            $original_case_first_char = substr($original_case_split[ count($original_case_split) - 1 ], 0, 1);
+            if($original_case_first_char === 'H')
+            {
+                if($remove_patronymics)
+                    $split = array_slice($split, 1);
+                $resp['lname'] = implode('', $split);
+                return $resp;
+            }
+
+            if(in_array($second_char, ['a','e','i','o','u']))
+            {
+                // wasn't capitalised, and appears before a vowel - always a sheimhiú
+                // between vowels. This is as sure as we can be here.
+
+                $split[$very_last_name_key] = substr($very_last_name, 1);
+                if($remove_patronymics)
+                    $split = array_slice($split, 1);
+                $resp['lname'] = implode('', $split);
+                return $resp;
+            }
+        }
+
+        if($second_char === 'h')
+        {
+            // at this point, we are left with someone with an Irish familial, with a vowel ending familial,
+            // who spells in Irish, and with a 'h' as a second character - it's a sheimhiú
+            $split[$very_last_name_key] = substr($very_last_name, 0,1) . substr($very_last_name,2);
+
+            if($remove_patronymics)
+                $split = array_slice($split, 1);
+
+            $resp['lname'] = implode('', $split);
+            return $resp;
+        }
+
+        // safety return
+        if($remove_patronymics)
+            $split = array_slice($split, 1);
+
+        $resp['lname'] = implode('', $split);
+        return $resp;
     }
 
     static function lname_as_index($lname)
@@ -276,18 +486,20 @@ class Helper
         return $lname_as_index;
     }
 
-    static function determine_displayed_name($salutation = null, $fname = null, $lname = null, $salute_name = null)
+    static function determine_displayed_name($arr = [])
     {
+        $salutation = (!empty($arr['salutation'])) ? $arr['salutation'] . ' ' : '';
+        $fname = (!empty($arr['fname'])) ? $arr['fname'] . ' ' : '';
+        $lname = (!empty($arr['lname'])) ? $arr['lname'] : '';
+        $salute_name = (!empty($arr['salute_name'])) ? $arr['salute_name'] : '';
+
         if(!empty($salute_name))
             return $salute_name;
 
         if( (empty($salutation)) && (empty($fname)) && (empty($lname)) )
             return null;
 
-        $salt = (empty($salutation)) ? '' : $salutation . ' ';
-        $fname = (empty($fname)) ? '' : $fname . ' ';
-
-        return $salt . $fname . $lname;
+        return $salutation . $fname . $lname;
     }
 
     static function require_libphonenumber()
@@ -330,7 +542,7 @@ class Helper
         }
     }
 
-    static function normalise_contact_number($number, $default_region = null)
+    static function normalise_contact_number($number, $region_iso = 'IE', $format = 1)
     {
         self::$libphonenumber_error = null;
 
@@ -345,37 +557,32 @@ class Helper
 
             $number = preg_replace("/[^0-9+]/", "", $number);
             if(empty($number))
-                throw new Exception('Null value detected.');
+                throw new Exception('Cannot normalise a null number.');
 
-            $region = (!is_null($default_region)) ? $default_region : 'IE';
 
             $phone_util = \libphonenumber\PhoneNumberUtil::getInstance();
+            $number_prototype = $phone_util->parse($number, $region_iso);
 
-            $first_two_chars = substr($number, 0, 2);
-            if($first_two_chars == '00')
-                $number = substr($number, 2);
-
-            $first_char = substr($number, 0, 1);
-            if($first_char != '0')
-            {
-                $first_two_chars = substr($number, 0, 2);
-                switch($first_two_chars)
-                {
-                    case('44'):
-                        $region = 'GB';
-                        break;
-                    default:
-                        // leave at default region
-                        break;
-                }
-            }
-
-            $number_prototype = $phone_util->parse($number, $region);
             $valid_number = $phone_util->isValidNumber($number_prototype);
             if(!$valid_number)
                 throw new Exception('Invalid number detected.');
 
-            return $phone_util->format($number_prototype, \libphonenumber\PhoneNumberFormat::INTERNATIONAL);
+            switch($format)
+            {
+                case(0):
+                    return $phone_util->format($number_prototype, \libphonenumber\PhoneNumberFormat::E164);
+                break;
+                case(2):
+                    return $phone_util->format($number_prototype, \libphonenumber\PhoneNumberFormat::NATIONAL);
+                    break;
+                case(3):
+                    return $phone_util->format($number_prototype, \libphonenumber\PhoneNumberFormat::RFC3966);
+                    break;
+                default:
+                case(1):
+                    return $phone_util->format($number_prototype, \libphonenumber\PhoneNumberFormat::INTERNATIONAL);
+                    break;
+            }
         }
         catch(Exception $e)
         {
@@ -388,12 +595,10 @@ class Helper
     {
         $person = array_change_key_case($person, CASE_LOWER);
 
-        if(!empty($person['id']))
-            $person['id'] = intval($person['id']);
+        $person['id'] = (!empty($person['id'])) ? intval($person['id']) : null;
+        $person['active'] = (!empty($person['active'])) ? 1 : 0;
 
-        if(!empty($person['active']))
-            $person['active'] = (intval($person['active']) > 0) ? 1 : 0;
-
+        $email = null;
         if(!empty($person['email']))
         {
             $email = strtolower($person['email']);
@@ -402,13 +607,18 @@ class Helper
                 $email = (filter_var($email, FILTER_VALIDATE_EMAIL)) ? $email : null;
             else
                 $email = null;
-
-            $person['email'] = $email;
         }
+        $person['email'] = $email;
 
+        $mobile = null;
         if(!empty($person['mobile']))
-            $person['mobile'] = self::normalise_contact_number($person['mobile']);
+        {
+            $mobile = self::normalise_contact_number($person['mobile']);
+            $mobile = ( ($mobile === null) || (strlen($mobile) < 7) ) ? null : $mobile;
+        }
+        $person['mobile'] = $mobile;
 
+        $fname = null;
         if(!empty($person['fname']))
         {
             $fname = trim( preg_replace('/\s+/', ' ',$person['fname']) );
@@ -421,16 +631,21 @@ class Helper
             }
             else
                 $fname = null;
-
-            $person['fname'] = $fname;
         }
+        $person['fname'] = $fname;
 
+        $lname = null;
         if(!empty($person['lname']))
         {
             $lname = trim( preg_replace('/\s+/', ' ',$person['lname']) );
             if(!empty($lname))
             {
                 $lname = strtolower($lname);
+
+                $parts = explode(' ', $lname);
+                $parts = array_map('trim', $parts);
+                $parts = array_map('ucwords', $parts);
+                $lname = implode(' ', $parts);
 
                 $parts = explode('\'', $lname);
                 $parts = array_map('trim', $parts);
@@ -441,55 +656,61 @@ class Helper
                 $parts = array_map('trim', $parts);
                 $parts = array_map('ucwords', $parts);
                 $lname = implode('', $parts);
-
-                $parts = explode(' ', $lname);
-                $parts = array_map('trim', $parts);
-                $parts = array_map('ucwords', $parts);
-                $lname = implode(' ', $parts);
             }
             else
                 $lname = null;
-
-            $person['lname'] = $lname;
         }
+        $person['lname'] = $lname;
 
+        $indexed = null;
         if(!empty($person['indexed_lname']))
-            $person['indexed_lname'] = self::lname_as_index($person['indexed_lname']);
-
-        if(!empty($person['alias']))
+            $indexed = self::lname_as_index($person['indexed_lname']);
+        else
         {
-            $alias = trim( preg_replace('/\s+/', ' ',$person['alias']) );
-            if(!empty($alias))
-            {
-                $alias = strtolower($alias);
-
-                $parts = explode('\'', $alias);
-                $parts = array_map('trim', $parts);
-                $parts = array_map('ucwords', $parts);
-                $alias = implode('\'', $parts);
-
-                $parts = explode('-', $alias);
-                $parts = array_map('trim', $parts);
-                $parts = array_map('ucwords', $parts);
-                $alias = implode('', $parts);
-
-                $parts = explode(' ', $alias);
-                $parts = array_map('trim', $parts);
-                $parts = array_map('ucwords', $parts);
-                $alias = implode(' ', $parts);
-            }
-            else
-                $alias = null;
-
-            $person['alias'] = $alias;
+            if($lname !== null)
+                $indexed = self::lname_as_index($person['lname']);
         }
+        $person['indexed_lname'] = $indexed;
 
-        if(!empty($person['salt_id']))
-            $person['salt_id'] = abs(intval($person['salt_id']));
-
-        if( (empty($person['salt_id'])) && (!empty($person['alias'])) && (!empty($salutations)) )
+        $salute_name = null;
+        if( (array_key_exists('alias', $person)) || (array_key_exists('salute_name', $person)) )
         {
-            $tmp = strtolower($person['alias']);
+            $key = (array_key_exists('alias', $person)) ? 'alias' : 'salute_name';
+            if(!empty($person[$key]))
+            {
+                $salute_name = preg_replace(['/\s{2,}/', '/[\t\n]/'], '\s',$person[$key]);
+                $salute_name = trim( $salute_name );
+                if(!empty($salute_name))
+                {
+                    $parts = explode('\'', $salute_name);
+                    $parts = array_map('trim', $parts);
+                    $parts = array_map('ucwords', $parts);
+                    $salute_name = implode('\'', $parts);
+
+                    $parts = explode('-', $salute_name);
+                    $parts = array_map('trim', $parts);
+                    $parts = array_map('ucwords', $parts);
+                    $salute_name = implode('-', $parts);
+
+                    $parts = explode(' ', $salute_name);
+                    $parts = array_map('trim', $parts);
+                    $parts = array_map('ucwords', $parts);
+                    $salute_name = implode(' ', $parts);
+                }
+                else
+                    $salute_name = null;
+            }
+
+            if($key === 'alias')
+                unset($person['alias']);
+        }
+        $person['salute_name'] = $salute_name;
+
+        $person['salt_id'] = (!empty($person['salt_id'])) ? abs(intval($person['salt_id'])) : 0;
+
+        if( (empty($person['salt_id'])) && (!empty($salute_name)) && (!empty($salutations)) )
+        {
+            $tmp = strtolower($salute_name);
             $parts = explode(' ', $tmp);
             if(count($parts) > 0)
             {
@@ -504,8 +725,33 @@ class Helper
     static function nullify_empty_values($arr)
     {
         $tmp = [];
+        if(is_array($arr))
+        {
+            foreach($arr as $k => $v)
+            {
+                $x = self::strip_all_white_space($v);
+                $tmp[$k] = (empty($x)) ? null : trim($v);
+            }
+        }
+        else
+        {
+            $x = self::strip_all_white_space($arr);
+            $tmp = (empty($x)) ? null : trim($arr);
+        }
+
+        return $tmp;
+    }
+
+    static function empty_null_values($arr)
+    {
+        $tmp = [];
         foreach($arr as $k => $v)
-            $tmp[$k] = (empty($v)) ? null : $v;
+        {
+            if(!is_numeric($v))
+                $tmp[$k] = (empty($v)) ? '' : $v;
+            else
+                $tmp[$k] = intval($v);
+        }
 
         return $tmp;
     }
@@ -537,6 +783,26 @@ class Helper
         }
 
         return $col;
+    }
+
+    static function prep_org_tmp_dir($org_guid)
+    {
+        $path = JCT_PATH_MEDIA . $org_guid;
+        if(!is_dir($path))
+            mkdir($path);
+
+        $path.= JCT_DE . 'tmp';
+        if(!is_dir($path))
+            mkdir($path);
+
+        // delete old files
+
+        foreach (glob($path."*") as $file)
+        {
+            // if file is 24 hours (86400 seconds) old then delete it
+            if(time() - filectime($file) > 86400)
+                @unlink($file);
+        }
     }
 
     static function prep_org_media_dir($org_guid, $media_type, $is_download = true, $clear_old = false)
@@ -601,10 +867,22 @@ class Helper
         }
     }
 
+
+
+    static function convert_to_utf8($str)
+    {
+        return iconv( "Windows-1252", "UTF-8", $str );
+    }
+
     static function read_csv_to_array($source_path, $first_row_as_fields = true, $delimiter = ',')
     {
         try
         {
+            function convert_to_utf8($str)
+            {
+                return iconv( "Windows-1252", "UTF-8", $str );
+            }
+
             $handle = fopen($source_path, 'r');
             if(!$handle)
                 throw new Exception('File could not be read');
@@ -613,12 +891,16 @@ class Helper
             $i = 0;
             while (($row = fgetcsv($handle, 4096, $delimiter)) !== false)
             {
+
                 if($first_row_as_fields && ($i == 0))
                     $fields = array_map('strtolower', $row);
                 else
                 {
                     foreach($row as $n => $value)
                     {
+                        if(!isset($fields[$n]))
+                            continue;
+
                         if($first_row_as_fields)
                             $rows[$i][ $fields[$n] ] = $value;
                         else
@@ -641,6 +923,109 @@ class Helper
         }
     }
 
+    static function get_verified_date_obj($date, $format, $strict = true)
+    {
+        $date_obj = DateTime::createFromFormat($format, $date);
+        if($strict)
+        {
+            $errors = DateTime::getLastErrors();
+            if (!empty($errors['warning_count']))
+                return false;
+        }
+
+        return ($date_obj !== false) ? $date_obj : false;
+    }
+
+    static function build_address($arr, $return_as_string = false, $max_str_length = 255)
+    {
+        $arr = array_change_key_case($arr, CASE_LOWER);
+        $ad = [];
+
+        if(!empty($arr['letters_send_to']))
+            $ad[] = trim($arr['letters_send_to']);
+        if(!empty($arr['house_num']))
+        {
+            if(is_numeric($arr['house_num']))
+                $arr['house_num'] = 'No. ' . $arr['house_num'];
+            $ad[] = trim($arr['house_num']);
+        }
+        if(!empty($arr['add1']))
+            $ad[] = trim($arr['add1']);
+        if(!empty($arr['add2']))
+            $ad[] = trim($arr['add2']);
+        if(!empty($arr['add3']))
+            $ad[] = trim($arr['add3']);
+        if(!empty($arr['add4']))
+            $ad[] = trim($arr['add4']);
+
+        if(!empty($arr['city_town']))
+        {
+            $city_town = trim($arr['city_town']);
+            $city_town.= (!empty($arr['postcode'])) ? ' ' . $arr['postcode'] : '';
+            $ad[] = $city_town;
+        }
+
+        $show_county = (!isset($arr['show_county'])) ? 1 : (intval($arr['show_county']));
+        if(($show_county > 0) && (!empty($arr['county_title'])))
+        {
+            if( strtoupper($arr['city_town']) != strtoupper($arr['county_title']) )
+            {
+                $pre = (!empty($arr['county_prefix'])) ? trim($arr['county_prefix']) . ' ' : '';
+                $ad[] = $pre . trim($arr['county_title']);
+            }
+        }
+
+        if(!empty($arr['eircode']))
+            $ad[] = trim($arr['eircode']);
+
+        if( (!empty($arr['country'])) && (strtoupper($arr['country']) != 'IRELAND') )
+            $ad[] = trim($arr['country']);
+
+        if($return_as_string)
+        {
+            $str = implode(', ', $ad);
+            $str = self::shorten_str_to_length($str, $max_str_length);
+            return $str;
+        }
+
+        return $ad;
+    }
+
+    static function unset_address_keys($arr)
+    {
+        $address_keys = ['letters_send_to','house_num',
+            'add_1','add_2','add_3','add_4','city_town','postcode',
+            'show_county','county_prefix','county_title',
+            'eircode','country'];
+
+        foreach($address_keys as $k)
+        {
+            if(!isset($arr[$k]))
+                continue;
+
+            unset($arr[$k]);
+        }
+
+        return $arr;
+    }
+
+    static function shorten_str_to_length($str, $max_length)
+    {
+        $max_length = intval($max_length);
+        if(strlen($str) > $max_length)
+        {
+            $string = wordwrap($str, $max_length, "##", true);
+            $arr = explode("##", $string);
+            $str = rtrim(trim($arr[0]),',');
+        }
+
+        return $str;
+    }
+
+    static function array_equal_values(array $a, array $b)
+    {
+        return !array_diff($a, $b) && !array_diff($b, $a);
+    }
 
 
 
@@ -817,60 +1202,18 @@ class Helper
             $a[] = trim($arr['add_2']);
         if(!empty($arr['add_3']))
             $a[] = trim($arr['add_3']);
+        if(!empty($arr['add_4']))
+            $a[] = trim($arr['add_4']);
         if(!empty($arr['town_city']))
-            $a[] = trim($arr['town_city']);
+        {
+            $city_town = $a[] = trim($arr['town_city']);
+            $city_town.= (!empty($arr['postcode'])) ? ' ' . $arr['postcode'] : '';
+            $a[] = $city_town;
+        }
 
         $str = implode(', ', $a);
         if(!is_null($max_length))
             $str = self::shorten_str_to_length($str, $max_length);
-
-        return $str;
-    }
-
-    static function build_complete_address_str($arr, $max_length = null)
-    {
-        $arr = array_change_key_case($arr, CASE_LOWER);
-        $a = [];
-
-        if(!empty($arr['letters_send_to']))
-            $a[] = trim($arr['letters_send_to']);
-        if(!empty($arr['house_num']))
-        {
-            if(is_numeric($arr['house_num']))
-                $arr['house_num'] = 'No. ' . $arr['house_num'];
-            $a[] = trim($arr['house_num']);
-        }
-        if(!empty($arr['add_1']))
-            $a[] = trim($arr['add_1']);
-        if(!empty($arr['add_2']))
-            $a[] = trim($arr['add_2']);
-        if(!empty($arr['add_3']))
-            $a[] = trim($arr['add_3']);
-        if(!empty($arr['city_town']))
-            $a[] = trim($arr['city_town']);
-        if( (!empty($arr['county'])) && (!empty($arr['show_county'])) )
-            $a[] = trim($arr['county']);
-        if( (!empty($arr['country'])) && (strtoupper($arr['country']) != 'IRELAND') )
-            $a[] = trim($arr['country']);
-        if(!empty($arr['eircode']))
-            $a[] = trim($arr['eircode']);
-
-        $str = implode(', ', $a);
-        if(!is_null($max_length))
-            $str = self::shorten_str_to_length($str, $max_length);
-
-        return $str;
-    }
-
-    static function shorten_str_to_length($str, $max_length)
-    {
-        $max_length = intval($max_length);
-        if(strlen($str) > $max_length)
-        {
-            $string = wordwrap($str, $max_length, "##", true);
-            $arr = explode("##", $string);
-            $str = rtrim(trim($arr[0]),',');
-        }
 
         return $str;
     }

@@ -1,0 +1,157 @@
+.home-page .home-link {
+    display: none;
+}
+.home-page .screen-content {
+    padding: 0;
+    position: relative;
+    overflow: visible;
+}
+
+
+
+.home-wrap {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 62rem;
+    margin: 5rem auto;
+    padding: 0 1rem;
+    position: relative;
+}
+.welcome {
+    flex-basis: 66%;
+    max-width: 39rem;
+    min-width: 14rem;
+}
+form.login {
+    flex-basis: 33%;
+    max-width: 19rem;
+    min-width: 14rem;
+}
+.home-wrap > * {
+    margin: 0 0 1rem 1rem;
+}
+
+
+.welcome h1 {
+    margin: 0;
+    font-size: 1rem;
+    line-height: 1em;
+    text-align: center;
+}
+.welcome p {
+    line-height: 1em;
+    text-align: center;
+    color: #dc2f4d;
+}
+
+
+
+form.login {
+    box-shadow: 4px 4px 8px #8aa9b3;
+    position: relative;
+}
+.buttonset {
+    text-align: right;
+}
+.new-password {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px dotted #ccc;
+    text-align: center;
+}
+.new-password button {
+    margin: 0 0.25em;
+}
+.new-password button.login-help-trigger {
+    margin-right: 0;
+}
+.left-iconed-input i {
+    color: #5d738a;
+}
+.login-links {
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 2px dotted #ccc;
+    text-align: center;
+    font-size: 0.8em;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+.login-links a {
+    display: inline-block;
+}
+
+
+.redirect-notice {
+    margin: 0;
+    font-size: 0.6rem;
+    text-align: center;
+}
+
+.request-form {
+    max-width: 18rem;
+    text-align: center;
+    margin: 0.25em auto;
+}
+label.country-code {
+    display: inline-block;
+    width: 8em;
+    vertical-align: top;
+    margin: 0 0.5em 0.25em 0;
+}
+.request-form label.contact-num {
+    display: inline-block;
+    width: calc(100% - 8.5em);
+    vertical-align: top;
+    margin: 0 0 0.25em;
+}
+
+.bubbles {
+    display: block;
+    position: absolute;
+    z-index: -1;
+    bottom: -12em;
+    left: -5em;
+}
+
+.password.left-iconed-input {
+    margin-bottom: 1em;
+}
+.org, .role {
+    display: none;
+}
+.org .label-text,
+.role .label-text {
+    font-size: 0.8em;
+    line-height: 1.2em;
+}
+
+
+@media (min-width: 670px) {
+
+    .welcome h1 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (min-width: 1005px) {
+
+    .welcome h1 {
+        font-size: 2rem;
+        text-align: left;
+        text-shadow: 1px 1px 3px #aaa;
+    }
+    .welcome p {
+        text-align: left;
+    }
+
+    .bubbles {
+        bottom: -23em;
+        left: -5em;
+    }
+
+}

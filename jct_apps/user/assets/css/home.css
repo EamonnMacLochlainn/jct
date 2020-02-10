@@ -1,0 +1,145 @@
+section.screen-content {
+    min-width: -webkit-min-content;
+    position: relative;
+    z-index: 1;
+    padding: 2rem 1rem;
+    max-width: 60rem;
+    margin: 0 auto;
+}
+.wrapper.clearfix {
+    margin: 1rem auto;
+    max-width: 60rem;
+}
+
+
+.light-panel {
+    margin-top: 1rem;
+}
+.light-panel > div.panel {
+    font-size: 0.9rem;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+}
+.light-panel > div.panel h4 {
+    line-height: 1em;
+    margin: 0 0 1em;
+}
+
+
+
+.credentials label > div {
+    display: inline-block;
+    vertical-align: top;
+}
+.credentials input {
+    margin-bottom: 0.5em;
+}
+.credentials .label-text {
+    width: 9.5em;
+}
+.password-wrap {
+    background: #d7e4f1;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    padding: 1rem 1rem 0.5rem 1rem;
+    margin-top: 0.5rem;
+}
+.password-wrap > p {
+    margin: 0 0 1em;
+    font-size: 0.8em;
+}
+
+
+
+
+
+
+.name .label-text {
+    width: 6em;
+}
+.update-name {
+    display: block;
+    margin-top: 1rem;
+}
+
+
+
+.address-lines input {
+    max-width: 100%;
+}
+.country .label-text, .phones .label-text {
+    width: 6em;
+}
+.phones {
+    margin-bottom: 2rem;
+}
+.address-lines, .address-params {
+    display: inline-block;
+    vertical-align: top;
+}
+.address-lines h5 {
+    line-height: 1.2em;
+    margin: 0 0 1em;
+}
+.address-lines {
+    padding: 0.5em 1rem 0 0;
+}
+
+.address-params {
+    padding: 0;
+    max-width: 19rem;
+}
+.address-params .label-text {
+    line-height: 2em;
+}
+.address-params input,
+.address-params select {
+    display: inline-block;
+    width: auto;
+    margin-left: 0;
+}
+.address-params label.clearfix input, .address-params label.clearfix select {
+    float: right;
+    width: 12em;
+}
+.address-params label.clearfix .checkbox-icon-ctn {
+    float: right;
+    line-height: 2em;
+}
+.address-params label.clearfix input[name="postcode"] {
+    width: 4em;
+    margin-left: 0.5em;
+}
+
+.your-address {
+    clear: both;
+    margin: 1rem 0;
+    background: #d7e4f1;
+    padding: 1em;
+    border: 1px solid transparent;
+    border-radius: 4px;
+}
+.your-address p {
+    margin: 0;
+}
+.address-ctn {
+    font-style: italic;
+    font-size: 0.9em;
+    font-weight: bold;
+}
+
+
+
+
+
+
+@media (min-width: 635px) {
+    .credentials label > div {
+        white-space: nowrap;
+    }
+    .email {
+        margin-left: 1rem;
+    }
+}

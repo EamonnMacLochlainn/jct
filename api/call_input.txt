@@ -1,0 +1,11 @@
+<pre>Array
+(
+    [username] => 19374W
+    [private_key] => 33212dfd1dsf
+    [app] => nsadmin
+    [action] => upload
+    [data] => {
+"upload_type":"eoy_reports_upload",
+"file_properties":[{"id":"0","year_starting":"2018","file_name":"End of Year Report 2019","member_ids":[1713],"staff_ids":[]},{"id":"1","year_starting":"2018","file_name":"End of Year Report 2019","member_ids":[851],"staff_ids":[]}]}
+)
+</pre>

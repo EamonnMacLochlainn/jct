@@ -13,5 +13,5 @@ interface ViewInterface
 {
     function index();
 
-    function update_section_slug();
+    function update_app_param();
 }

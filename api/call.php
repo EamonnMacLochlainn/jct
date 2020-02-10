@@ -12,45 +12,24 @@
 /*if(empty($_POST))
     exit;*/
 
+require_once '../ds_core/classes/Cryptor.php';
 require_once 'AsciiEncrypt.php';
 require_once 'api_interface.php';
 require_once 'call_api.php';
 
 $input = $_POST;
-
-
-// {"roll_number":"19702N","pass":"64912223","datetime":"2018-04-06 10:57:34","data":[{"Forename":"Stacey","Surname":"Harrison","PPS":"8144050O","Dob":"08/11/2012","Gender":"2","Add1":"40 Oak Avenue","Add2":"Cnocan Rua","Add3":"Salthill","Add4":"","County":"27","Eircode":"","Nationality":"678","PupilSource":"1","MotherTongue":"1","Ethnicity":"10","Religion":"1"}]}
 /*$input = [
-    'username' => '19702N',
-    'private_key' => '64912223',
-    'app' => 'nsadmin',
-    'action' => 'pod_wl_store',
-    'data' => '[{"Forename":"Stacey","Surname":"Harrison","PPS":"8144050O","Dob":"08/11/2012","Gender":"2","Add1":"40 Oak Avenue","Add2":"Cnocan Rua","Add3":"Salthill","Add4":"","County":"27","Eircode":"","Nationality":"678","PupilSource":"1","MotherTongue":"1","Ethnicity":"10","Religion":"1"}]',
-    'datetime' => $d->format('2018-04-06 10:57:34')
+    'username' => '17961E',
+    'private_key' => '33212dfd1dsf',
+    'app' => 'manager',
+    'action' => 'org_synch',
+    'data' => file_get_contents('tmp/17961e.json')
 ];*/
 
 
+file_put_contents('call_input.txt', \JCT\Helper::show($input, true));
 
-// cadoo call
-$d = new DateTime();
-$input = [
-    'username' => 'databiz',
-    'private_key' => '2154910792',
-    'app' => 'messaging',
-    'action' => 'cadoo_installed',
 
-    'data' => [
-        'numbers' => '0867345627_0879765684',//_03442411599
-        //'override' => 1
-    ],
-    /*'data' => [
-        'text' => 'Test SMS @ ' . $d->format('H:i') . '. No response needed.',
-        'numbers' => '0867345627',
-        'source_number' => '0879765684'
-    ],*/
-];
-
-\JCT\Helper::show($input);
 
 
 

@@ -7,14 +7,20 @@
  */
 
 
-/**
- * Absolute Paths
- */
+$installation_dir = 'jct';
+$domain = (empty($installation_dir)) ? 'jctregistration.ie' : 'localhost';
+
+define('JCT_COOKIE_PATH', '/');
+define('JCT_COOKIE_DOMAIN', $domain);
+define('JCT_COOKIE_SECURE', false);
+define('JCT_COOKIE_HTTP_ONLY', false);
+
+$prefix = 'jctregis';
+define('JCT_PREFIX', $prefix);
+
 $file_path = dirname(__FILE__);
 $root_path = dirname($file_path);
 $de = ( intval(strpos($root_path, '\\')) > 0 ) ? '\\' : '/';
-
-$installation_dir = 'jct';
 
 define('JCT_DE', $de);
 define('JCT_INSTALLATION_DIR', $installation_dir);
@@ -25,8 +31,10 @@ define('JCT_PATH_CORE_VENDORS', JCT_PATH_CORE . 'vendors' . JCT_DE);
 
 define('JCT_PATH_MEDIA', $root_path . JCT_DE . 'jct_media' . JCT_DE);
 
-define('JCT_PATH_SECTIONS', $root_path . JCT_DE . 'jct_sections' . JCT_DE);
-define('JCT_PATH_ASSETS', JCT_PATH_SECTIONS . 'assets' . JCT_DE);
+define('JCT_PATH_APPS', $root_path . JCT_DE . 'jct_apps' . JCT_DE);
+define('JCT_PATH_BACKUPS', JCT_PATH_ROOT . 'jct_backups' . JCT_DE);
+define('JCT_PATH_GLOBAL_APPS', JCT_PATH_CORE . 'global_apps' . JCT_DE);
+define('JCT_PATH_ASSETS', JCT_PATH_APPS . 'assets' . JCT_DE);
 define('JCT_PATH_TEMPLATES', JCT_PATH_ASSETS . 'templates' . JCT_DE);
 
 /**
@@ -36,24 +44,26 @@ define('JCT_PATH_TEMPLATES', JCT_PATH_ASSETS . 'templates' . JCT_DE);
 $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
 define('JCT_URL_SCHEME', $scheme);
 define('JCT_URL_HOST', JCT_URL_SCHEME . $_SERVER['HTTP_HOST'] . '/');
-define('JCT_URL_ROOT', JCT_URL_HOST . $installation_dir . '/');
+$tmp = (!empty($installation_dir)) ? $installation_dir . '/' : '';
+define('JCT_URL_ROOT', JCT_URL_HOST . $tmp);
 
+define('JCT_URL_BACKUPS', JCT_URL_ROOT . 'jct_backups/');
 define('JCT_URL_CORE', JCT_URL_ROOT . 'jct_core/');
 define('JCT_URL_CORE_VENDORS', JCT_URL_CORE . 'vendors/');
 
 define('JCT_URL_MEDIA', JCT_URL_ROOT . 'jct_media/');
 
-define('JCT_URL_SECTIONS', JCT_URL_ROOT . 'jct_sections/');
+define('JCT_URL_APPS', JCT_URL_ROOT . 'jct_apps/');
 define('JCT_URL_APP_SITE', JCT_URL_ROOT);
-define('JCT_URL_ASSETS', JCT_URL_SECTIONS . 'assets/');
-define('JCT_URL_TEMPLATES', JCT_URL_SECTIONS . 'templates/');
-
+define('JCT_URL_ASSETS', JCT_URL_APPS . 'assets/');
+define('JCT_URL_TEMPLATES', JCT_URL_APPS . 'templates/');
 
 
 /**
  * Set default country ID
-*/
+ */
 define('JCT_DEFAULT_COUNTRY_ID', 372);
+define('JCT_DEFAULT_COUNTY_ID', 2);
 define('JCT_DEFAULT_TIMEZONE', 'Europe/Dublin');
 
 
@@ -62,10 +72,9 @@ define('JCT_DEFAULT_TIMEZONE', 'Europe/Dublin');
  * Used for site and org databases
  */
 define('JCT_DB_SIUD_HOST', 'localhost');
-define('JCT_DB_SIUD_NAME', 'jctregis_db');
-define('JCT_DB_SIUD_USER', 'jctregis_DBA');
-define('JCT_DB_SIUD_PASS', '{Kv4cW]n_0G6');
-
+define('JCT_DB_SIUD_NAME', $prefix . '_mvc_db');
+define('JCT_DB_SIUD_USER', $prefix . '_mvc_dba');
+define('JCT_DB_SIUD_PASS', 'JWIsF5zegbnqmlIN');
 
 
 /**
@@ -75,17 +84,29 @@ define('JCT_ACTIVITY_LIMIT', 1);
 
 
 /**
- * DataBiz Contact Emails
+ * DataBiz Contact details
  */
-define('JCT_TEST_EMAIL', 'demo@databizsolutions.ie');
-define('JCT_TECH_SUPPORT_EMAIL', 'eamonn@databizsolutions.ie');
-define('JCT_SUPPORT_EMAIL', 'demo@databizsolutions.ie');
-define('JCT_QUERY_EMAIL', 'demo@databizsolutions.ie');
+define('JCT_EMAIL_TEST', 'info@databizsolutions.ie');
+define('JCT_EMAIL_SUPPORT', 'info@databizsolutions.ie');
+define('JCT_EMAIL_QUERY', 'info@databizsolutions.ie');
+define('JCT_PHONE_TEST', '+353 91 556 755');
+define('JCT_PHONE_SUPPORT', '+353 91 556 755');
+define('JCT_PHONE_QUERY', '+353 91 556 755');
 
 
+/**
+ * Document types
+ * I don't think it's necessary to keep these in a table, we can
+ * fetch what we want via the meta value, so...
+ */
 
-define('JCT_LOGO_SRC', JCT_URL_ASSETS . 'images/logo.png');
-
+$tmp = serialize([
+    'general' => 'General',
+    'support' => 'Support'
+]);
+define('JCT_DOCUMENT_TYPES', $tmp);
+define('JCT_DOCUMENT_PATH', JCT_PATH_ROOT . 'filestorage' . JCT_DE);
+define('JCT_DOCUMENT_URL', JCT_URL_ROOT . 'filestorage/');
 
 
 /**

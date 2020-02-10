@@ -1,0 +1,6 @@
+body#tinvmce {
+    padding: 1rem 2rem;
+    font-family: arial, sans-serif;
+    font-size: 100%;
+    color: red;
+}

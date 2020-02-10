@@ -9,106 +9,52 @@
 namespace JCT;
 
 
+use JCT\Connection;
+use JCT\Database;
+use JCT\SessionManager;
 use Exception;
+use DateTime;
+use JCT\Helper;
+use JCT\Cryptor;
 
 class User extends Connection
 {
-    private $is_logged_in = false;
-    private $id = 0;
-    private $position = 99;
-    private $role_id = 'User';
-
-    private $org;
-    private $permissions;
-    private $name;
+    protected $user_is_logged_in = false;
+    protected $user_id = 0;
+    protected $user_role_id = 99;
+    protected $user_locale = 'en_GB';
+    protected $org_guid;
 
     public $user_error;
 
     function __construct()
     {
         parent::__construct();
-        if(!$this->default_connection_ok)
-            return false;
-
-        $this->set_user_from_session();
-
-        return true;
     }
 
-    function reset_user()
-    {
-        $this->is_logged_in = false;
-        $this->id = 0;
-        $this->position = 99;
-        $this->role_id = 'User';
 
-        $this->org = null;
-        $this->permissions = null;
-        $this->name = null;
-    }
-
-    private function set_user_from_session()
+    protected function set_user_from_session()
     {
-        try
+        if(!empty($_SESSION[SessionManager::SESSION_NAME]))
         {
-            $this->reset_user();
+            $session_manager = new SessionManager($this->default_db_connection);
+            $session_manager->set_session_id(session_id());
+            $check = $session_manager->check_current_session_is_valid();
 
-            if(session_status() === PHP_SESSION_NONE)
-                session_start();
+            if(isset($check['error']))
+            {
+                $this->user_is_logged_in = false;
+                return $check;
+            }
 
-            $session = (!empty($_SESSION['jct'])) ? $_SESSION['jct'] : null;
-            if(is_null($session))
-                throw new Exception('User Session not set.');
-
-            // get parameters from session
-
-            $session_id = session_id();
-            $id = (!empty($session['id'])) ? intval($session['id']) : null;
-            if(is_null($id))
-                throw new Exception('User\'s ID not set in session.');
-
-
-            // check session id
-
-            $this->default_db_connection->query(" SELECT session_id, position FROM user WHERE id = :id ");
-            $this->default_db_connection->bind(':id', $id);
-            $this->default_db_connection->execute();
-            $tmp = $this->default_db_connection->fetchSingleAssoc();
-
-            if($session_id != $tmp['session_id'])
-                throw new Exception('Session ID does not match stored value.');
-
-
-            $this->is_logged_in = true;
-            $this->id = intval($id);
-            $this->position = $tmp['position'];
-
-            return ['success'=>1];
+            $session_manager->refresh_expiry();
+            $this->user_is_logged_in = true;
+            $this->user_id = intval($_SESSION[SessionManager::SESSION_NAME]['user']['id']);
+            $this->user_role_id = intval($_SESSION[SessionManager::SESSION_NAME]['user']['role_id']);
+            $this->user_locale = (!empty($_SESSION[SessionManager::SESSION_NAME]['user']['prefs'])) ? $_SESSION[SessionManager::SESSION_NAME]['user']['prefs']['locale'] : 'en_GB';
+            $this->org_guid = trim(strtoupper($_SESSION[SessionManager::SESSION_NAME]['org']['guid']));
         }
-        catch(Exception $e)
-        {
-            $this->user_error = $e->getMessage();
-            return ['error'=>$e->getMessage()];
-        }
+
+        return ['success'=>1];
     }
-
-    function user_position()
-    {
-        return $this->position;
-    }
-
-    function user_salute_name()
-    {
-        if(is_null($this->name))
-            return null;
-
-        return $this->name['salute_name'];
-    }
-
-    function user_is_logged_in()
-    {
-        return $this->is_logged_in;
-    }
-
-
 }

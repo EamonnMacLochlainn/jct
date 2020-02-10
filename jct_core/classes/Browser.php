@@ -1,4 +1,7 @@
 <?php
+
+use DS\Helper;
+
 /**
  * File: Browser.php
  * Author: Chris Schuld (http://chrisschuld.com/)
@@ -152,6 +155,12 @@ class Browser
     public function getBrowser()
     {
         return $this->_browser_name;
+    }
+
+    public static function Browser()
+    {
+        $b = new Browser();
+        return $b->getBrowser();
     }
     /**
      * Set the name of the browser

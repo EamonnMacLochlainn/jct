@@ -97,10 +97,10 @@ class cadoo_invite implements api_interface
                 if(!isset($_SESSION['databiz']))
                     throw new Exception('No User ID could be determined.');
 
-                if(!isset($_SESSION['databiz']['id']))
+                if(!isset($_SESSION['databiz']['user']['id']))
                     throw new Exception('No User ID could be determined.');
 
-                $this->user_id = intval($_SESSION['databiz']['id']);
+                $this->user_id = intval($_SESSION['databiz']['user']['id']);
             }
 
             $this->override = (isset($data['override'])) ? 1 : 0;
@@ -151,7 +151,7 @@ class cadoo_invite implements api_interface
 
         $this->operator = $tmp['operator'];
         $this->operator_username = $tmp['username'];
-        $this->operator_password = $tmp['password'];
+        $this->operator_password = Cryptor::Decrypt($tmp['password']);
 
         return true;
     }
@@ -329,6 +329,32 @@ class cadoo_invite implements api_interface
 
             $this->success = 1;
             $this->response = $status;
+
+            if($this->remote_api_call)
+            {
+                $rejected_numbers = '';
+                if(!empty($this->rejected_numbers))
+                {
+                    $tmp = array_keys($this->rejected_numbers);
+                    $rejected_numbers = implode(',', $tmp);
+                }
+
+                $access_status = [
+                    'response' => [],
+                    'rejected_numbers' => $rejected_numbers
+                ];
+
+                if(!empty($status['successful']))
+                {
+                    foreach($status['successful'] as $num => $id)
+                    {
+                        $stripped_num = preg_replace("/[^0-9,.]/", "", $num);
+                        $access_status['response'][$stripped_num] = $id;
+                    }
+                }
+
+                $this->response = $access_status;
+            }
 
             return true;
         }

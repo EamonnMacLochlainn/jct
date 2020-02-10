@@ -1,0 +1,4 @@
+03:45:41 :: FROM parentmeeting@olgps.ie; TO eamonn@databizsolutions.ie; STATUS SMTP connect() failed. https://github.com/PHPMailer/PHPMailer/wiki/Troubleshooting
+03:47:59 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS No error
+03:49:33 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS No error
+04:04:08 :: FROM no-reply@databizsolutions.ie; TO eamonn@databizsolutions.ie; STATUS No error

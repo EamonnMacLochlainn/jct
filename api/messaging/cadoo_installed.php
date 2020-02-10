@@ -17,22 +17,26 @@ class cadoo_installed implements api_interface
     public $guid;
     public $remote_api_call;
 
-    private $operator;
-    private $operator_username;
-    private $operator_password;
+    public $success = 0;
+    public $error = 0;
+    public $response;
 
     private $_DB;
     private $_ORG_DB;
     private $input;
     private $user_id;
 
+    private $data;
+
+
+
+    private $operator;
+    private $operator_username;
+    private $operator_password;
+
     private $set_numbers;
     private $rejected_numbers;
     private $numbers_string;
-
-    public $success = 0;
-    public $error = 0;
-    public $response;
 
 
     function __construct(Database $_DB, Database $_ORG_DB, $guid, $input)
@@ -97,7 +101,7 @@ class cadoo_installed implements api_interface
                 if(!isset($_SESSION['databiz']['id']))
                     throw new Exception('No User ID could be determined.');
 
-                $this->user_id = intval($_SESSION['databiz']['id']);
+                $this->user_id = intval($_SESSION['databiz']['user']['id']);
             }
 
             $this->get_cadoo_subscribers();
@@ -137,15 +141,12 @@ class cadoo_installed implements api_interface
         if( (empty($tmp)) || (empty($tmp['operator'])) )
             return ['error' => 'No Operator was found for this Organisation.'];
 
-        if(empty($tmp['username']))
-            return ['error' => 'No Operator username was found for this Organisation.'];
-
         if(empty($tmp['password']))
             return ['error' => 'No Operator password was found for this Organisation.'];
 
         $this->operator = $tmp['operator'];
         $this->operator_username = $tmp['username'];
-        $this->operator_password = $tmp['password'];
+        $this->operator_password = Cryptor::Decrypt($tmp['password']);
 
         return true;
     }
@@ -302,6 +303,7 @@ class cadoo_installed implements api_interface
                 'failed' => [],
                 'rejected_numbers' => $this->rejected_numbers
             ];
+
             foreach($results as $n => $res)
             {
                 $split = explode(':', $res);
@@ -314,6 +316,7 @@ class cadoo_installed implements api_interface
                 if(is_numeric($split[1]))
                 {
                     $normalised_number = Helper::normalise_contact_number($split[0]);
+
                     $installed = (intval($split[1]) > 0);
                     $key = ($installed) ? 'installed' : 'not_installed';
                     $status['successful'][$key][] = $normalised_number;
@@ -324,6 +327,41 @@ class cadoo_installed implements api_interface
 
             $this->success = 1;
             $this->response = $status;
+
+
+            if($this->remote_api_call)
+            {
+                $rejected_numbers = '';
+                if(!empty($this->rejected_numbers))
+                {
+                    $tmp = array_keys($this->rejected_numbers);
+                    $rejected_numbers = implode(',', $tmp);
+                }
+
+                $access_status = [
+                    'response' => [],
+                    'rejected_numbers' => $rejected_numbers
+                ];
+
+                if(!empty($status['successful']['installed']))
+                {
+                    foreach($status['successful']['installed'] as $num)
+                    {
+                        $stripped_num = preg_replace("/[^0-9,.]/", "", $num);
+                        $access_status['response'][$stripped_num] = "1";
+                    }
+                }
+                if(!empty($status['successful']['not_installed']))
+                {
+                    foreach($status['successful']['not_installed'] as $num)
+                    {
+                        $stripped_num = preg_replace("/[^0-9,.]/", "", $num);
+                        $access_status['response'][$stripped_num] = "0";
+                    }
+                }
+
+                $this->response = $access_status;
+            }
 
             return true;
         }

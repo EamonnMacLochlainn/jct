@@ -1,0 +1,9 @@
+{
+  "event_title":"The title of the subject Event.",
+  "event_dates_en":"The dd-mm-YYYY dates on which the Event is to be held (English language version: displays in a comma separated line, with the last date prefixed with 'and').",
+  "event_dates_ga":"The dd-mm-YYYY dates on which the Event is to be held (Irish language version: displays in a comma separated line, with the last date prefixed with 'agus').",
+  "family_meetings_planned_en":"The subject pupil and staff for each of the subject family's planned (not scheduled) meetings (English language version: displays as a list - A meeting with X regarding Y).",
+  "family_meetings_planned_ga":"The subject pupil and staff for each of the subject family's planned (not scheduled) meetings (Irish language version: displays as a list - Cruinniú le X maidir le Y).",
+  "family_meetings_schedule_en":"The subject pupil, staff, date, time, and venue for each of the subject family's scheduled meetings (English language version: displays as a list - A meeting with X regarding Y on/in/at. This meeting is scheduled to last Z minutes.).",
+  "family_meetings_schedule_ga":"The subject pupil, staff, date, time, and venue for each of the subject family's scheduled meetings (Irish language version: displays as a list - Cruinniú le X maidir le Y ar/i/ag. Tá an cruinniú seo sceidealta le haghaidh Z nóiméad.)."
+}

@@ -165,7 +165,7 @@ class send implements api_interface
 
         $this->operator = $tmp['operator'];
         $this->operator_username = $tmp['username'];
-        $this->operator_password = $tmp['password'];
+        $this->operator_password = Cryptor::Decrypt($tmp['password']);
 
         return true;
     }
@@ -310,8 +310,7 @@ class send implements api_interface
 
             $query_string = 'user=' . $this->operator_username . '&clipwd=' . $this->operator_password;
             $query_string.= '&text=' . urldecode($this->message) . $this->numbers_string;
-
-            var_dump($source_number);
+            
             if($source_number !== null)
                 $query_string.= '&from=' . $source_number;
 
@@ -381,8 +380,24 @@ class send implements api_interface
                 $status[$key][$number] = $split[1];
             }
 
+
+            $remote_status = [];
+            if($this->remote_api_call)
+            {
+                if(!empty($status['successful']))
+                {
+                    foreach($status['successful'] as $num => $id)
+                    {
+                        $stripped_num = preg_replace("/[^0-9,.]/", "", $num);
+                        $remote_status[$stripped_num] = $id;
+                    }
+                }
+            }
+
             $this->success = 1;
             $this->response = $status;
+            if($this->remote_api_call)
+                $this->response = $remote_status;
             return true;
         }
         catch(Exception $e)
@@ -431,19 +446,33 @@ class send implements api_interface
             $db->query(" INSERT INTO messaging_msg_history  
                 ( operator, operator_id, content_id, mobile, first_status, first_created, last_status, last_checked, sent_by ) VALUES 
                 ( '{$operator}', :operator_id, {$content_id}, :mobile, :status, NOW(), :status, NOW(), {$sent_by} ) ");
-            foreach($this->response['successful'] as $number => $operator_id)
+
+            if(!$this->remote_api_call)
             {
-                $db->bind(':operator_id', $operator_id);
-                $db->bind(':mobile', $number);
-                $db->bind(':status', 'Sent');
-                $db->execute();
+                foreach($this->response['successful'] as $number => $operator_id)
+                {
+                    $db->bind(':operator_id', $operator_id);
+                    $db->bind(':mobile', $number);
+                    $db->bind(':status', 'Sent');
+                    $db->execute();
+                }
+                foreach($this->response['failed'] as $number => $err_msg)
+                {
+                    $db->bind(':operator_id', null);
+                    $db->bind(':mobile', $number);
+                    $db->bind(':status', $err_msg);
+                    $db->execute();
+                }
             }
-            foreach($this->response['failed'] as $number => $err_msg)
+            else
             {
-                $db->bind(':operator_id', null);
-                $db->bind(':mobile', $number);
-                $db->bind(':status', $err_msg);
-                $db->execute();
+                foreach($this->response as $number => $operator_id)
+                {
+                    $db->bind(':operator_id', $operator_id);
+                    $db->bind(':mobile', $number);
+                    $db->bind(':status', 'Sent');
+                    $db->execute();
+                }
             }
 
             return true;

@@ -54,9 +54,14 @@ class Database
         $this->db_stmt = $this->db_handler->prepare($query);
     }
 
+    public function closeCursor()
+    {
+        return $this->db_stmt->closeCursor();
+    }
+
     public function bind($param, $value, $type = null)
     {
-        if (is_null($type))
+        if(is_null($type))
         {
             switch(true)
             {
@@ -73,6 +78,7 @@ class Database
                     $type = PDO::PARAM_STR;
             }
         }
+
         $this->db_stmt->bindValue($param, $value, $type);
     }
 
@@ -113,7 +119,7 @@ class Database
         return $this->db_stmt->debugDumpParams();
     }
 
-    public function fetchAllAssoc($key_name = null)
+    public function fetchAllAssoc($key_name = null, $pair = false)
     {
         if(is_null($key_name))
         {
@@ -121,10 +127,10 @@ class Database
             return $this->db_stmt->fetchAll(PDO::FETCH_ASSOC);
         }
 
-        return $this->fetchAssocWithKey($key_name);
+        return $this->fetchAssocWithKey($key_name, $pair);
     }
 
-    public function fetchAssocWithKey($key_name)
+    public function fetchAssocWithKey($key_name, $pair = false)
     {
         $this->execute();
         $tmp = $this->db_stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -137,26 +143,47 @@ class Database
             return $tmp;
 
         $num_params = count($tmp[0]);
+        if($pair && ($num_params !== 2))
+            return $tmp;
+
         $arr = [];
-        if($num_params > 2)
+        foreach($tmp as $i => $t)
         {
-            foreach($tmp as $t)
-            {
-                $key = $t[$key_name];
-                unset($t[$key_name]);
+            $key = $t[$key_name];
+            unset($t[$key_name]);
 
-                $arr[$key] = $t;
-            }
-        }
-        else
-        {
-            foreach($tmp as $t)
+            if($pair)
             {
-                $key = $t[$key_name];
-                unset($t[$key_name]);
-
                 foreach($t as $k => $v)
                     $arr[$key] = $v;
+
+                continue;
+            }
+
+            if(!isset($arr[$key]))
+                $arr[$key] = [];
+
+            foreach($t as $k => $v)
+                $arr[$key][$i][$k] = $v;
+        }
+
+        if(!$pair)
+        {
+            $num_sub_arrs = 1;
+            foreach($arr as $k => $sub_arrs)
+            {
+                $n = count($sub_arrs);
+                if($n > $num_sub_arrs)
+                    $num_sub_arrs = $n;
+            }
+
+            if($num_sub_arrs == 1)
+            {
+                $tmp = $arr;
+                $arr = [];
+                foreach($tmp as $k => $sub_arrs)
+                    foreach($sub_arrs as $i => $sa)
+                        $arr[$k] = $sa;
             }
         }
 

@@ -2,6 +2,19 @@
 
 $_MSG = [
 
+    "JANUARY"=>"Eanáir",
+    "FEBRUARY"=>"Feabhra",
+    "MARCH"=>"Márta",
+    "APRIL"=>"Aibreán",
+    "MAY"=>"Bealtaine",
+    "JUNE"=>"Meitheamh",
+    "JULY"=>"Iúil",
+    "AUGUST"=>"Lúnasa",
+    "SEPTEMBER"=>"Meán Fómhair",
+    "OCTOBER"=>"Deireadh Fómhair",
+    "NOVEMBER"=>"Samhain",
+    "DECEMBER"=>"Nollaig",
+
     "MONDAY"=>"Dé Luain",
     "TUESDAY"=>"Dé Máirt",
     "WEDNESDAY"=>"Dé Céadaoin",
@@ -29,6 +42,7 @@ $_MSG = [
     "OK"=>"OK",
     "CANCEL"=>"Cealaigh",
     "HELP"=>"Cabhair",
+    "SIGN_UP"=>"Cláraigh",
     "REQUEST_A_PASSWORD"=>"Iarratas ar Pasfhocal",
     "APPLICATIONS"=>"Feidhmchláir",
     "DASHBOARD"=>"Deais",

@@ -8,22 +8,18 @@
 
 namespace JCT;
 
+
+
+
+
+
+date_default_timezone_set('UTC');
+
 require_once 'jct_core/Config.php';
+require_once 'jct_core/classes/Helper.php';
 require_once 'jct_core/classes/Autoloader.php';
 
+if(session_status() === PHP_SESSION_NONE)
+    session_start();
 
-$current_cookie_params = session_get_cookie_params();
-session_set_cookie_params(
-    $current_cookie_params["lifetime"],
-    $current_cookie_params["path"],
-    $current_cookie_params["domain"],
-    $current_cookie_params["secure"],
-    true
-);
-session_start();
-
-new Router(new SectionRegistry(), new Render( new \Browser() ) );
-
-
-
-
+new Render();

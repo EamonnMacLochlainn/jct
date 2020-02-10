@@ -13,8 +13,8 @@ require_once '../ds_core/Config.php';
 require_once '../ds_core/classes/Database.php';
 require_once '../ds_core/classes/Helper.php';
 
-use Exception;
 use JCT\Helper;
+use Exception;
 
 class call_api
 {
@@ -23,6 +23,7 @@ class call_api
     ];
 
 
+    private $guid;
     private $username;
     private $private_key;
     private $app;
@@ -47,11 +48,11 @@ class call_api
             if(isset($tmp['error']))
                 throw new Exception($tmp['error']);
 
-            $tmp = $this->get_db_connections();
+            $tmp = $this->validate_user();
             if(isset($tmp['error']))
                 throw new Exception($tmp['error']);
 
-            $tmp = $this->validate_user();
+            $tmp = $this->get_db_connections();
             if(isset($tmp['error']))
                 throw new Exception($tmp['error']);
 
@@ -103,24 +104,98 @@ class call_api
         }
     }
 
+    private function validate_user()
+    {
+        return true;
+
+        /* try
+         {
+             $roll_number = trim(strtoupper($this->username));
+             if($roll_number === 'DATABIZ')
+                 return ($this->private_key == '2154910792');
+
+             $raw_pass = trim($this->private_key);
+
+             $pass = AsciiEncrypt::decrypt($raw_pass);
+             $roll_number_arr = str_split($roll_number, 1);
+             // use 2nd, 4th, 5th, and 6th chars
+             unset($roll_number_arr[0]);
+             unset($roll_number_arr[2]);
+             $tmp = implode('', $roll_number_arr);
+
+             if( strtoupper($tmp) !== strtoupper($pass) )
+                 throw new Exception('Ascii authentication failed.', 19);
+
+             return true;
+         }
+         catch(Exception $e)
+         {
+             return ['error'=>$e->getMessage()];
+         }*/
+    }
+
     private function get_db_connections()
     {
-        $default_connection = new Database(JCT_DB_SIUD_USER, JCT_DB_SIUD_PASS, JCT_DB_SIUD_NAME, JCT_DB_SIUD_HOST, 'utf8');
-        if(!$default_connection->db_valid)
-            return ['error'=>'Default DB connection could not be set.'];
+        /**
+         * manager:member_update calls will come in from school on either the pilot OP system or the new Apps system
+         * Therefore we first determine which system is to be updated, and pass the execute call on to the
+         * relevant script.
+         *
+         * We do this now as those schools on the pilot OP system will have a different DB connections to those on the
+         * App system.
+         */
 
-        $this->_DB = $default_connection;
+        $core_db = $this->set_core_db_connection();
+        if( (is_array($core_db)) && (isset($core_db['error'])) )
+            return ['error'=>$core_db['error']];
 
+        if($this->action == 'member_update')
+        {
+            $core_db->query(" SELECT setting_value FROM org_setting WHERE guid = '{$this->guid}' AND setting_key = 'on_pilot_payments'; ");
+            $core_db->execute();
+            $using_pilot_system = (intval($core_db->fetchSingleColumn()) > 0);
 
-        $guid = strtoupper($this->username);
-        $default_connection->query(" SELECT host_name, db_name FROM org_details WHERE guid = :guid ");
-        $default_connection->bind(':guid', $guid);
-        $default_connection->execute();
-        $tmp = $default_connection->fetchSingleAssoc();
+            if($using_pilot_system)
+            {
+                /**
+                 * If using the pilot system, both the core and org DBs will be different to the Apps norm.
+                 * We reset the core DB, rename the action to a script for that purpose, and set the org DB.
+                 */
+
+                $core_db = new Database('databizs_authU', 'authPass', 'databizs_authorisation', 'localhost', 'utf8');
+                if(!$core_db->db_valid)
+                    return ['error'=>'Authorisation DB connection is invalid.'];
+
+                $guid_lwr = strtolower($this->guid);
+                $org_db = new Database('databizs_orgU', 'orgPass', 'databizs_op_' . $guid_lwr, 'localhost', 'utf8');
+                if(!$org_db->db_valid)
+                    return ['error'=>'Org Pilot DB connection is invalid.'];
+
+                $this->_DB = $core_db;
+                $this->_ORG_DB = $org_db;
+                $this->action = 'pilot_member_update';
+
+                return true;
+            }
+            else
+                return $this->get_apps_db_connection($core_db);
+        }
+        else
+            return $this->get_apps_db_connection($core_db);
+    }
+
+    private function get_apps_db_connection(Database $core_db)
+    {
+
+        $core_db->query(" SELECT guid, host_name, db_name FROM org_details WHERE UPPER(guid) = UPPER(:username) ");
+        $core_db->bind(':username', $this->username);
+        $core_db->execute();
+        $tmp = $core_db->fetchSingleAssoc();
 
         if( (empty($tmp)) || (empty($tmp['host_name'])) || (empty($tmp['db_name'])) )
             return ['error'=>'User DB connection could not be set.'];
 
+        $this->guid = $tmp['guid'];
         $host_name = $tmp['host_name'];
         $db_name = $tmp['db_name'];
 
@@ -133,38 +208,21 @@ class call_api
         return true;
     }
 
-    private function validate_user()
+    private function set_core_db_connection()
     {
-        try
-        {
-            $roll_number = trim(strtoupper($this->username));
-            if($roll_number === 'DATABIZ')
-                return ($this->private_key == '2154910792');
+        $core_db = new Database(JCT_DB_SIUD_USER, JCT_DB_SIUD_PASS, JCT_DB_SIUD_NAME, JCT_DB_SIUD_HOST, 'utf8');
+        if(!$core_db->db_valid)
+            return ['error'=>$core_db->db_error];
 
-            $raw_pass = trim($this->private_key);
-
-            $pass = AsciiEncrypt::decrypt($raw_pass);
-            $roll_number_arr = str_split($roll_number, 1);
-            // use 2nd, 4th, 5th, and 6th chars
-            unset($roll_number_arr[0]);
-            unset($roll_number_arr[2]);
-            $tmp = implode('', $roll_number_arr);
-
-            if( strtoupper($tmp) !== strtoupper($pass) )
-                throw new Exception('Authentication failed.', 19);
-
-            return true;
-        }
-        catch(Exception $e)
-        {
-            return ['error'=>$e->getMessage()];
-        }
+        $this->_DB = $core_db;
+        return $core_db;
     }
 
     private function execute_app_handler()
     {
         try
-        {$path = JCT_PATH_ROOT . 'api' . JCT_DE . $this->app;
+        {
+            $path = JCT_PATH_ROOT . 'api' . JCT_DE . $this->app;
             if(!is_dir($path))
                 throw new Exception('App directory not recognised.');
 
@@ -177,7 +235,7 @@ class call_api
             require_once $class_path;
 
             $qualified_class_name = '\DS\\' . $class_name;
-            $class = new $qualified_class_name($this->_DB, $this->_ORG_DB, strtoupper($this->username), $this->input);
+            $class = new $qualified_class_name($this->_DB, $this->_ORG_DB, $this->guid, $this->input);
 
             if(!method_exists($class, 'execute'))
                 throw new Exception('No executable function found for this action\'s API class.');
@@ -204,12 +262,18 @@ class call_api
     function response()
     {
         $arr = [];
-        if($this->success == 1)
-            $arr['success'] = 1;
-        else if($this->error == 1)
-            $arr['error'] = 1;
+        if(!$this->remote_api_call)
+        {
+            if($this->success == 1)
+                $arr['success'] = 1;
+            else if($this->error == 1)
+                $arr['error'] = 1;
 
-        $arr['response'] = $this->response;
+            $arr['response'] = $this->response;
+        }
+        else
+            $arr = $this->response;
+
         return $arr;
     }
 }

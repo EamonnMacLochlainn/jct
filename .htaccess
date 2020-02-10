@@ -1,3 +1,6 @@
+#php_value session.cookie_httponly 1
+#php_value session.cookie_secure 1
+
 Options -MultiViews
 ErrorDocument 404 /404.html
 AddDefaultCharset utf-8
@@ -70,6 +73,11 @@ AddDefaultCharset utf-8
 
     RewriteBase /jct/
 
+	RewriteRule ^(texting)($|/) - [L]
+	RewriteRule ^(eoy)($|/) - [L]
+	RewriteRule ^(pod)($|/) - [L]
+	RewriteRule ^(colmcille)($|/) - [L]
+
     # This prevents the rule from being overrided by .htaccess files in subdirectories.
 	# RewriteOptions InheritDownBefore
 
@@ -79,15 +87,25 @@ AddDefaultCharset utf-8
 	RewriteCond %{THE_REQUEST} ^POST(.*)HTTP/(0\.9|1\.0)$ [NC]
 	RewriteRule .* - [F,L]
 
+    # redirect from old site
+    RewriteRule ^contents/index.php / [R=301,L]
+
     # redirect users from their original location, to the same location but using HTTPS.
-    # RewriteCond %{HTTPS} !=on
-    # RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [QSA,R,L]
+    #RewriteCond %{HTTPS} !=on
+    #RewriteRule ^ https://%{SERVER_NAME}%{REQUEST_URI} [QSA,R,L]
 
 
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteRule ^(.*)$ index.php?ds=$1 [L,QSA]
 
+</IfModule>
+
+
+<IfModule mod_rewrite.c>
+    # RewriteCond %{HTTPS} !=on
+    # RewriteCond %{HTTP_HOST} ^www\.(.+)$ [NC]
+    # RewriteRule ^ https://%1%{REQUEST_URI} [R=301,L]
 </IfModule>
 
 

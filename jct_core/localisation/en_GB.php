@@ -2,6 +2,19 @@
 
 $_MSG = [
 
+    "JANUARY"=>"January",
+    "FEBRUARY"=>"February",
+    "MARCH"=>"March",
+    "APRIL"=>"April",
+    "MAY"=>"May",
+    "JUNE"=>"June",
+    "JULY"=>"July",
+    "AUGUST"=>"August",
+    "SEPTEMBER"=>"September",
+    "OCTOBER"=>"October",
+    "NOVEMBER"=>"November",
+    "DECEMBER"=>"December",
+
     "MONDAY"=>"Monday",
     "TUESDAY"=>"Tuesday",
     "WEDNESDAY"=>"Wednesday",
@@ -29,6 +42,7 @@ $_MSG = [
     "OK"=>"OK",
     "CANCEL"=>"Cancel",
     "HELP"=>"Help",
+    "SIGN_UP"=>"Sign Up",
     "REQUEST_A_PASSWORD"=>"Request a Password",
     "APPLICATIONS"=>"Applications",
     "DASHBOARD"=>"Dashboard",

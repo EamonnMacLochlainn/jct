@@ -1,0 +1,13 @@
+{
+  "org_name":"The name of your Organisation.",
+
+  "charge_title":"The title of the subject Charge (e.g. 'Swimming Fees 2021').",
+  "charge_token":"The DataBiz token of the subject Charge.",
+
+  "charge_due_from":"The dd-mm-YYYY date from which the subject Charge's fees are due.",
+  "charge_due_to":"The dd-mm-YYYY date to which the subject Charge's fees are due.",
+  "charge_type":"The subject Charge's type (e.g. 'Each individual charged independently').",
+
+  "family_fees_outstanding_en":"The subject pupil and fee amount for each of the subject family's outstanding Fees (English language version: displays as a list - A fee of X for Y).",
+  "family_fees_outstanding_ga":"The subject pupil and fee amount for each of the subject family's outstanding Fees (English language version: displays as a list - Táille de X do Y)."
+}

@@ -49,11 +49,10 @@ class Localisation
             self::$messages = $_MSG;
         }
 
-        $key_upper = strtoupper($key);
-        if(!isset(self::$messages[$key_upper]))
+        if(!isset(self::$messages[$key]))
             return $key;
 
-        return self::$messages[$key_upper];
+        return self::$messages[$key];
     }
 
     static function require_libphonenumber()

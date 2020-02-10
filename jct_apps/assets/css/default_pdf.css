@@ -1,0 +1,95 @@
+* {
+    color:#222222;
+    line-height:1.6;
+}
+
+a {outline:none !important; font-weight:bold; text-decoration:none;}
+a:link {color: #487bcc;}
+a:visited {color:#606;}
+a:hover {color:#606;}
+a:active {color:#487bcc; outline:none;}
+
+h1 {
+    font-weight:bold;
+    font-size:225%;
+    line-height:1.35;
+    margin:1.5em 0 0.8em;
+    color: #1176ca;
+}
+
+h2 {
+    font-weight:bold;
+    font-size:200%;
+    margin:1em 0 0.8em;
+}
+
+h3 {
+    font-weight:bold;
+    font-size:175%;
+    margin:1.75em 0 0.8em;
+}
+
+h4 {
+    font-weight:bold;
+    font-size:150%;
+    margin:1.5em 0 0.8em;
+}
+
+h5 {
+    font-weight:bold;
+    font-size:125%;
+    margin:1.5em 0 0.8em;
+}
+
+h6 {
+    font-weight:bold;
+    font-size:100%;
+    margin:1.5em 0 0.8em;
+}
+
+p {
+    text-align:left;
+    font-size:100%;
+    margin:1em 0 0;
+    line-height: 2em;
+}
+
+p + p {
+    margin:0;
+    text-indent:1.5em;
+}
+
+p + ul, p + ol, p + dl {margin-bottom:1.5em;}
+
+blockquote {border-left:5px solid #eee; padding-left:1.5em; margin:1em 0;}
+blockquote small {display:block; line-height:1.7em;}
+ul, ol, dl {
+    margin: 1em;
+    text-align:left;
+}
+li {
+    margin-bottom: 0.25em;
+    line-height: 2em;
+}
+
+dt {font-weight:bold;}
+code {font-family:courier, monospace;}
+p > code {padding:0.25em; background:#eee;}
+pre {text-align:left; font-size:100%;}
+hr {height:0; color:#eee; border:1px solid #eee; margin:2em 0 1em;}
+
+
+table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+}
+th {
+    padding: 0.5em;
+    text-align: center;
+}
+td {
+    vertical-align: top;
+    padding: 0.5em;
+}
+

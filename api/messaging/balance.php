@@ -100,7 +100,7 @@ class balance implements api_interface
 
         $this->operator = $tmp['operator'];
         $this->operator_username = $tmp['username'];
-        $this->operator_password = $tmp['password'];
+        $this->operator_password = Cryptor::Decrypt($tmp['password']);
 
         return true;
     }

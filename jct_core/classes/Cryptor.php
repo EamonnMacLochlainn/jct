@@ -6,7 +6,7 @@
  * Time: 10:18
  */
 
-// From: https://github.com/ioncube/php-openssl-cryptor/blob/master/cryptor.php
+// From: https://github.com/ioncube/php-openssl-cryptor
 // Updated deprecated mcrypt_create_iv call to openssl_random_pseudo_bytes for initialisation vector
 
 namespace JCT;
