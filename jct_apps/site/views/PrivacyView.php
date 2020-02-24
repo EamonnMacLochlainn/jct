@@ -14,11 +14,10 @@ use JCT\ViewInterface;
 
 class PrivacyView extends BaseView implements ViewInterface
 {
-    function __construct(PrivacyModel $model, $permission_type)
+    function __construct(PrivacyModel $model)
     {
         parent::__construct();
         $this->model = $model;
-        $this->permission_type = $permission_type;
 
         $this->update_app_param();
 

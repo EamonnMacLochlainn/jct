@@ -577,12 +577,9 @@ HTML;
 
     private function build_footer()
     {
-        $contact_link = JCT_URL_ROOT . 'contact-us';
+        $contact_link = JCT_URL_ROOT . 'contact';
         $login_link = JCT_URL_ROOT . 'login';
         $privacy_link = JCT_URL_ROOT . 'privacy';
-        $anydesk_link = JCT_URL_MEDIA . 'download?p=databiz_rs_anydesk.exe';
-        $teamviewer_link = JCT_URL_MEDIA . 'download?p=databiz_rs_teamviewer_11.exe';
-        $teamviewer_ios_link = JCT_URL_MEDIA . 'download?p=databiz_rs_teamviewer_ios.exe';
 
         $have_app_nav = (!empty($this->app_nav));
         $app_nav_class = ($have_app_nav) ? 'with-app-nav' : 'without-app-nav';

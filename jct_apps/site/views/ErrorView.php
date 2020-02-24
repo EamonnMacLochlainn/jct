@@ -14,7 +14,7 @@ use JCT\ViewInterface;
 
 class ErrorView extends BaseView implements ViewInterface
 {
-    function __construct(ErrorModel $model, $permission_type)
+    function __construct(ErrorModel $model)
     {
         parent::__construct();
         $this->model = $model;

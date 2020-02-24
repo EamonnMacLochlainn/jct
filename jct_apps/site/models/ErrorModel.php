@@ -23,7 +23,7 @@ class ErrorModel
         $this->_DB = $db;
     }
 
-    function index($args = null)
+    function index($args = [])
     {
         $error_type = (empty($args['error_type'])) ? 'default' : $args['error_type'];
 

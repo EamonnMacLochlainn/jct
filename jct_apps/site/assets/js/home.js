@@ -1,7 +1,6 @@
-let values = {};
-values.app_param = 'site';
-values.model_param = 'Home';
-values.csrf = $('meta[name="csrf"]').attr("content");
+let values = $.extend(true, {}, _ajax_values);
+values.app_slug = 'site';
+values.model_title = 'Home';
 
 let form = $('form.login'),
     username_input = form.find('> fieldset > .username > input'),
@@ -35,7 +34,7 @@ login_btn.click(function(e)
     args.password = password;
     args.org_guid = org_sel.val();
     args.role_id = role_sel.val();
-    args.method_param = 'login_user';
+    args.method_title = 'login_user';
 
     __ajax_submit(args, login_result);
     return false;

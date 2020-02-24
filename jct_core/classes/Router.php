@@ -20,12 +20,6 @@ class Router extends User
     const DEFAULT_USER_MODULE_SLUG = 'all';
     const DEFAULT_DESTINATION_SLUG = 'home';
 
-    const DEFAULT_MODEL = 'Home';
-    const DEFAULT_METHOD = 'index';
-
-    const DEFAULT_USER_PERMISSION = null;
-    const DEFAULT_PERMISSION = 'rw';
-
     protected $requested_uri;
 
     protected $app_slug;

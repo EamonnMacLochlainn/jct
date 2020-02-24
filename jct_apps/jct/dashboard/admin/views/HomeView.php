@@ -6,7 +6,7 @@
  * Time: 13:03
  */
 
-namespace JCT\dashboard;
+namespace JCT\JCT\dashboard;
 
 
 use JCT\BaseView;
@@ -16,11 +16,10 @@ use JCT\ViewInterface;
 
 class HomeView extends BaseView implements ViewInterface
 {
-    function __construct(HomeModel $model, $permission_type)
+    function __construct(HomeModel $model)
     {
         parent::__construct();
         $this->model = $model;
-        $this->permission_type = $permission_type;
 
         $this->update_app_param();
 
@@ -53,8 +52,8 @@ class HomeView extends BaseView implements ViewInterface
     function jct_admin_index()
     {
         $this->screen_classes[] = 'home-page';
-        $this->view_scripts[] = 'home_jct_admin';
-        $this->view_stylesheets[] = 'home_jct_admin';
+        $this->view_scripts[] = 'home';
+        $this->view_stylesheets[] = 'home';
 
         $h = <<<EOS
         Admin index

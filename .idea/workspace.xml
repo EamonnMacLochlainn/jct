@@ -1,40 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d8152c63-f973-46cb-ba21-c546bdf4563c" name="Default" comment="refresh">
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/assets/css/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/assets/js/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/views/HomeView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/school/dashboard/assets/css/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/school/dashboard/assets/js/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/school/dashboard/models/HomeModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/school/dashboard/views/HomeView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/classes/BaseModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+    <list default="true" id="d8152c63-f973-46cb-ba21-c546bdf4563c" name="Default" comment="updated entire routing paradigm; divided files by org and role types, updated Router accordingly">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/main.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/dashboard/models/HomeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/models/HomeModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/dashboard/views/AdminView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/dashboard/views/HomeView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/site/assets/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/assets/css/contact.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/assets/js/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/models/HomeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/models/HomeModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/views/HomeView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/views/HomeView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_apps/site/assets/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/assets/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/site/models/HomeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/models/HomeModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/site/models/LoginModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/models/ErrorModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/models/ErrorModel.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_apps/site/views/ContactView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/views/ContactView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/views/ErrorView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/views/ErrorView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_apps/site/views/HelpView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/views/HelpView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/user/assets/css/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/user/assets/js/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/user/models/HomeModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/user/views/HomeView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/Config.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/views/PrivacyView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/views/PrivacyView.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/classes/AjaxHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/AjaxHandler.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_core/classes/Autoloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Autoloader.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/classes/Render.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Render.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/RouteRegistry.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/RouteRegistry.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/classes/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/SessionManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/SessionManager.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/User.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -179,7 +160,7 @@
       <workItem from="1581680380409" duration="310000" />
       <workItem from="1581855224107" duration="12649000" />
       <workItem from="1582191402451" duration="128000" />
-      <workItem from="1582535606994" duration="12204000" />
+      <workItem from="1582535606994" duration="16633000" />
     </task>
     <task id="LOCAL-00001" summary="refresh">
       <created>1581318326012</created>
@@ -188,7 +169,14 @@
       <option name="project" value="LOCAL" />
       <updated>1581318326012</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="updated entire routing paradigm; divided files by org and role types, updated Router accordingly">
+      <created>1582552065947</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1582552065947</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -196,25 +184,26 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="refresh" />
-    <option name="LAST_COMMIT_MESSAGE" value="refresh" />
+    <MESSAGE value="updated entire routing paradigm; divided files by org and role types, updated Router accordingly" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated entire routing paradigm; divided files by org and role types, updated Router accordingly" />
   </component>
   <component name="WindowStateProjectService">
     <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581941670615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581941670615" />
-    <state x="440" y="113" key="CommitChangelistDialog2" timestamp="1581318302092">
+    <state x="440" y="113" key="CommitChangelistDialog2" timestamp="1582552060702">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581318302092" />
+    <state x="440" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582552060702" />
     <state x="775" y="334" key="NewPhpClassDialog" timestamp="1581944054285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="775" y="334" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581944054285" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1581318331225">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1582552070160">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581318331225" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582552070160" />
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1581855874153">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

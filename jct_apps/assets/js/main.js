@@ -66,6 +66,12 @@ function __set_GET_values()
 }
 
 
+var _ajax_values = {};
+_ajax_values.app_slug = 'site';
+_ajax_values.org_section = null;
+_ajax_values.user_module = null;
+_ajax_values.model_title = 'Home';
+_ajax_values.method_title = 'index';
 
 
 // POPUP DIALOG OPTIONS
