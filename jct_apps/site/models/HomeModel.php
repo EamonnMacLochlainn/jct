@@ -13,6 +13,7 @@ use JCT\Connection;
 use JCT\Database;
 use Exception;
 use JCT\Helper;
+use JCT\SessionManager;
 
 class HomeModel
 {
@@ -46,66 +47,98 @@ class HomeModel
     function check_user_password($username, $submitted_pass)
     {
         $db = $this->_DB;
-        $db->query(" SELECT id, password FROM user WHERE username = :username ");
+        $db->query(" SELECT guid, password 
+        FROM person 
+        WHERE ( 
+            username = :username AND 
+            active_on_system = 1 
+        ) ");
         $db->bind(':username', $username);
         $db->execute();
         $tmp = $db->fetchSingleAssoc();
 
-
         if( (empty($tmp)) || (!password_verify($submitted_pass, $tmp['password'])) )
             return ['error'=>'Invalid Login.'];
 
-        return [ 'user_id'=>$tmp['id']];
+        return [ 'person_guid'=>$tmp['guid'] ];
     }
 
-    function get_user_orgs($user_id)
+    function get_user_orgs($person_guid)
     {
         $db = $this->_DB;
 
-        $db->query(" SELECT o.id, o.title, o.guid, o.type_id, o.sub_type_id     
+        $db->query(" SELECT o.guid, o.title, o.type_id, o.sub_type_id     
         FROM person_org po 
-        LEFT JOIN org o on po.org_id = o.id
-        WHERE po.id = {$user_id} 
-        ORDER BY o.title ASC ");
-        $db->bind(':id', $user_id);
+        LEFT JOIN org o on po.org_guid = o.guid
+        WHERE ( 
+            po.person_guid = :person_guid AND 
+            po.active_in_role = 1 
+        )  
+        GROUP BY o.guid ");
+        $db->bind(':person_guid', $person_guid);
         $db->execute();
         return $db->fetchAllAssoc();
     }
 
-    function get_user_roles_for_org($user_id, $org_id)
+    function get_user_roles_for_org($person_guid, $org_guid)
     {
         $db = $this->_DB;
 
         $db->query(" SELECT pr.id, pr.title  
          FROM person_org po 
          LEFT JOIN prm_role pr on po.role_id = pr.id 
-         WHERE ( po.id = {$user_id} AND org_id = {$org_id}) 
-         ORDER BY pr.title ASC ");
+         WHERE ( 
+             po.person_guid = :person_guid AND 
+             org_guid = :org_guid 
+         )  
+         ORDER BY pr.title ");
+        $db->bind(':person_guid', $person_guid);
+        $db->bind(':org_guid', $org_guid);
         $db->execute();
         return $db->fetchAllAssoc();
     }
 
-    function get_user_settings_in_org($user_id, $org_id)
+    function get_user_settings_in_org($person_guid, $org_guid)
     {
         $db = $this->_DB;
 
-        $preferences = ['locale'];
+        $preferences = ['locale']; // prefs we're looking for
         $preferences_str = '\'' . implode('\',\'',$preferences) . '\'';
 
         $db->query(" SELECT setting_key, setting_value 
-        FROM user_setting 
+        FROM person_setting  
         WHERE ( 
-            user_id = :id AND 
-            org_id = :org_id AND 
+            person_guid = :person_guid AND 
+            org_guid = :org_guid AND 
             setting_key IN ({$preferences_str}) 
         ) ");
-        $db->bind(':id', $user_id);
-        $db->bind(':org_id', $org_id);
+        $db->bind(':person_guid', $person_guid);
+        $db->bind(':org_guid', $org_guid);
         $db->execute();
         return $db->fetchAllAssoc('setting_key', true);
     }
 
 
+    // logout user
+
+    function logout()
+    {
+        $s = new SessionManager($this->_DB);
+        $c = $s->get_available_user_parameters();
+        $person_guid = $c['person_guid'];
+
+        if($person_guid === null)
+        {
+            header('location: ' . JCT_URL_ROOT);
+            return false;
+        }
+
+        $s->clear_user_session_record($person_guid);
+        unset($_SESSION[SessionManager::SESSION_NAME]);
+        setcookie(SessionManager::SESSION_NAME, '', time()-3600, JCT_COOKIE_PATH, JCT_COOKIE_DOMAIN);
+        header('location: ' . JCT_URL_ROOT);
+        return false;
+    }
 
 
 
@@ -113,7 +146,8 @@ class HomeModel
 
 
 
-    function get_roles_of_user($user_id, $org_id)
+
+    /*function get_roles_of_user($user_id, $org_id)
     {
         $this->_DB->query(" SELECT role_id 
         FROM person_org  
@@ -292,16 +326,6 @@ class HomeModel
 
 
 
-    // logout user
-
-    function logout()
-    {
-        unset($_SESSION['databiz']);
-        setcookie('databiz', '', time()-3600, JCT_COOKIE_PATH, JCT_COOKIE_DOMAIN);
-
-        header('location: ' . JCT_URL_ROOT);
-    }
-
 
 
     // relogging
@@ -320,5 +344,5 @@ class HomeModel
         $db->bind(':guid', $org_guid);
         $db->execute();
         return $db->fetchSingleAssoc();
-    }
+    }*/
 }

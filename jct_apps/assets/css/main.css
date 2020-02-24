@@ -97,6 +97,7 @@ footer.screen-footer.with-app-nav {
 .screen-footer .inner > .company-info {
     font-size: 0.8rem;
     color: #5B838F;
+    flex-grow: 1;
 }
 .footer-segment h6 {
     font-size: 1rem;

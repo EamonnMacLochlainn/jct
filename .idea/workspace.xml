@@ -1,775 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d8152c63-f973-46cb-ba21-c546bdf4563c" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/markdown-navigator.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/call_input.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/core/Ascii_encrypt.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/core/Cryptor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/core/Database.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/core/Helper.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/core/UploadException.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/core/password_compat.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/file_upload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/handler.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/manager/custom_group_pop_update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/manager/member_update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/manager/org_download.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/manager/org_op_import.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/manager/org_synch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/manager/pilot_member_update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/nsadmin/absence_pupil.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/nsadmin/upload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/11111A.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/11111B.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/15367F.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/17961E.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/19374W.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/19374w_json_upload.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/19898K.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/op_20190402165101_5_payments.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/op_20190402165101_5_payments_2.xlsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/tp_data/csvs/note_translations.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/tp_data/csvs/objective_translations.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/tp_data/csvs/skills_concepts_raw.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/tp_data/csvs/unit_translations.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/tp_data/tp_notes.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/tp_data/tp_objectives.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/tp_data/tp_strands.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/sample_data/tp_data/tp_units.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/17961e.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/TextingCryptor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/email_day_pm_notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/email_guardians.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/email_pm_invitations.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/email_pm_non_reservations.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/email_pm_notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/email_staff_invitations.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/email_status.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/email_teacher_pm_notifications.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/html_doc.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/import_schools.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/import_tp_data.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/insert_staff_from_csv.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/insert_tp_subject_data_en_gb.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/nsadmin_synch.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/nsadmin_synch_check.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/olgps_snas.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/op_transfer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/payments_import.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/randomise_names.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/setup_for_texting_schools.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/sms_tester.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/tmp.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/tp_note_translations.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/tp_objective_translations.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/tp_skills_parsing.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/tp_strand_translations.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/tp_unit_translations.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/update_guardian_permissions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/update_staff_permissions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/tmp/update_staff_user_accounts.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/api/uploader.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/education_centers.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/import_parameter_maps.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/import_schools.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/import/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/css/default_pdf.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/bubbles_bg.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/bubbles_bg.psd" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/css/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/css/normalize.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/css/switchbutton.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/css/tinymce.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/fontawesome-all.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-brands-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-brands-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-brands-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-brands-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-brands-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-light-300.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-light-300.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-light-300.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-light-300.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-light-300.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-regular-400.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-regular-400.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-regular-400.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-regular-400.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-regular-400.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-solid-900.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-solid-900.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-solid-900.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-solid-900.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/fonts/fontawesome/webfonts/fa-solid-900.woff2" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery-3.2.1.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery-ui-1.12.1.custom/jquery-ui.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery.tinymce.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/multiselect.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/switchbutton.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/jquery.tinymce.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/langs/readme.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/advlist/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/anchor/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/autolink/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/autoresize/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/autosave/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/bbcode/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/charmap/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/code/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/codesample/css/prism.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/codesample/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/colorpicker/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/contextmenu/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/directionality/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-cool.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-cry.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-embarassed.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-foot-in-mouth.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-frown.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-innocent.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-kiss.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-laughing.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-money-mouth.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-sealed.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-smile.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-surprised.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-tongue-out.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-undecided.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-wink.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/img/smiley-yell.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/emoticons/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/fullpage/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/fullscreen/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/help/img/logo.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/help/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/hr/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/image/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/imagetools/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/importcss/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/insertdatetime/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/legacyoutput/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/link/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/lists/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/media/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/nonbreaking/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/noneditable/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/pagebreak/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/paste/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/preview/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/print/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/save/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/searchreplace/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/spellchecker/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/tabfocus/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/table/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/template/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/textcolor/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/textpattern/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/toc/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/visualblocks/css/visualblocks.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/visualblocks/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/visualchars/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/plugins/wordcount/plugin.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/content.inline.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/content.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/content.mobile.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/fonts/tinymce-mobile.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/fonts/tinymce-small.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/fonts/tinymce-small.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/fonts/tinymce-small.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/fonts/tinymce-small.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/fonts/tinymce.eot" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/fonts/tinymce.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/fonts/tinymce.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/fonts/tinymce.woff" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/img/anchor.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/img/loader.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/img/object.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/img/trans.gif" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/skin.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/skins/lightgray/skin.mobile.min.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/themes/inlite/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/themes/mobile/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/themes/modern/theme.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/js/tinymce/tinymce.min.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/templates/ddl/v1.0.0/databizs_default_org.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/templates/ddl/v1.0.0/databizs_default_payments.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/templates/ddl/v1.0.0/databizs_default_pm_scheduler.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/templates/ddl/v1.0.0/databizs_default_teaching_planner.sql" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/templates/email/html/default.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/templates/email/text/default.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/templates/shortcodes/default.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/templates/shortcodes/payments.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/assets/templates/shortcodes/pm_scheduler.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/dashboard/models/HomeModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/dashboard/views/AdminView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/dashboard/views/HomeView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/assets/css/contact.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/assets/css/help.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/assets/css/privacy.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/assets/js/contact.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/controllers/ContactController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/models/ContactModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/models/ErrorModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/models/HelpModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/models/HomeModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/models/LoginModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/models/PrivacyModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/views/ContactView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/views/ErrorView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/views/HelpView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/views/HomeView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/site/views/PrivacyView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/user/assets/css/home.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/user/assets/js/home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/user/models/HomeModel.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_apps/user/views/HomeView.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/classes/GeneratePDF.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/classes/RouteRegistry.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/classes/SessionManager.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/classes/index.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/08/14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/08/15" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/08/16" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/10/12" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/11/01" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/11/06" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/11/07" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/11/17" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/11/19" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/11/20" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2017/12/01" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2018/01/25" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2018/02/04" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2018/05/14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2018/05/15" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2018/11/14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2018/11/22" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2018/11/23" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/02/14" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/02/16" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/02/20.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/02/21.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/03/06.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/03/12.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/03/13.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/05/08.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/05/14.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/logs/email/2019/06/14.log" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/mpdf/ttfontdata/dejavusansmono.GDEFdata.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/mpdf/ttfontdata/dejavusansmono.GPOSdata.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/mpdf/ttfontdata/dejavusansmono.GSUB.arab.DFLT.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/mpdf/ttfontdata/dejavusansmono.GSUBGPOStables.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/mpdf/ttfontdata/dejavusansmono.GSUBdata.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/mpdf/ttfontdata/dejavusansmono.cw.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/mpdf/ttfontdata/dejavusansmono.gid.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/mpdf/ttfontdata/dejavusansmono.mtx.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/VERSION" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/build.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/composer.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/data/ca-certificates.crt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/init.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Account.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/AccountLink.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/AlipayAccount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiOperations/All.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiOperations/Create.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiOperations/Delete.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiOperations/NestedResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiOperations/Request.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiOperations/Retrieve.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiOperations/Update.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiRequestor.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApiResponse.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApplePayDomain.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApplicationFee.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ApplicationFeeRefund.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Balance.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/BalanceTransaction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/BankAccount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/BitcoinReceiver.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/BitcoinTransaction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Card.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Charge.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Checkout/Session.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Collection.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/CountrySpec.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Coupon.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Customer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Discount.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Dispute.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/EphemeralKey.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/Api.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/ApiConnection.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/Authentication.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/Base.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/Card.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/Idempotency.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/InvalidRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/OAuth/InvalidClient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/OAuth/InvalidGrant.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/OAuth/InvalidRequest.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/OAuth/InvalidScope.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/OAuth/OAuthBase.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/OAuth/UnsupportedGrantType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/OAuth/UnsupportedResponseType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/Permission.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/RateLimit.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Error/SignatureVerification.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Event.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ExchangeRate.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/File.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/FileLink.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/FileUpload.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/HttpClient/ClientInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/HttpClient/CurlClient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Invoice.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/InvoiceItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/InvoiceLineItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/IssuerFraudRecord.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Issuing/Authorization.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Issuing/Card.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Issuing/CardDetails.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Issuing/Cardholder.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Issuing/Dispute.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Issuing/Transaction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/LoginLink.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/OAuth.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Order.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/OrderItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/OrderReturn.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/PaymentIntent.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Payout.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Person.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Plan.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Product.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Radar/ValueList.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Radar/ValueListItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Recipient.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/RecipientTransfer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Refund.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Reporting/ReportRun.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Reporting/ReportType.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/RequestTelemetry.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Review.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/SKU.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Sigma/ScheduledQueryRun.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/SingletonApiResource.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Source.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/SourceTransaction.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Stripe.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/StripeObject.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Subscription.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/SubscriptionItem.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Terminal/ConnectionToken.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Terminal/Location.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Terminal/Reader.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/ThreeDSecure.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Token.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Topup.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Transfer.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/TransferReversal.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/UsageRecord.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/UsageRecordSummary.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Util/AutoPagingIterator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Util/CaseInsensitiveArray.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Util/DefaultLogger.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Util/LoggerInterface.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Util/RandomGenerator.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Util/RequestOptions.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Util/Set.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Util/Util.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/Webhook.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/WebhookEndpoint.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/lib/WebhookSignature.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/jct_core/vendors/stripe/stripe-php-6.29.3/update_certs.php" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/update_scripts/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.htaccess" beforeDir="false" afterPath="$PROJECT_DIR$/.htaccess" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/18a0f8a8-58f6-405d-a7f0-8f50f0f3ced6.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources/9181d4bd-c3ff-481f-846c-c2a04a7e5ee5.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/markdown-navigator/profiles_settings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/AsciiEncrypt.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/AsciiEncrypt.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/api_interface.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/api_interface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/call.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/call.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/call_api.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/call_api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/messaging/Neon.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/messaging/Neon.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/messaging/balance.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/messaging/balance.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/messaging/cadoo_installed.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/messaging/cadoo_installed.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/messaging/cadoo_invite.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/messaging/cadoo_invite.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/messaging/send.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/messaging/send.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/nsadmin/nsadmin_pod_wl_store.php" beforeDir="false" afterPath="$PROJECT_DIR$/api/nsadmin/nsadmin_pod_wl_store.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/sample_data/19374w_json_upload.json" beforeDir="false" afterPath="$PROJECT_DIR$/api/sample_data/19374w_json_upload.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/import.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/index.php" afterDir="false" />
+    <list default="true" id="d8152c63-f973-46cb-ba21-c546bdf4563c" name="Default" comment="refresh">
+      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/assets/css/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/assets/js/home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/views/HomeView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jct_apps/school/dashboard/assets/css/home.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jct_apps/school/dashboard/assets/js/home.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jct_apps/school/dashboard/models/HomeModel.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jct_apps/school/dashboard/views/HomeView.php" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/jct_core/classes/BaseModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/assets/css/main.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/main.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/dashboard/models/HomeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/models/HomeModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/dashboard/views/AdminView.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/dashboard/views/HomeView.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/assets/css/contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/assets/css/contact.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/assets/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/assets/js/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/models/HomeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/models/HomeModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/models/LoginModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/views/ContactView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/views/ContactView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/views/HelpView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/views/HelpView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/user/assets/css/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/user/assets/js/home.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/user/models/HomeModel.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/user/views/HomeView.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/Config.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/Config.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/ActivityTracker.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/ActivityTracker.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/classes/AjaxHandler.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/AjaxHandler.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Autoloader.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Autoloader.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/BaseView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/BaseView.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Browser.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Browser.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Connection.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Connection.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Cryptor.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Cryptor.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Database.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Database.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Filters.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Filters.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Helper.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Helper.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Localisation.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Localisation.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Mailer.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Mailer.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/Navigation.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/classes/Render.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Render.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_core/classes/RouteRegistry.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/RouteRegistry.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/classes/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Router.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/SectionNavigation.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/SectionRegistry.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_core/classes/SessionManager.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/SessionManager.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/classes/User.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/User.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/classes/ViewInterface.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/ViewInterface.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/global_apps/mailer/controllers/mailer_controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/global_apps/mailer/models/mailer_model.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/global_apps/mailer/phpmailer.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/global_apps/mailer/smtp.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/global_apps/mailer/uploader.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/global_apps/texter/controllers/texter_controller.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/global_apps/texter/models/texter_model.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/localisation/en_GB.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/localisation/en_GB.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/localisation/ga_IE.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/localisation/ga_IE.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/logs/email/2018/04/20" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/vendors/shuttle_export/LICENSE" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/vendors/shuttle_export/demo.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_core/vendors/shuttle_export/dumper.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/11111a/documents/downloads/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/11111a/documents/downloads/pupil_reservations_test-event.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/11111a/documents/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/11111a/images/11111a_logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/assets/crest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/7_staff_timetable_pt-meeting-t1-201718.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/all_staff_pm_schedule_18_01_2018.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/all_staff_pm_schedule_22_11_2017.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/all_staff_pm_schedule_30_11_2017.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/pupil_reservations_.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/pupil_reservations_pt-meeting-t1-201718.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/staff_timetable_pt-meeting-t1-201718_2.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/staff_timetable_pt-meeting-t1-201718_22.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/staff_timetable_pt-meeting-t1-201718_7.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/staff_timetable_test-event_17.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/downloads/staff_timetable_test-event_21.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/19374W/documents/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/DATABIZ/assets/crest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/documents/downloads/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/documents/downloads/pt-meeting-t1-201718_non_registered.xlsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/documents/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/download.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_media/download.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/downloads/AdmSetup.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/downloads/AttSetup.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/downloads/Databiz School Library.mde" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/downloads/databiz_rs_anydesk.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/downloads/databiz_rs_teamviewer.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/downloads/databiz_rs_teamviewer_11.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_media/downloads/databiz_rs_teamviewer_ios.dmg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/ajax-loader.gif" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/ajax-loader.gif" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/check_radio_sheet.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/check_radio_sheet.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/check_radio_sheet_sm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/check_radio_sheet_sm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ad.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ad.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ae.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ae.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/af.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/af.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ag.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ag.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/al.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/al.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/am.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/am.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ao.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ao.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ar.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ar.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/at.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/at.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/au.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/au.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/az.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/az.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ba.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ba.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bb.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bd.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bd.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/be.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/be.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bf.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bf.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bg.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bh.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bh.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bi.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bi.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bj.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bj.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bn.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bo.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/br.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/br.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bs.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bs.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bt.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bw.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/by.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/by.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/bz.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/bz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ca.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ca.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cd.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cd.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cf.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cf.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cg.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ch.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ch.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ci.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ci.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cl.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cl.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cn.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/co.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/co.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cu.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cv.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cv.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cy.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cy.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/cz.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/cz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/de.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/de.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/dj.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/dj.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/dk.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/dk.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/dm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/dm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/do.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/do.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/dz.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/dz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ec.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ec.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ee.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ee.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/eg.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/eg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/eh.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/eh.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/er.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/er.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/es.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/es.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/et.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/et.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/fi.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/fi.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/fj.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/fj.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/fm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/fm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/fr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/fr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ga.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ga.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gb.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gd.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gd.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ge.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ge.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gh.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gh.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gn.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gq.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gq.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gt.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gw.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/gy.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/gy.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/hn.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/hn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/hr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/hr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ht.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ht.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/hu.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/hu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/id.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/id.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ie.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ie.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/il.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/il.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/in.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/in.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/iq.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/iq.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ir.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/is.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/is.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/it.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/it.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/jm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/jm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/jo.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/jo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/jp.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/jp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ke.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ke.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/kg.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/kg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/kh.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/kh.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ki.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ki.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/km.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/km.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/kn.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/kn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/kp.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/kp.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/kr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/kr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ks.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ks.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/kw.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/kw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/kz.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/kz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/la.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/la.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/lb.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/lb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/lc.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/lc.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/li.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/li.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/lk.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/lk.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/lr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/lr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ls.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ls.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/lt.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/lt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/lu.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/lu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/lv.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/lv.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ly.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ly.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ma.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ma.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mc.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mc.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/md.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/md.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/me.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/me.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mg.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mh.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mh.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mk.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mk.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ml.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ml.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mn.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mt.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mu.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mv.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mv.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mw.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mx.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mx.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/my.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/my.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/mz.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/mz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/na.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/na.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ne.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ne.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ng.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ng.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ni.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ni.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/nl.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/nl.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/no.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/no.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/np.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/np.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/nr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/nr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/nz.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/nz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/om.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/om.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/pa.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/pa.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/pe.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/pe.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/pg.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/pg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ph.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ph.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/pk.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/pk.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/pl.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/pl.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/pt.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/pt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/pw.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/pw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/py.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/py.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/qa.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/qa.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ro.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ro.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/rs.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/rs.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ru.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ru.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/rw.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/rw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sa.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sa.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sb.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sb.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sc.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sc.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sd.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sd.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/se.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/se.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sg.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/si.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/si.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sk.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sk.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sl.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sl.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sn.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/so.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/so.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/st.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/st.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sv.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sv.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sy.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sy.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/sz.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/sz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/td.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/td.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tg.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tg.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/th.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/th.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tj.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tj.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tl.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tl.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tn.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/to.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/to.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tr.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tr.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tt.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tt.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tv.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tv.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tw.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/tz.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/tz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ua.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ua.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ug.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ug.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/us.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/us.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/uy.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/uy.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/uz.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/uz.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/va.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/va.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/vc.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/vc.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ve.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ve.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/vn.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/vn.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/vu.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/vu.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ws.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ws.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/ye.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/ye.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/za.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/za.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/zm.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/zm.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/flags/30/zw.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/flags/30/zw.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/jquery_ui.png" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/images/jquery_ui.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/images/logo_trans_green.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/main.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/multiselect.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/css/multiselect.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/normalize.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/css/tinymce.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/fontawesome-all.min.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-brands-400.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-brands-400.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-brands-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-brands-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-brands-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-light-300.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-light-300.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-light-300.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-light-300.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-light-300.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-regular-400.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-regular-400.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-regular-400.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-regular-400.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-regular-400.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-solid-900.eot" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-solid-900.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-solid-900.ttf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-solid-900.woff" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/fonts/fontawesome/webfonts/fa-solid-900.woff2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/font-awesome/fontawesome.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/font-awesome/fontawesome.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/font-awesome/light.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/font-awesome/light.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/font-awesome/solid.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/font-awesome/solid.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/jquery-3.3.1.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/jquery-ui-1.12.1.custom/external/jquery/jquery.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery-ui-1.12.1.custom/external/jquery/jquery.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/jquery-ui-1.12.1.custom/jquery-ui.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery-ui-1.12.1.custom/jquery-ui.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/jquery-ui-1.12.1.custom/jquery-ui.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/jquery-ui-1.12.1.custom/jquery-ui.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/jquery-ui-1.12.1.custom/jquery-ui.structure.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery-ui-1.12.1.custom/jquery-ui.structure.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery-ui-1.12.1.custom/jquery-ui.structure.min.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/jquery_touch_punch.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/assets/js/jquery_touch_punch.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/main.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/js/multiselect.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/templates/email/html/default.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/assets/templates/email/text/default.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/assets/css/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/assets/css/jct_admin.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/assets/js/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/assets/js/jct_admin.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/models/HomeModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/models/jct_admin_HomeModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/models/sch_admin_HomeModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/views/HomeView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/views/jct_admin_HomeView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/dashboard/views/sch_admin_HomeView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/feedback/assets/css/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/assets/css/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/feedback/assets/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/assets/js/home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/feedback/index.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/index.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/feedback/models/HomeModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/feedback/views/HomeView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/css/contact_us.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/css/help.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/css/home.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/css/login.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/css/privacy.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/css/style.css" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/assets/css/style.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/js/contact_us.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/js/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/assets/js/help.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/js/home.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/assets/js/login.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/controllers/ContactUsController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/controllers/HomeController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/index.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/models/ContactUsModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/models/ErrorModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/models/HelpModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/models/HomeModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/models/LoginModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/models/PrivacyModel.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/views/ContactUsView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/views/ErrorView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/views/HelpView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/views/HomeView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/views/LoginView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_sections/site/views/PrivacyView.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/tmp.txt" beforeDir="false" />
     </list>
-    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ComposerSettings">
+    <execution>
+      <executable />
+    </execution>
   </component>
   <component name="DatabaseView">
     <option name="SHOW_INTERMEDIATE" value="true" />
@@ -785,221 +60,22 @@
     <expand />
     <select />
   </component>
-  <component name="FileEditorManager">
-    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/jct_apps/site/assets/js/home.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="38" selection-start-line="38" selection-end-line="38" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="731">
-              <caret line="60" column="28" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
-              <folding>
-                <element signature="e#334#378#0#PHP" />
-                <element signature="e#453#534#0#PHP" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jct_apps/assets/js/main.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2363">
-              <caret line="356" column="4" selection-start-line="356" selection-start-column="4" selection-end-line="356" selection-end-column="4" />
-              <folding>
-                <element signature="e#0#43#0" />
-                <element signature="e#115#241#0" />
-                <element signature="e#1426#1804#0" />
-                <element signature="e#1887#1919#0" />
-                <element signature="e#1976#2229#0" />
-                <element signature="e#2056#2225#0" />
-                <element signature="e#2085#2159#0" />
-                <element signature="e#2918#3296#0" />
-                <element signature="e#3387#5846#0" />
-                <element signature="e#4097#4290#0" />
-                <element signature="e#4168#4283#0" />
-                <element signature="e#4304#4449#0" />
-                <element signature="e#4377#4442#0" />
-                <element signature="e#4467#4520#0" />
-                <element signature="e#4756#5050#0" />
-                <element signature="e#4848#5043#0" />
-                <element signature="e#4849#5042#0" />
-                <element signature="e#4949#5032#0" />
-                <element signature="e#5298#5386#0" />
-                <element signature="e#5479#5843#0" />
-                <element signature="e#5960#6030#0" />
-                <element signature="e#6107#7775#0" />
-                <element signature="e#6279#6370#0" />
-                <element signature="e#6597#7771#0" />
-                <element signature="e#6795#6888#0" />
-                <element signature="e#6930#7765#0" />
-                <element signature="e#7037#7150#0" />
-                <element signature="e#7858#8650#0" />
-                <element signature="e#8610#8646#0" />
-                <element signature="e#8684#8895#0" />
-                <element signature="e#8824#8856#0" />
-                <element signature="e#8957#8988#0" />
-                <element signature="e#9277#9339#0" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jct_apps/site/models/HomeModel.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="782">
-              <caret line="54" column="78" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="78" />
-              <folding>
-                <element signature="e#112#131#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jct_core/classes/SessionManager.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jct_core/classes/Cryptor.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="187">
-              <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jct_apps/site/views/HomeView.php">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1088">
-              <caret line="71" column="12" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
-              <folding>
-                <element signature="e#112#129#0#PHP" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/jct_apps/site/assets/css/home.css">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2091">
-              <caret line="123" column="11" selection-start-line="123" selection-start-column="11" selection-end-line="123" selection-end-column="11" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-    </leaf>
-  </component>
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>app_par</find>
-      <find>data</find>
-      <find>databi</find>
-      <find>app</find>
-      <find>global-sub</find>
-      <find>checkbox-icon</find>
-      <find>passw</find>
-      <find>Could not instantiate mail function.</find>
-      <find>.footer</find>
-      <find>ds_</find>
-      <find>\n\n</find>
-      <find>var</find>
-      <find>Rank missing</find>
-      <find>Login</find>
-      <find>country</find>
-      <find>county</find>
-      <find>get_org_details</find>
-      <find>DS_</find>
-      <find>Browser</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>jct_</replace>
-      <replace>\n</replace>
-      <replace>let</replace>
-    </replaceStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/jct_apps/jct/parameter/controllers/RegionController.php" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/parameter/assets/js/region.js" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/parameter/controllers/CountyController.php" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/models/HomeModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/views/HomeView.php" />
-        <option value="$PROJECT_DIR$/jct_core/classes/AppNavigation.php" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/controllers/ListController.php" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/views/EditorView.php" />
-        <option value="$PROJECT_DIR$/tmp.txt" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/models/EditorModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/controllers/EditorController.php" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/models/ListModel.php" />
-        <option value="$PROJECT_DIR$/import/import_parameter_maps.php" />
-        <option value="$PROJECT_DIR$/import/education_centers.php" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/assets/js/editor.js" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/assets/css/editor.css" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/assets/js/list.js" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/views/ListView.php" />
-        <option value="$PROJECT_DIR$/jct_apps/jct/organisation/assets/css/list.css" />
-        <option value="$PROJECT_DIR$/index.php" />
-        <option value="$PROJECT_DIR$/jct_core/classes/Connection.php" />
-        <option value="$PROJECT_DIR$/jct_core/classes/User.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/models/ContactUsModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/views/ContactUsView.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/controllers/ContactUsController.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/controllers/ContactController.php" />
-        <option value="$PROJECT_DIR$/jct_core/classes/Router.php" />
-        <option value="$PROJECT_DIR$/jct_core/classes/Autoloader.php" />
-        <option value="$PROJECT_DIR$/jct_core/classes/Browser.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/models/ErrorModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/views/ErrorView.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/models/ContactModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/views/ContactView.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/models/PrivacyModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/models/HelpModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/user/views/HomeView.php" />
-        <option value="$PROJECT_DIR$/jct_apps/user/models/HomeModel.php" />
-        <option value="$PROJECT_DIR$/jct_core/classes/AjaxHandler.php" />
-        <option value="$PROJECT_DIR$/jct_core/classes/Render.php" />
-        <option value="$PROJECT_DIR$/jct_core/classes/RouteRegistry.php" />
-        <option value="$PROJECT_DIR$/jct_apps/dashboard/models/HomeModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/dashboard/views/HomeView.php" />
-        <option value="$PROJECT_DIR$/jct_apps/dashboard/views/AdminView.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/models/LoginModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/views/HomeView.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/assets/css/home.css" />
-        <option value="$PROJECT_DIR$/jct_core/classes/SessionManager.php" />
-        <option value="$PROJECT_DIR$/jct_apps/assets/js/main.js" />
-        <option value="$PROJECT_DIR$/jct_apps/site/models/HomeModel.php" />
-        <option value="$PROJECT_DIR$/jct_apps/site/assets/js/home.js" />
-        <option value="$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php" />
-      </list>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="E:\wamp\www\jct\.idea" />
+      </set>
     </option>
   </component>
   <component name="JsFlowSettings">
@@ -1011,40 +87,22 @@
   <component name="PhpServers">
     <servers />
   </component>
-  <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-7" />
-    <option name="width" value="633" />
-    <option name="height" value="1047" />
-  </component>
   <component name="ProjectId" id="1XbcP4ZgcoX9ihtqSeCEzvPFBsR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
   </component>
-  <component name="ProjectView">
-    <navigator proportions="" version="1">
-      <foldersAlwaysOnTop value="true" />
-    </navigator>
-    <panes>
-      <pane id="Scope" />
-      <pane id="ProjectPane">
-        <subPane>
-          <expand>
-            <path>
-              <item name="jct" type="b2602c69:ProjectViewProjectNode" />
-              <item name="jct" type="462c0819:PsiDirectoryNode" />
-            </path>
-          </expand>
-          <select />
-        </subPane>
-      </pane>
-    </panes>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
     <property name="DatabaseDriversLRU" value="mysql" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="com.intellij.database.dataSource.DataSourceTemplate" value="MySQL" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/jct_apps/dashboard/views" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/jct_apps/admin_school" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -1052,27 +110,29 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="E:\wamp\www\jct\jct_apps\ec\dashboard" />
-      <recent name="E:\wamp\www\jct\jct_apps\ef\dashboard" />
-      <recent name="E:\wamp\www\jct\jct_apps\jct\dashboard" />
+      <recent name="E:\wamp\www\jct\jct_apps\jct\dashboard\admin" />
+      <recent name="E:\wamp\www\jct\jct_apps\admin_jct" />
+      <recent name="E:\wamp\www\jct\jct_apps\dashboard" />
+      <recent name="E:\wamp\www\jct\jct_apps" />
+      <recent name="E:\wamp\www\jct\jct_apps\dashboard\jct_admin" />
     </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\wamp\www\jct\jct_apps\admin_school" />
       <recent name="E:\wamp\www\jct\jct_apps\dashboard\views" />
+      <recent name="E:\wamp\www\jct\jct_apps\site\controllers" />
       <recent name="E:\wamp\www\jct\jct_apps\dashboard\models" />
       <recent name="E:\wamp\www\jct\jct_apps\feedback" />
-      <recent name="E:\wamp\www\jct\jct_apps\user\assets\js" />
-      <recent name="E:\wamp\www\jct\jct_apps\user\assets\css" />
     </key>
   </component>
-  <component name="RunDashboard">
-    <option name="ruleStates">
+  <component name="ServiceViewManager">
+    <option name="viewStates">
       <list>
-        <RuleState>
-          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
-        </RuleState>
-        <RuleState>
-          <option name="name" value="StatusDashboardGroupingRule" />
-        </RuleState>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
       </list>
     </option>
   </component>
@@ -1114,445 +174,55 @@
       <workItem from="1574263264146" duration="3920000" />
       <workItem from="1574268126806" duration="2139000" />
       <workItem from="1574331129315" duration="602000" />
+      <workItem from="1581318208932" duration="153000" />
+      <workItem from="1581420179777" duration="605000" />
+      <workItem from="1581680380409" duration="310000" />
+      <workItem from="1581855224107" duration="12649000" />
+      <workItem from="1582191402451" duration="128000" />
+      <workItem from="1582535606994" duration="12204000" />
     </task>
+    <task id="LOCAL-00001" summary="refresh">
+      <created>1581318326012</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1581318326012</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
-  </component>
-  <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="172018000" />
-  </component>
-  <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
-    <editor active="true" />
-    <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.14232409" />
-      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info id="Favorites" order="2" side_tool="true" />
-      <window_info anchor="bottom" id="Message" order="0" />
-      <window_info anchor="bottom" id="Find" order="1" weight="0.32936078" />
-      <window_info anchor="bottom" id="Run" order="2" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
-      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
-      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" weight="0.32980973" />
-      <window_info anchor="bottom" id="Terminal" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" weight="0.32980973" />
-      <window_info anchor="bottom" id="Docker" order="10" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Changes" order="11" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Database Console" order="12" weight="0.32943678" />
-      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
-      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
-      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
-      <window_info anchor="right" id="GfmBrowser" order="3" />
-      <window_info anchor="right" id="Database" order="4" visible="true" weight="0.04424307" />
-    </layout>
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
   </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/tmp.txt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" lean-forward="true" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/organisation/views/EditorView.php" />
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/organisation/models/ListModel.php" />
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/parameter/assets/css/parameter.css" />
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/organisation/models/EditorModel.php" />
-    <entry file="file://$PROJECT_DIR$/import/education_centers.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="5" selection-start-line="2" selection-start-column="5" selection-end-line="2" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/import/import_parameter_maps.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="51" column="11" selection-start-line="51" selection-start-column="11" selection-end-line="51" selection-end-column="11" />
-          <folding>
-            <element signature="e#22#30#0#PHP" />
-            <element signature="e#515#614#0#PHP" />
-            <element signature="e#639#647#0#PHP" />
-            <element signature="e#1508#1640#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/organisation/controllers/EditorController.php" />
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/organisation/assets/js/editor.js" />
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/organisation/assets/css/editor.css" />
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/organisation/views/ListView.php" />
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/organisation/assets/js/list.js" />
-    <entry file="file://$PROJECT_DIR$/jct_apps/jct/organisation/assets/css/list.css" />
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/AppRegistry.php" />
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/Connection.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/User.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="217">
-          <caret line="25" column="24" selection-start-line="25" selection-start-column="24" selection-end-line="25" selection-end-column="24" />
-          <folding>
-            <element signature="e#107#125#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/controllers/ContactController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="15" column="13" selection-start-line="15" selection-start-column="13" selection-end-line="15" selection-end-column="13" />
-          <folding>
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#td#0;n#!!top" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/user/index.php" />
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/Autoloader.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="493">
-          <caret line="34" column="5" selection-start-line="34" selection-start-column="5" selection-end-line="34" selection-end-column="5" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/Browser.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="581">
-          <caret line="1266" column="58" lean-forward="true" selection-start-line="1266" selection-start-column="58" selection-end-line="1266" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/index.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="238">
-          <caret line="19" column="47" lean-forward="true" selection-start-line="19" selection-start-column="47" selection-end-line="19" selection-end-column="47" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/views/ErrorView.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
-          <folding>
-            <element signature="e#112#129#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/models/ContactModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/views/ContactView.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="663">
-          <caret line="44" column="74" selection-start-line="44" selection-start-column="74" selection-end-line="44" selection-end-column="74" />
-          <folding>
-            <element signature="e#112#129#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/models/PrivacyModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="11" column="17" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/models/HelpModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="272">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/models/ErrorModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="13" column="6" selection-start-line="13" selection-start-column="6" selection-end-line="13" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/user/views/HomeView.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2041">
-          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
-          <folding>
-            <element signature="e#30#47#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/user/models/HomeModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="629">
-          <caret line="37" column="39" lean-forward="true" selection-start-line="37" selection-start-column="39" selection-end-line="37" selection-end-column="39" />
-          <folding>
-            <element signature="e#30#44#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/user/assets/css/home.css">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/user/assets/js/home.js">
-      <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/AjaxHandler.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="136" column="19" selection-start-line="136" selection-start-column="19" selection-end-line="136" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/localisation/en_GB.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-102" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/Localisation.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="32" column="20" selection-start-line="32" selection-start-column="20" selection-end-line="32" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/Render.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="119">
-          <caret line="12" column="6" selection-start-line="12" selection-start-column="6" selection-end-line="12" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/RouteRegistry.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="785">
-          <caret line="104" column="22" lean-forward="true" selection-start-line="104" selection-start-column="22" selection-end-line="104" selection-end-column="22" />
-          <folding>
-            <element signature="e#69#392#0#PHP" />
-            <element signature="e#1345#1588#1#PHP" />
-            <element signature="e#1627#1879#1#PHP" />
-            <element signature="e#1918#2170#1#PHP" />
-            <element signature="e#2206#2449#1#PHP" />
-            <element signature="e#2486#2731#1#PHP" />
-            <element signature="e#2769#3017#1#PHP" />
-            <element signature="e#3054#3300#1#PHP" />
-            <element signature="e#33497#33531#0#PHP" />
-            <element signature="e#33537#34555#0#PHP" />
-            <element signature="e#33614#34549#0#PHP" />
-            <element signature="e#34250#34417#0#PHP" />
-            <element signature="e#34462#34549#0#PHP" />
-            <element signature="e#34561#34995#0#PHP" />
-            <element signature="e#34628#34989#0#PHP" />
-            <element signature="e#34902#34989#0#PHP" />
-            <element signature="e#35001#36849#0#PHP" />
-            <element signature="e#35093#36843#0#PHP" />
-            <element signature="e#35531#36005#0#PHP" />
-            <element signature="e#36756#36843#0#PHP" />
-            <element signature="e#36855#36945#0#PHP" />
-            <element signature="e#36951#37388#0#PHP" />
-            <element signature="e#37037#37359#0#PHP" />
-            <element signature="e#37101#37311#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/Router.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="290" column="21" lean-forward="true" selection-start-line="290" selection-start-column="21" selection-end-line="290" selection-end-column="21" />
-          <folding>
-            <element signature="e#853#1300#0#PHP" />
-            <element signature="e#922#1185#0#PHP" />
-            <element signature="e#1306#7767#0#PHP" />
-            <element signature="e#1515#1945#0#PHP" />
-            <element signature="e#2008#4819#0#PHP" />
-            <element signature="e#5107#5921#0#PHP" />
-            <element signature="e#5389#5588#0#PHP" />
-            <element signature="e#6028#7527#0#PHP" />
-            <element signature="e#6110#6274#0#PHP" />
-            <element signature="e#6689#7527#0#PHP" />
-            <element signature="e#6751#7517#0#PHP" />
-            <element signature="e#6836#7084#0#PHP" />
-            <element signature="e#8581#9028#0#PHP" />
-            <element signature="e#9225#9399#0#PHP" />
-            <element signature="e#10028#10599#0#PHP" />
-            <element signature="e#10229#10589#0#PHP" />
-            <element signature="e#10326#10501#0#PHP" />
-            <element signature="e#10786#11634#0#PHP" />
-            <element signature="e#10871#11624#0#PHP" />
-            <element signature="e#11248#11610#0#PHP" />
-            <element signature="e#11299#11510#0#PHP" />
-            <element signature="e#12027#12144#0#PHP" />
-            <element signature="e#12199#12307#0#PHP" />
-            <element signature="e#12382#12961#0#PHP" />
-            <element signature="e#12967#14191#0#PHP" />
-            <element signature="e#13160#13424#0#PHP" />
-            <element signature="e#13807#14156#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/dashboard/models/HomeModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="30" selection-start-line="30" selection-end-line="30" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/dashboard/views/HomeView.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="595">
-          <caret line="40" column="12" selection-start-line="40" selection-start-column="12" selection-end-line="40" selection-end-column="12" />
-          <folding>
-            <element signature="e#112#129#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/dashboard/views/AdminView.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="33" selection-start-line="6" selection-start-column="33" selection-end-line="6" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/models/LoginModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="4420">
-          <caret line="272" column="1" selection-start-line="272" selection-start-column="1" selection-end-line="272" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/php/lib/php.jar!/stubs/filter/filter.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="85" column="9" selection-start-line="85" selection-start-column="9" selection-end-line="85" selection-end-column="9" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/.htaccess">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-816" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/assets/js/home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="38" selection-start-line="38" selection-end-line="38" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="731">
-          <caret line="60" column="28" selection-start-line="60" selection-start-column="28" selection-end-line="60" selection-end-column="28" />
-          <folding>
-            <element signature="e#334#378#0#PHP" />
-            <element signature="e#453#534#0#PHP" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/assets/js/main.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2363">
-          <caret line="356" column="4" selection-start-line="356" selection-start-column="4" selection-end-line="356" selection-end-column="4" />
-          <folding>
-            <element signature="e#0#43#0" />
-            <element signature="e#115#241#0" />
-            <element signature="e#1426#1804#0" />
-            <element signature="e#1887#1919#0" />
-            <element signature="e#1976#2229#0" />
-            <element signature="e#2056#2225#0" />
-            <element signature="e#2085#2159#0" />
-            <element signature="e#2918#3296#0" />
-            <element signature="e#3387#5846#0" />
-            <element signature="e#4097#4290#0" />
-            <element signature="e#4168#4283#0" />
-            <element signature="e#4304#4449#0" />
-            <element signature="e#4377#4442#0" />
-            <element signature="e#4467#4520#0" />
-            <element signature="e#4756#5050#0" />
-            <element signature="e#4848#5043#0" />
-            <element signature="e#4849#5042#0" />
-            <element signature="e#4949#5032#0" />
-            <element signature="e#5298#5386#0" />
-            <element signature="e#5479#5843#0" />
-            <element signature="e#5960#6030#0" />
-            <element signature="e#6107#7775#0" />
-            <element signature="e#6279#6370#0" />
-            <element signature="e#6597#7771#0" />
-            <element signature="e#6795#6888#0" />
-            <element signature="e#6930#7765#0" />
-            <element signature="e#7037#7150#0" />
-            <element signature="e#7858#8650#0" />
-            <element signature="e#8610#8646#0" />
-            <element signature="e#8684#8895#0" />
-            <element signature="e#8824#8856#0" />
-            <element signature="e#8957#8988#0" />
-            <element signature="e#9277#9339#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/models/HomeModel.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="782">
-          <caret line="54" column="78" selection-start-line="54" selection-start-column="78" selection-end-line="54" selection-end-column="78" />
-          <folding>
-            <element signature="e#112#131#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/SessionManager.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="13" column="14" selection-start-line="13" selection-start-column="14" selection-end-line="13" selection-end-column="14" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_core/classes/Cryptor.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="187">
-          <caret line="16" column="6" selection-start-line="16" selection-start-column="6" selection-end-line="16" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/views/HomeView.php">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1088">
-          <caret line="71" column="12" selection-start-line="71" selection-start-column="12" selection-end-line="71" selection-end-column="12" />
-          <folding>
-            <element signature="e#112#129#0#PHP" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/jct_apps/site/assets/css/home.css">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2091">
-          <caret line="123" column="11" selection-start-line="123" selection-start-column="11" selection-end-line="123" selection-end-column="11" />
-        </state>
-      </provider>
-    </entry>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="refresh" />
+    <option name="LAST_COMMIT_MESSAGE" value="refresh" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581941670615">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581941670615" />
+    <state x="440" y="113" key="CommitChangelistDialog2" timestamp="1581318302092">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="440" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1581318302092" />
+    <state x="775" y="334" key="NewPhpClassDialog" timestamp="1581944054285">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="775" y="334" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581944054285" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1581318331225">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1581318331225" />
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1581855874153">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="656" y="343" key="com.intellij.ide.util.TipDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581855874153" />
+    <state x="623" y="225" key="search.everywhere.popup" timestamp="1581946171968">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="623" y="225" key="search.everywhere.popup/0.0.1920.1040@0.0.1920.1040" timestamp="1581946171968" />
   </component>
   <component name="masterDetails">
     <states>

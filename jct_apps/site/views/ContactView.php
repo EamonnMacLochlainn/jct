@@ -61,13 +61,13 @@ class ContactView extends BaseView implements ViewInterface
             <input type="tel" name="contact_number" value="" />
         </label>
         
-        <label class="contact-by-phone">
+        <!--<label class="contact-by-phone">
             <span class="label-text">Request Callback:</span>
             <input type="checkbox" name="contact_by_phone" value="1" />
-        </label>
+        </label>-->
         
         <label class="subject">
-            <span class="label-text">Subject or Product:</span>
+            <span class="label-text">Regarding:</span>
             <input type="text" name="subject" value="" />
         </label>
         
@@ -76,7 +76,7 @@ class ContactView extends BaseView implements ViewInterface
             <textarea name="message"></textarea>
         </label>
         
-        <div class="g-recaptcha" data-sitekey="6Lf85EwUAAAAAJ9fQPMEB_LyzBgj7WiX40P4nMAc"></div>
+        <div class="g-recaptcha" data-sitekey=""></div>
         
         <input type="submit" class="button regular send-message" value="Send Message" data-set="Send Message">
         

@@ -1,4 +1,5 @@
-<?php
+<?php /** @noinspection DuplicatedCode */
+
 /**
  * Created by PhpStorm.
  * User: Eamonn
@@ -10,17 +11,17 @@ namespace JCT;
 
 
 
+use Exception;
 
 class Router extends User
 {
     const DEFAULT_APP_SLUG = 'site';
-    const DEFAULT_NON_MODULAR_MODULE_SLUG = 'none';
-    const DEFAULT_MODULAR_MODULE_SLUG = 'home';
+    const DEFAULT_ORG_SECTION_SLUG = 'all';
+    const DEFAULT_USER_MODULE_SLUG = 'all';
     const DEFAULT_DESTINATION_SLUG = 'home';
+
     const DEFAULT_MODEL = 'Home';
     const DEFAULT_METHOD = 'index';
-
-    const ERROR_DESTINATION_SLUG = 'error';
 
     const DEFAULT_USER_PERMISSION = null;
     const DEFAULT_PERMISSION = 'rw';
@@ -28,20 +29,29 @@ class Router extends User
     protected $requested_uri;
 
     protected $app_slug;
-    protected $module_slug;
+    protected $org_section_slug;
+    protected $user_module_slug;
     protected $destination_slug;
-
-    protected $model_name;
-    protected $method_name;
+    protected $model_title;
+    protected $model_class_name;
+    protected $method_title;
     protected $method_arguments = [];
 
-    protected $user_permission_for_route;
+    protected $route_properties;
 
-    protected $app;
-    protected $module_dir_name;
+
+    protected $module_dir_path;
     protected $model;
 
 
+    const ERR_CUSTOM = 0;
+    const ERR_LOGIN_MISSING = 1;
+    const ERR_ORG_TYPE_DISALLOWED = 2;
+    const ERR_USER_ROLE_DISALLOWED = 3;
+    const ERR_INVALID_MODEL_PATH = 4;
+    const ERR_INVALID_APP_SLUG = 5;
+    const ERR_INVALID_CLASS_NAME = 6;
+    const ERR_INVALID_METHOD_NAME = 7;
 
 
 
@@ -58,194 +68,95 @@ class Router extends User
             die();
         }
 
-        $this->user_permission_for_route = self::DEFAULT_USER_PERMISSION;
-
         $this->set_for_render();
     }
 
-    private function set_for_render()
+    private function set_to_home($args = [])
     {
-        // find out where the user wants to go
+        $this->app_slug = self::DEFAULT_APP_SLUG;
+        $this->org_section_slug = self::DEFAULT_ORG_SECTION_SLUG;
+        $this->user_module_slug = self::DEFAULT_USER_MODULE_SLUG;
+        $this->destination_slug = self::DEFAULT_DESTINATION_SLUG;
 
-        $this->set_route();
-
-
-        // set user from $_SESSION
-
-        $tmp = $this->set_user_from_session();
-        if( (isset($tmp['error'])) && ($this->app['requires_login'] === true) )
-        {
-            $error = base64_encode($tmp['error']);
-            $user_id = (empty($tmp['user_id'])) ? 0 : base64_encode($tmp['user_id']);
-            $redirect = base64_encode($this->requested_uri);
-
-            header('location:' . JCT_URL_ROOT . 'login?redirect=' . $redirect . '&id=' . $user_id . '&error=' . $error);
-            die();
-        }
-
-
-        // check if user is allowed to go to route
-
-        /*$check_further = true;
-        if($this->app['requires_login'] === false) // doesn't require a login, let through
-        {
-            $this->user_permission_for_route = self::DEFAULT_PERMISSION;
-            $check_further = false;
-        }
-
-        if( ($check_further) && ($this->user_is_logged_in === false) ) // does require a login, user is not, stop
-        {
-            $args = [
-                'error_type' => 'login',
-                'requested_uri' => $this->requested_uri
-            ];
-            $this->set_to_error($args);
-            $this->user_permission_for_route = self::DEFAULT_PERMISSION;
-            $check_further = false;
-        }
-
-        if( // user can access by default under following conditions
-            ($check_further) &&
-            ($this->user_role_id === 1) ||
-            ($this->app['is_required_for_all_users'] === true) ||
-            ( (in_array($this->user_role_id, [7,8])) && ( ($this->destination_slug === 'public') || ($this->app_slug == 'family') )) ||
-            ( ($this->user_role_id === 2) && ($this->app['requires_subscription'] === false) )
-        )
-        {
-            $this->user_permission_for_route = self::DEFAULT_PERMISSION;
-            $check_further = false;
-        }
-
-        if($check_further)
-        {
-            $org_subscribed_apps = $this->get_org_subscribed_app_slugs($this->default_db_connection);
-
-            if(!in_array($this->app_slug, $org_subscribed_apps)) // user's org is not subscribed to the app, stop
-            {
-                $args = [
-                    'error_type' => 'permission',
-                    'requested_uri' => $this->requested_uri
-                ];
-                $this->set_to_error($args);
-                $this->user_permission_for_route = self::DEFAULT_PERMISSION;
-                $check_further = false;
-            }
-            else
-            {
-                if($this->user_role_id === 2) // org is subscribed, and user is an admin, let through
-                {
-                    $this->user_permission_for_route = self::DEFAULT_PERMISSION;
-                    $check_further = false;
-                }
-            }
-        }
-
-        if($check_further)
-        {
-            // org is subscribed, but user is not an admin, so get individual permission
-            $user_permission_for_route = $this->get_user_permission_for_route($this->org_db_connection);
-            if($user_permission_for_route === self::DEFAULT_USER_PERMISSION) // user has no permission
-            {
-                $args = [
-                    'error_type' => 'permission',
-                    'requested_uri' => $this->requested_uri
-                ];
-                $this->set_to_error($args);
-                $this->user_permission_for_route = self::DEFAULT_PERMISSION;
-            }
-        }*/
-
-
-
-        // check model is ok
-
-        $module_dir_name = ($this->module_slug !== self::DEFAULT_NON_MODULAR_MODULE_SLUG) ? $this->module_slug . '\\' : '';
-        $model_filename = __NAMESPACE__ . '\\' . $this->app_slug . '\\' . $module_dir_name . $this->model_name . 'Model';
-        if(!class_exists($model_filename))
-        {
-            $path = JCT_PATH_APPS . $this->app_slug . JCT_DE . $module_dir_name . 'models' . JCT_DE . $this->model_name . 'Model.php';
-            $exp = (file_exists($path)) ? ' (file found)' : ' (file not found)';
-
-            $args = [
-                'error_type' => 'routing',
-                'error_message' => 'Model ' . $model_filename . ' not found' . $exp,
-                'requested_uri' => $this->requested_uri
-            ];
-            $this->set_to_error($args);
-            $this->user_permission_for_route = self::DEFAULT_PERMISSION;
-
-            $module_dir_name = '';
-            $model_filename = $this->model_name . 'Model';
-            $model_filename = __NAMESPACE__ . '\\' . $this->app_slug . '\\' . $module_dir_name . $model_filename;
-        }
-
-
-
-
-
-
-        // init model
-
-        $model = new $model_filename($this->default_db_connection);
-
-        if((is_array($model)) && (isset($model['error'])) )
-        {
-            $args = [
-                'error_type' => 'model',
-                'error_message' => $model['error'],
-                'requested_uri' => $this->requested_uri
-            ];
-            $this->set_to_error($args);
-            $this->user_permission_for_route = self::DEFAULT_PERMISSION;
-
-            $module_dir_name = '';
-            $model_filename = $this->model_name . 'Model';
-            $model_filename = __NAMESPACE__ . '\\' . $this->app_slug . '\\' . $module_dir_name . $model_filename;
-
-            $model = new $model_filename($this->default_db_connection);
-        }
-        else
-        {
-            // check method is ok
-
-            if(!method_exists($model, $this->method_name))
-            {
-                $args = [
-                    'error_type' => 'model',
-                    'error_message' => 'Method `' . $this->method_name . '` not found in Model ' . $this->model_name . '.',
-                    'requested_uri' => $this->requested_uri
-                ];
-                $this->set_to_error($args);
-                $this->user_permission_for_route = self::DEFAULT_PERMISSION;
-
-                $module_dir_name = '';
-                $model_filename = $this->model_name . 'Model';
-                $model_filename = __NAMESPACE__ . '\\' . $this->app_slug . '\\' . $module_dir_name . $model_filename;
-                $model = new $model_filename($this->default_db_connection);
-            }
-        }
-
-
-        // set for Render
-
-        $this->module_dir_name = $module_dir_name;
-        $this->model = $model;
-        $this->method_arguments = (empty($this->method_arguments)) ? null : $this->method_arguments;
-
-        return true;
+        $this->route_properties = RouteRegistry::get_route_properties($this->app_slug, $this->org_section_slug, $this->user_module_slug);
+        $module = $this->route_properties['org_sections'][$this->org_section_slug]['user_modules'][$this->user_module_slug];
+        $this->model_title = $module['destinations'][$this->destination_slug]['model'];
+        $this->method_title = $module['destinations'][$this->destination_slug]['method'];
+        $this->method_arguments = $args;
     }
 
-    private function set_route()
+    private function set_to_error($error_code, $args = [])
+    {
+        $this->app_slug = self::DEFAULT_APP_SLUG;
+        $this->org_section_slug = self::DEFAULT_ORG_SECTION_SLUG;
+        $this->user_module_slug = self::DEFAULT_USER_MODULE_SLUG;
+        $this->destination_slug = 'error';
+
+        $this->route_properties = RouteRegistry::get_route_properties($this->app_slug, $this->org_section_slug, $this->user_module_slug);
+        $module = $this->route_properties['org_sections'][$this->org_section_slug]['user_modules'][$this->user_module_slug];
+        $this->model_title = $module['destinations'][$this->destination_slug]['model'];
+        $this->method_title = $module['destinations'][$this->destination_slug]['method'];
+
+        $err = [
+            'person_guid' => (empty($this->person_guid)) ? null : base64_encode($this->person_guid),
+            'error_type' => null,
+            'error_msg' => '',
+            'requested_uri' => base64_encode($this->requested_uri),
+            'args' => $args
+        ];
+
+        switch(intval($error_code))
+        {
+            case(self::ERR_CUSTOM):
+                $err['error_type'] = 'custom';
+                $err['error_msg'] = 'An unrecognised error occurred';
+                break;
+            case(self::ERR_LOGIN_MISSING):
+                $err['error_type'] = 'login';
+                $err['error_msg'] = 'You must log in to view this screen';
+                break;
+            case(self::ERR_ORG_TYPE_DISALLOWED):
+                $err['error_type'] = 'login';
+                $err['error_msg'] = 'Your logged in Organisation type does not allow you to view this screen';
+                break;
+            case(self::ERR_USER_ROLE_DISALLOWED):
+                $err['error_type'] = 'login';
+                $err['error_msg'] = 'Your logged in User role does not allow you to view this screen';
+                break;
+            case(self::ERR_INVALID_MODEL_PATH):
+                $err['error_type'] = 'routing';
+                $err['error_msg'] = 'Invalid Model path';
+                break;
+            case(self::ERR_INVALID_APP_SLUG):
+                $err['error_type'] = 'routing';
+                $err['error_msg'] = 'Invalid App slug';
+                break;
+            case(self::ERR_INVALID_CLASS_NAME):
+                $err['error_type'] = 'routing';
+                $err['error_msg'] = 'Invalid Class name';
+                break;
+            case(self::ERR_INVALID_METHOD_NAME):
+                $err['error_type'] = 'routing';
+                $err['error_msg'] = 'Invalid Method name';
+                break;
+        }
+        $err['error_msg'] = (!empty($args['error_msg'])) ? $args['error_msg'] : $err['error_msg'];
+        $err['error_msg'] = base64_encode($err['error_msg']);
+        $this->method_arguments = $err;
+
+        $this->module_dir_path = JCT_PATH_APPS . $this->app_slug . JCT_DE;
+
+        $model_class_name = __NAMESPACE__ . '\\' . $this->app_slug . '\\' . $this->model_title . 'Model';
+        $this->model_class_name = $model_class_name;
+        $model = new $model_class_name($this->default_db_connection);
+        $this->model = $model;
+    }
+
+    private function set_route_from_requested_url()
     {
         if(empty($_GET))
         {
-            $this->app_slug = self::DEFAULT_APP_SLUG;
-            $this->module_slug = self::DEFAULT_NON_MODULAR_MODULE_SLUG;
-            $this->destination_slug = self::DEFAULT_DESTINATION_SLUG;
-            $this->model_name = self::DEFAULT_MODEL;
-            $this->method_name = self::DEFAULT_METHOD;
-
-            $this->app = RouteRegistry::get_app($this->app_slug);
+            $this->set_to_home();
             return true;
         }
 
@@ -258,24 +169,20 @@ class Router extends User
 
         if(empty($this->requested_uri))
         {
-            $this->app_slug = self::DEFAULT_APP_SLUG;
-            $this->module_slug = self::DEFAULT_NON_MODULAR_MODULE_SLUG;
-            $this->destination_slug = self::DEFAULT_DESTINATION_SLUG;
-            $this->model_name = self::DEFAULT_MODEL;
-            $this->method_name = self::DEFAULT_METHOD;
-
-            $this->app = RouteRegistry::get_app($this->app_slug);
+            $this->set_to_home();
             return true;
         }
+
+
+
+
 
         // break up requested uri into component parts
 
         $uri_parts = explode('/', $this->requested_uri);
 
-
-
         // determine app
-
+        // if app_slug segment is unrecognised, put it back and set that property to default (site)
         $app_slug = array_shift($uri_parts);
         if(!in_array($app_slug, RouteRegistry::get_app_slugs()))
         {
@@ -285,89 +192,60 @@ class Router extends User
         $this->app_slug = $app_slug;
 
 
-        $this->app = RouteRegistry::get_app($this->app_slug);
-        if(isset($this->app['error']))
+        $this->route_properties = RouteRegistry::get_route_properties($this->app_slug);
+        if(isset($this->route_properties['error']))
         {
-            $args = [
-                'error_type' => 'routing',
-                'error_message' => 'app',
-                'requested_uri' => $this->requested_uri
-            ];
-            $this->set_to_error($args);
-            $this->user_permission_for_route = self::DEFAULT_PERMISSION;
+            $this->set_to_error(self::ERR_INVALID_APP_SLUG);
             return true;
         }
 
 
-        // determine module
-
-        if($this->app['is_modular'] === false)
-            $module_slug = self::DEFAULT_NON_MODULAR_MODULE_SLUG;
-        else
+        // determine org section
+        // if org_section segment is unrecognised, put it back and set that property to default (all)
+        $org_section_slug = array_shift($uri_parts);
+        if(!array_key_exists($org_section_slug, $this->route_properties['org_sections']))
         {
-            if(empty($uri_parts))
-                $module_slug = self::DEFAULT_MODULAR_MODULE_SLUG;
-            else
-                $module_slug = array_shift($uri_parts);
-
-            if(!array_key_exists($module_slug, $this->app['modules']))
-            {
-                $args = [
-                    'error_type' => 'routing',
-                    'error_message' => 'module',
-                    'requested_uri' => $this->requested_uri
-                ];
-                $this->set_to_error($args);
-                return true;
-            }
+            array_unshift($uri_parts, $org_section_slug);
+            $org_section_slug = self::DEFAULT_ORG_SECTION_SLUG;
         }
-        $this->module_slug = $module_slug;
+        $this->org_section_slug = $org_section_slug;
 
 
+        // determine user module
+        // if user_module segment is unrecognised, put it back and set that property to default (all)
+        $user_module_slug = array_shift($uri_parts);
+        if(!array_key_exists($user_module_slug, $this->route_properties['org_sections'][$org_section_slug]['user_modules']))
+        {
+            array_unshift($uri_parts, $user_module_slug);
+            $user_module_slug = self::DEFAULT_USER_MODULE_SLUG;
+        }
+        $this->user_module_slug = $user_module_slug;
+
+
+        // determine destination
+        // if destination segment is unrecognised, put it back and set that property to default (home)
+        $destination_slug = array_shift($uri_parts);
+        if(!array_key_exists($destination_slug, $this->route_properties['org_sections'][$org_section_slug]['user_modules'][$user_module_slug]['destinations']))
+        {
+            array_unshift($uri_parts, $destination_slug);
+            $destination_slug = self::DEFAULT_DESTINATION_SLUG;
+        }
+        $this->destination_slug = $destination_slug;
 
 
         // determine model & method
-
-        if(empty($uri_parts))
-            $destination_slug = self::DEFAULT_DESTINATION_SLUG;
-        else
-        {
-            $destination_slug = array_shift($uri_parts);
-
-            if(!array_key_exists($destination_slug, $this->app['modules'][$this->module_slug]['destinations']))
-            {
-                if(array_key_exists($destination_slug, $this->app['modules'][$this->module_slug]['destination_aliases']))
-                    $destination_slug = $this->app['modules'][$this->module_slug]['destination_aliases'][$destination_slug];
-                else
-                {
-                    $args = [
-                        'error_type' => 'routing',
-                        'error_message' => 'model:' . $destination_slug,
-                        'requested_uri' => $this->requested_uri
-                    ];
-                    $this->set_to_error($args);
-                    return true;
-                }
-            }
-        }
-        $this->destination_slug = $destination_slug;
-        $this->model_name = $this->app['modules'][$this->module_slug]['destinations'][$this->destination_slug]['model'];
-        $this->method_name = $this->app['modules'][$this->module_slug]['destinations'][$this->destination_slug]['method'];
-
-
+        // these are not set from the URI, but are properties of the destination
+        $this->model_title = $this->route_properties['org_sections'][$org_section_slug]['user_modules'][$user_module_slug]['destinations'][$this->destination_slug]['model'];
+        $this->method_title = $this->route_properties['org_sections'][$org_section_slug]['user_modules'][$user_module_slug]['destinations'][$this->destination_slug]['method'];
 
 
         // store remaining URI parameters as method arguments
-
         $args = [];
         if(!empty($uri_parts))
         {
             foreach($uri_parts as $part)
                 $args[$part] = 1;
         }
-
-        // store remaining $_GET parameters
-
         if(!empty($_GET))
         {
             foreach($_GET as $k => $v)
@@ -378,58 +256,107 @@ class Router extends User
         return true;
     }
 
-    private function set_to_error($args)
+    private function check_user_against_set_route()
     {
-        $this->app_slug = self::DEFAULT_APP_SLUG;
-        $this->module_slug = self::DEFAULT_NON_MODULAR_MODULE_SLUG;
-        $this->destination_slug = self::ERROR_DESTINATION_SLUG;
-        $this->app = RouteRegistry::get_app($this->app_slug);
+        try
+        {
+            $route_requires_login = $this->route_properties['requires_login'];
 
-        $this->model_name = $this->app['modules'][$this->module_slug]['destinations'][$this->destination_slug]['model'];
-        $this->method_name = $this->app['modules'][$this->module_slug]['destinations'][$this->destination_slug]['method'];
+            // route doesn't require a login, let through
+            if($route_requires_login === false)
+                return ['success'=>1];
 
-        $this->method_arguments = $args;
+            // route does require a login, user is not logged in, stop
+            if( ($route_requires_login === true) && ($this->user_is_logged_in === false) )
+                throw new Exception('', self::ERR_LOGIN_MISSING);
+
+            // check user is accessing a route allowed to their org type
+            $route_org_type_ids = $this->route_properties['org_sections'][$this->org_section_slug]['type_ids'];
+            $route_org_type_ids = (!empty($route_org_type_ids)) ? array_map('intval',$route_org_type_ids) : [];
+            if( (!empty($route_org_type_ids)) && (!in_array($this->org_type_id, $route_org_type_ids)) )
+                throw new Exception('', self::ERR_ORG_TYPE_DISALLOWED);
+
+            // check user is accessing a module allowed to their role ID
+            $route_role_ids = $this->route_properties['org_sections'][$this->org_section_slug]['user_modules'][$this->user_module_slug]['role_ids'];
+            $route_role_ids = (!empty($route_role_ids)) ? array_map('intval',$route_role_ids) : [];
+            if( (!empty($route_role_ids)) && (!in_array($this->user_role_id, $route_role_ids)) )
+                throw new Exception('', self::ERR_USER_ROLE_DISALLOWED);
+
+            return ['success'=>1];
+        }
+        catch(Exception $e)
+        {
+            return ['message'=>$e->getMessage(), 'code'=>$e->getCode()];
+        }
     }
 
-    protected function get_user_permission_for_route(Database $db)
+    private function set_for_render()
     {
-        $module_slug = ($this->module_slug === self::DEFAULT_NON_MODULAR_MODULE_SLUG) ? null : $this->module_slug;
+        // set route
+        $this->set_route_from_requested_url();
 
-        $db->query(" SELECT method 
-        FROM app_screen_user 
-        WHERE ( 
-            id = :id AND 
-            role_id = :role_id AND 
-            app_slug = :app_slug AND 
-            module = :module_slug AND 
-            model = :destination_slug
-        ) ");
-        $db->bind(':id', $this->user_id);
-        $db->bind(':role_id', $this->user_role_id);
-        $db->bind(':app_slug', $this->app_slug);
-        $db->bind(':module_slug', $module_slug);
-        $db->bind(':destination_slug', $this->destination_slug);
-        $db->execute();
-        $tmp = $db->fetchAllColumn();
+        // set user
+        $this->set_user_from_session();
 
-        $permission = self::DEFAULT_USER_PERMISSION;
-        foreach($tmp as $t)
+        // check if user is allowed to go to route
+        $route_check = $this->check_user_against_set_route();
+        if(!isset($route_check['success']))
         {
-            if(empty($t))
-                continue;
-
-            $split = explode(':', $t);
-            if(count($split) !== 2)
-                continue;
-
-            $method_slug = $split[0];
-
-            if($method_slug !== $this->method_name)
-                continue;
-
-            $permission = $split[1];
+            $this->set_to_error($route_check['code']);
+            return true;
         }
 
-        return $permission;
+
+        // set path to assets & model
+        $accessed_per_org_type = $this->route_properties['accessed_per_org_type'];
+        $accessed_per_role = $this->route_properties['accessed_per_role'];
+        // if the app is accessed_per_org_type, then the org_type (jct, school, etc) comes before the app_slug; otherwise the org type is not included (app is accessed directly)
+        // if the app is accessed_per_role, then the user_module_slug is included; otherwise we go straight to the MVCs
+        $module_dir_path = ($accessed_per_org_type) ? JCT_PATH_APPS . $this->org_section_slug . JCT_DE . $this->app_slug . JCT_DE : JCT_PATH_APPS . $this->app_slug . JCT_DE;
+        $module_dir_path.= ($accessed_per_role) ? $this->user_module_slug . JCT_DE : '';
+        $this->module_dir_path = $module_dir_path;
+
+        $model_path = $module_dir_path . 'models' . JCT_DE . $this->model_title . 'Model.php';
+
+        if(!file_exists($model_path))
+        {
+            $this->set_to_error(self::ERR_INVALID_MODEL_PATH);
+            return true;
+        }
+
+        // namespace\app_slug\[org_section_slug\][user_module_slug\]model_name
+        $model_class_name = __NAMESPACE__ . '\\' . $this->app_slug . '\\';
+        $model_class_name.= ($accessed_per_org_type) ? $this->org_section_slug . '\\' : '';
+        $model_class_name.= ($accessed_per_role) ? $this->user_module_slug . '\\' : '';
+        $model_class_name.= $this->model_title . 'Model';
+        $this->model_class_name = $model_class_name;
+
+        if(!class_exists($model_class_name))
+        {
+            $this->set_to_error(self::ERR_INVALID_CLASS_NAME);
+            return true;
+        }
+
+        // init model
+        $model = new $model_class_name($this->default_db_connection);
+        if((is_array($model)) && (isset($model['error'])) )
+        {
+            $args = ['error_msg'=>$model['error']];
+            $this->set_to_error(self::ERR_CUSTOM, $args);
+            return true;
+        }
+
+
+        // check method is ok
+        if(!method_exists($model, $this->method_title))
+        {
+            $this->set_to_error(self::ERR_INVALID_METHOD_NAME);
+            return true;
+        }
+
+
+        // set for Render
+        $this->model = $model;
+        return true;
     }
 }

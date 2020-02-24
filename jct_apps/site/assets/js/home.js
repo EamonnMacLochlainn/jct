@@ -33,7 +33,7 @@ login_btn.click(function(e)
     let args = $.extend(true, {}, values);
     args.username = username;
     args.password = password;
-    args.org_id = org_sel.val();
+    args.org_guid = org_sel.val();
     args.role_id = role_sel.val();
     args.method_param = 'login_user';
 
@@ -55,11 +55,12 @@ function login_result(r)
     if(r.hasOwnProperty('org_choice'))
     {
         org_sel.empty().append('<option value="0">--</option>');
-        $.each(r.org_choice, function(i,o){ org_sel.append('<option value="' + o.id + '">' + o.title + '</option>'); });
+        $.each(r.org_choice, function(i,o){ org_sel.append('<option value="' + o.guid + '">' + o.title + '</option>'); });
 
         org_sel.parent().slideDown();
         return false;
     }
-    //window.location.href = __core.root_url + '/dashboard';
+
+    window.location.href = __core.root_url + '/dashboard';
 }
 

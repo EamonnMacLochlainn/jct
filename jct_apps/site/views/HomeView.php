@@ -15,11 +15,10 @@ use JCT\ViewInterface;
 
 class HomeView extends BaseView implements ViewInterface
 {
-    function __construct(HomeModel $model, $permission_type)
+    function __construct(HomeModel $model)
     {
         parent::__construct();
         $this->model = $model;
-        $this->permission_type = $permission_type;
 
         $this->update_app_param();
 
@@ -39,7 +38,6 @@ class HomeView extends BaseView implements ViewInterface
 
         $bubbles_src = JCT_URL_ASSETS . 'css/images/bubbles_bg.png';
         $login_cta = Localisation::__('LOG_IN');
-        $password_cta = Localisation::__('SIGN_UP');
         $help_cta = Localisation::__('HELP');
 
         $h = <<<EOS
@@ -83,7 +81,7 @@ class HomeView extends BaseView implements ViewInterface
                 
                 <div class="login-links">  
                     <a href="" class="request-password">Forgotten Password?</a>
-                    <a href="Help" class="help">Help</a>
+                    <a href="Help" class="help">$help_cta</a>
                 </div>
                 
                 

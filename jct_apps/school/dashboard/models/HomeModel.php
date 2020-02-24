@@ -9,25 +9,20 @@
 namespace JCT\dashboard;
 
 
+use JCT\BaseModel;
 use JCT\Connection;
 use JCT\Database;
 use Exception;
 use JCT\Helper;
 
-class HomeModel
+class HomeModel extends BaseModel
 {
-    private $_DB;
-
-    public $data;
-
     function __construct(Database $db)
     {
-        $this->_DB = $db;
+        parent::__construct($db);
     }
 
     function index()
     {
     }
-
-
 }

@@ -26,8 +26,6 @@ class BaseView
     public $screen_blurb;
     public $screen_content;
 
-    protected $permission_type;
-
     function __construct()
     {
     }

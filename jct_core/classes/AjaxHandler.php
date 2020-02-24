@@ -49,7 +49,7 @@ try
 
     $app_slug = trim($post['app_param']);
 
-    $app = RouteRegistry::get_app($app_slug);
+    $app = RouteRegistry::get_route_properties($app_slug);
     if(isset($app['error']))
         throw new Exception('Invalid app parameter detected.');
 

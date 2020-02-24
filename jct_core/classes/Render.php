@@ -51,38 +51,16 @@ class Render extends Router
         if(!$this->default_connection_ok)
             die();
 
-        $method_name = $this->method_name;
-        $tmp = $this->model->$method_name($this->method_arguments); // generate screen data
+        // generate screen data
+        $method_title = $this->method_title;
+        $method_data = $this->model->$method_title($this->method_arguments);
 
-        if( (is_array($tmp)) && (isset($tmp['error'])) )
-        {
-            $args = [
-                'error_type' => 'Unexpected',
-                'error_message' => $tmp['error'],
-                'requested_uri' => $this->requested_uri
-            ];
-            $this->app_slug = self::DEFAULT_APP_SLUG;
-            $this->module_slug = self::DEFAULT_NON_MODULAR_MODULE_SLUG;
-            $this->destination_slug = self::ERROR_DESTINATION_SLUG;
-            $this->app = RouteRegistry::get_app($this->app_slug);
+        $view_title = $this->model_title . 'View';
+        $view_class_name = substr($this->model_class_name, 0, -5) . 'View';
+        $this->view = new $view_class_name($this->model);
 
-            $this->model_name = $this->app['modules'][$this->module_slug]['destinations'][$this->destination_slug]['model'];
-            $module_dir_name = '';
-            $this->module_dir_name = $module_dir_name;
-            $model_filename = __NAMESPACE__ . '\\' . $this->app_slug . '\\' . $module_dir_name . $this->model_name . 'Model';
-
-            $this->method_name = $this->app['modules'][$this->module_slug]['destinations'][$this->destination_slug]['method'];
-
-            $this->method_arguments = $args;
-            $this->model = new $model_filename($this->default_db_connection);
-            $this->model->$method_name($this->method_arguments); // generate screen data
-        }
-
-        $view_filename = $this->model_name . 'View';
-        $view_filename = __NAMESPACE__ . '\\' . $this->app_slug . '\\' . $this->module_dir_name . $view_filename;
-        $this->view = new $view_filename($this->model, $this->user_permission_for_route);
-        $this->view->$method_name(); // generate screen content
-
+        // generate screen content
+        $this->view->$method_title();
         $this->build_view();
 
         echo ob_get_clean();
@@ -286,7 +264,7 @@ HTML;
         $app_param = array_shift($split);
 
         $locale = (!empty($_SESSION[SessionManager::SESSION_NAME]['user']['prefs'])) ? $_SESSION[SessionManager::SESSION_NAME]['user']['prefs']['locale'] : 'en_GB';
-        $app = RouteRegistry::get_app($app_param);
+        $app = RouteRegistry::get_route_properties($app_param);
 
         if(!empty($app['titles'][$locale]))
             $tab_titles[] = $app['titles'][$locale];
@@ -329,19 +307,18 @@ HTML;
         $h.= '<ul>';
 
         $h.= '<li class="home-link"><a href="' . JCT_URL_ROOT . '"><i class="fa fa-home icon-left"></i><span>' . Localisation::__('JCT Registration') . '</span></a></li>';
+        $h.= '<li class="jct-link"><a href="https://jct.ie">JCT.ie</a></li>';
+        $h.= '<li class="feedback-link"><a href="' . JCT_URL_ROOT . 'Feedback">Feedback</a></li>';
 
         // legacy links vs new platform
         if($this->app_slug == 'site')
         {
-            $h.= '<li class="jct-link"><a href="https://jct.ie">JCT.ie</a></li>';
-            $h.= '<li class="feedback-link"><a href="' . JCT_URL_ROOT . 'Feedback">Feedback</a></li>';
-
             if($this->user_is_logged_in)
                 $h.= '<li class="dashboard-link"><a href="' . JCT_URL_ROOT . 'Dashboard/"><i class="fa fa-cubes icon-left"></i><span>' . Localisation::__('DASHBOARD') . '</span></a></li>';
         }
         else
         {
-            /*if($this->user_is_logged_in)
+            if($this->user_is_logged_in)
             {
                 $log_guid = $_SESSION[SessionManager::SESSION_NAME]['org']['guid'];
 
@@ -362,10 +339,9 @@ HTML;
                 }
 
                 $h.= '<li class="user-link"><a href="' . JCT_URL_ROOT . 'User/"><i class="fa fa-user icon-left"></i><span>' . Localisation::__('USER') . '</span></a></li>';
-                $h.= '<li class="knowledgebase-link"><a href="' . JCT_URL_ROOT . 'Knowledgebase/"><i class="fa fa-info icon-left"></i><span>' . Localisation::__('Knowledgebase') . '</span></a></li>';
                 $h.= '<li class="dashboard-link"><a href="' . JCT_URL_ROOT . 'Dashboard/"><i class="fa fa-cubes icon-left"></i><span>' . Localisation::__('DASHBOARD') . '</span></a></li>';
                 $h.= '<li><a href="' . JCT_URL_ROOT . 'Logout" class="login-link"><i class="fal fa-sign-out icon-left"></i><span>' . Localisation::__('LOG_OUT') . '</span></a></li>';
-            }*/
+            }
         }
 
 
@@ -375,28 +351,17 @@ HTML;
         $h.= '</nav>';
 
         if(($this->app_slug != 'site') && ($this->app_slug != 'dashboard'))
-            $h.= '<div class="app-title-bar">' . $this->app['titles'][$this->user_locale] . '</div>';
+            $h.= '<div class="app-title-bar">' . $this->route_properties['titles'][$this->user_locale] . '</div>';
 
         return $h;
     }
 
     private function get_org_options_for_sys_admin(Database $db)
     {
-        $where_app = '';
-        $props = RouteRegistry::get_app_properties($this->app_slug);
-        if($props['requires_subscription'] === true)
-            $where_app = " AND app_slug = :app_slug ";
-
-        $db->query(" SELECT guid, org_name 
-        FROM org_details 
-        WHERE ( 
-            db_version > 0 AND 
-            guid != 'DATABIZ' AND 
-            guid IN ( SELECT guid FROM org_apps WHERE ( active = 1 {$where_app}) ) 
-        ) 
-        ORDER BY guid ");
-        if($props['requires_subscription'] === true)
-            $db->bind(':app_slug', $this->app_slug);
+        $db->query(" SELECT guid, title  
+        FROM org 
+        WHERE ( type_id = 3 ) 
+        ORDER BY title ");
         $db->execute();
         return $db->fetchAllAssoc('guid', true);
     }
@@ -434,7 +399,7 @@ HTML;
         // nav window
         $ctn .= '<div class="app-nav-window">';
         // title
-        $title = (!isset($this->app['titles'][$this->user_locale])) ? '' : $this->app['titles'][$this->user_locale];
+        $title = (!isset($this->route_properties['titles'][$this->user_locale])) ? '' : $this->route_properties['titles'][$this->user_locale];
         $ctn .= '<a class="app-nav-app-home" href="' . JCT_URL_ROOT . $this->app_slug . '">' . $title . '</a>';
         // nav
         $ctn .= $nav;
@@ -447,11 +412,11 @@ HTML;
 
     private function get_navigation()
     {
-        $module_slug = ($this->app['is_modular']) ? parent::DEFAULT_MODULAR_MODULE_SLUG : parent::DEFAULT_NON_MODULAR_MODULE_SLUG;
+        $module_slug = ($this->route_properties['is_modular']) ? parent::DEFAULT_MODULAR_MODULE_SLUG : parent::DEFAULT_USER_MODULE_SLUG;
 
         // show nothing if application has no internal navigation
 
-        if ($this->app['has_internal_navigation'] === false)
+        if ($this->route_properties['has_internal_navigation'] === false)
             return null;
 
 
@@ -459,9 +424,9 @@ HTML;
 
         if ($this->user_role_id < 3) // dev or admin
         {
-            foreach ($this->app['modules'] as $module_slug => $m)
+            foreach ($this->route_properties['modules'] as $module_slug => $m)
             {
-                $title = (!isset($this->app['modules'][$module_slug]['titles'][$this->user_locale])) ? '' : $this->app['modules'][$module_slug]['titles'][$this->user_locale];
+                $title = (!isset($this->route_properties['modules'][$module_slug]['titles'][$this->user_locale])) ? '' : $this->route_properties['modules'][$module_slug]['titles'][$this->user_locale];
                 $nav_map[$module_slug] = [
                     'title' => $title,
                     'destinations' => []
@@ -469,10 +434,10 @@ HTML;
 
                 foreach($m['destinations'] as $destination_slug => $d)
                 {
-                    if($this->app['modules'][$module_slug]['destinations'][$destination_slug]['show_in_nav'] === false)
+                    if($this->route_properties['modules'][$module_slug]['destinations'][$destination_slug]['show_in_nav'] === false)
                         continue;
 
-                    $title = (!isset($this->app['modules'][$module_slug]['destinations'][$destination_slug]['titles'][$this->user_locale])) ? '' : $this->app['modules'][$module_slug]['destinations'][$destination_slug]['titles'][$this->user_locale];
+                    $title = (!isset($this->route_properties['modules'][$module_slug]['destinations'][$destination_slug]['titles'][$this->user_locale])) ? '' : $this->route_properties['modules'][$module_slug]['destinations'][$destination_slug]['titles'][$this->user_locale];
                     $nav_map[$module_slug]['destinations'][$destination_slug] = $title;
                 }
             }
@@ -481,12 +446,12 @@ HTML;
         {
             $filter = $this->get_user_modules_and_models_for_app($this->org_db_connection, $module_slug);
             $nav_map = [];
-            foreach ($this->app['modules'] as $module_slug => $m)
+            foreach ($this->route_properties['modules'] as $module_slug => $m)
             {
                 if (!array_key_exists($module_slug, $filter))
                     continue;
 
-                $title = (!isset($this->app['modules'][$module_slug]['titles'][$this->user_locale])) ? '' : $this->app['modules'][$module_slug]['titles'][$this->user_locale];
+                $title = (!isset($this->route_properties['modules'][$module_slug]['titles'][$this->user_locale])) ? '' : $this->route_properties['modules'][$module_slug]['titles'][$this->user_locale];
                 $nav_map[$module_slug] = [
                     'title' => $title,
                     'destinations' => []
@@ -494,13 +459,13 @@ HTML;
 
                 foreach ($filter[$module_slug] as $destination_slug)
                 {
-                    if (!in_array($destination_slug, $this->app['modules'][$module_slug]['destinations']))
+                    if (!in_array($destination_slug, $this->route_properties['modules'][$module_slug]['destinations']))
                         continue;
 
-                    if($this->app['modules'][$module_slug]['destinations'][$destination_slug]['show_in_nav'] === false)
+                    if($this->route_properties['modules'][$module_slug]['destinations'][$destination_slug]['show_in_nav'] === false)
                         continue;
 
-                    $title = (!isset($this->app['modules'][$module_slug]['destinations'][$destination_slug]['titles'][$this->user_locale])) ? '' : $this->app['modules'][$module_slug]['destinations'][$destination_slug]['titles'][$this->user_locale];
+                    $title = (!isset($this->route_properties['modules'][$module_slug]['destinations'][$destination_slug]['titles'][$this->user_locale])) ? '' : $this->route_properties['modules'][$module_slug]['destinations'][$destination_slug]['titles'][$this->user_locale];
                     $nav_map[$module_slug]['destinations'][$destination_slug] = $title;
                 }
             }
@@ -514,9 +479,9 @@ HTML;
 
         $h = '';
         $app_root_url = JCT_URL_ROOT . $this->app_slug . '/';
-        if ($this->app['is_modular'])
+        if ($this->route_properties['is_modular'])
         {
-            $current_module = ($this->module_slug == self::DEFAULT_MODULAR_MODULE_SLUG) ? 'current-app-nav' : '';
+            $current_module = ($this->user_module_slug == self::DEFAULT_MODULAR_MODULE_SLUG) ? 'current-app-nav' : '';
             $h .= '<ul class="app-nav ' . $current_module . '" data-layer="' . self::DEFAULT_MODULAR_MODULE_SLUG . '">';
 
             // start with home nav
@@ -549,7 +514,7 @@ HTML;
                 if($module_slug === self::DEFAULT_MODULAR_MODULE_SLUG)
                     continue;
 
-                $current_module = ($this->module_slug == $module_slug) ? 'current-app-nav' : '';
+                $current_module = ($this->user_module_slug == $module_slug) ? 'current-app-nav' : '';
                 $h .= '<ul class="app-nav ' . $current_module . '" data-layer="' . $module_slug . '">';
                 $h .= '<li data-get="' . self::DEFAULT_MODULAR_MODULE_SLUG . '" class="app-nav-back-link"><span>' . Localisation::__('Back') . '</span></li>';
 
@@ -568,7 +533,7 @@ HTML;
         {
             // just need to show destinations for the only module...
 
-            $current_module = ($this->module_slug == $module_slug) ? 'current-app-nav' : '';
+            $current_module = ($this->user_module_slug == $module_slug) ? 'current-app-nav' : '';
             $h .= '<ul class="app-nav ' . $current_module . '" data-layer="' . $module_slug . '">';
             foreach ($nav_map as $module_slug => $module)
             {
@@ -590,7 +555,7 @@ HTML;
     private function get_user_modules_and_models_for_app(Database $db, $default_module_slug)
     {
         $db->query(" SELECT module, model FROM app_screen_user WHERE ( id = :id ) ");
-        $db->bind(':id', $this->user_id);
+        $db->bind(':id', $this->person_guid);
         $db->execute();
         $tmp = $db->fetchAllAssoc();
 
@@ -636,22 +601,12 @@ HTML;
                         </ul> 
                     </div>
                     
-                    <div class="support footer-segment"> 
-                        <h6>Remote Support</h6>
-                        <ul class="support-links"> 
-                            <li><a href="$anydesk_link">AnyDesk</a></li>
-                            <li><a href="$teamviewer_link">Teamviewer (Win)</a></li>
-                            <li><a href="$teamviewer_ios_link">Teamviewer (iOS)</a></li>
-                        </ul> 
-                    </div>
-                    
                     <div class="company-info"> 
-                        <h4>DataBiz Solutions</h4>
-                        <p class="address">Árd Iosef, Gort Uí Lochlainn, Maigh Cuilinn, Co. na Gaillimhe</p>
-                        <p class="vat">VAT No. IE9569029E</p>
+                        <h4>JCT Registration</h4>
+                        <p class="address">Monaghan Education Centre, Knockaconny, Armagh Road, Co. Monaghan,  H18 E980</p>
                         <ul class="contact-links"> 
-                            <li><span>T</span>+353 91 556 755</li>
-                            <li><span>E</span><a href="mailto:info@databizsolutions.ie">info@databizsolutions.ie</a></li>
+                            <li><span>T</span>+353 47 74 008</li>
+                            <li><span>E</span><a href="mailto:info@jct.ie">info@jct.ie</a></li>
                         </ul> 
                     </div>
                     

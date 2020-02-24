@@ -32,10 +32,11 @@ define('JCT_PATH_CORE_VENDORS', JCT_PATH_CORE . 'vendors' . JCT_DE);
 define('JCT_PATH_MEDIA', $root_path . JCT_DE . 'jct_media' . JCT_DE);
 
 define('JCT_PATH_APPS', $root_path . JCT_DE . 'jct_apps' . JCT_DE);
-define('JCT_PATH_BACKUPS', JCT_PATH_ROOT . 'jct_backups' . JCT_DE);
-define('JCT_PATH_GLOBAL_APPS', JCT_PATH_CORE . 'global_apps' . JCT_DE);
 define('JCT_PATH_ASSETS', JCT_PATH_APPS . 'assets' . JCT_DE);
-define('JCT_PATH_TEMPLATES', JCT_PATH_ASSETS . 'templates' . JCT_DE);
+
+define('JCT_PATH_JCT_ADMIN', JCT_PATH_APPS . 'admin_jct' . JCT_DE);
+define('JCT_PATH_SCH_ADMIN', JCT_PATH_APPS . 'admin_school' . JCT_DE);
+
 
 /**
  * Absolute URLs
@@ -47,7 +48,6 @@ define('JCT_URL_HOST', JCT_URL_SCHEME . $_SERVER['HTTP_HOST'] . '/');
 $tmp = (!empty($installation_dir)) ? $installation_dir . '/' : '';
 define('JCT_URL_ROOT', JCT_URL_HOST . $tmp);
 
-define('JCT_URL_BACKUPS', JCT_URL_ROOT . 'jct_backups/');
 define('JCT_URL_CORE', JCT_URL_ROOT . 'jct_core/');
 define('JCT_URL_CORE_VENDORS', JCT_URL_CORE . 'vendors/');
 
@@ -56,7 +56,9 @@ define('JCT_URL_MEDIA', JCT_URL_ROOT . 'jct_media/');
 define('JCT_URL_APPS', JCT_URL_ROOT . 'jct_apps/');
 define('JCT_URL_APP_SITE', JCT_URL_ROOT);
 define('JCT_URL_ASSETS', JCT_URL_APPS . 'assets/');
-define('JCT_URL_TEMPLATES', JCT_URL_APPS . 'templates/');
+
+define('JCT_URL_JCT_ADMIN', JCT_URL_APPS . 'admin_jct/');
+define('JCT_URL_SCH_ADMIN', JCT_URL_APPS . 'admin_sch/');
 
 
 /**
@@ -86,9 +88,9 @@ define('JCT_ACTIVITY_LIMIT', 1);
 /**
  * DataBiz Contact details
  */
-define('JCT_EMAIL_TEST', 'info@databizsolutions.ie');
-define('JCT_EMAIL_SUPPORT', 'info@databizsolutions.ie');
-define('JCT_EMAIL_QUERY', 'info@databizsolutions.ie');
+define('JCT_EMAIL_TEST', 'info@jct.ie');
+define('JCT_EMAIL_SUPPORT', 'info@jct.ie');
+define('JCT_EMAIL_QUERY', 'info@jct.ie');
 define('JCT_PHONE_TEST', '+353 91 556 755');
 define('JCT_PHONE_SUPPORT', '+353 91 556 755');
 define('JCT_PHONE_QUERY', '+353 91 556 755');
@@ -100,10 +102,6 @@ define('JCT_PHONE_QUERY', '+353 91 556 755');
  * fetch what we want via the meta value, so...
  */
 
-$tmp = serialize([
-    'general' => 'General',
-    'support' => 'Support'
-]);
 define('JCT_DOCUMENT_TYPES', $tmp);
 define('JCT_DOCUMENT_PATH', JCT_PATH_ROOT . 'filestorage' . JCT_DE);
 define('JCT_DOCUMENT_URL', JCT_URL_ROOT . 'filestorage/');

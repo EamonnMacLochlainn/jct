@@ -42,85 +42,22 @@ class HelpView extends BaseView implements ViewInterface
         <div class="light-panel clearfix">
         
             <div class="preamble">
-                <p style="text-align: left">Your email address and/or contact number will have been registered with DataBiz Solutions 
-                by your School in preparation for setting up your account.</p>
-                <p style="text-align: left">Please request a Password by clicking on 'Sign Up', and provide your email address and contact number. 
-                If either are recognised, a password will be emailed to you (you can change that password to something more memorable later).</p>
-                <!--<p style="text-align: left">Should your details not be recognised, you should contact your School to have them register you.</p>-->
+                <p style="text-align: justify">This website is intended to facilitate the registration of teachers to receive CPD training. Registration should be carried out by a single designated individual per school.</p>
+                <p style="text-align: justify">All teachers within a school should be entered into the database (whether or not they intend to receive CPD at this time) by that designated registrar, along with their taught subjects, to enable the proper planning and coordination of training events.</p>
+                <p style="text-align: justify">Only one login is provided per school and should be kept by the school's designated registrar. Each school's credentials are communicated to the school directly from the JCT offices by letter.</p>
+                
+                <br/>
+                <h4>Registration</h4>
+                <p style="text-align: justify">As different event types may have differing requirements for registration, any instructions that may be required will be detailed alongside that event's registration form.</p>
+                
+                <br/>
+                <h4>Privacy</h4>
+                <p style="text-align: justify">Registration and attendance information for any individual teacher will be visible to their school's registrar and to relevant JCT officials. Personal details are not collected. For further details on privacy issues, please see our <a href="privacy">Privacy & GDPR</a> page.</p>
+
             </div>
             
-            <dl class="faqs">
-                <dt>My email / contact number is not recognised<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    <p>Make sure that the contact details you are providing are the same as those you originally provided to your School. 
-                    Check with your School to see what details they have on record for you - you may have changed your email address recently, for example.</p>
-                    <!--<p>They can correct any information we have on record for you, or add you as a user.</p>-->
-                </dd>
-                <dt>My email address and Password are correct, but I can't log in<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    In almost every case, this is due to one of two factors:
-                    <br>
-                    <ul>
-                        <li>You are trying to login from a place of work, where a security firewall is preventing your login details from being submitted.</li>
-                        <li>You are trying to login using an older device, or an out-of-date browser. In the case of the latter, please note that we will 
-                        not be extending support to such software in the future. 
-                        You can (and should!) <a target="_blank" href="http://browsehappy.com/">update your browser</a> as soon as possible.</li>
-                    </ul>
-                </dd>
-                <!--<dt>I never provided my School with my email address or mobile number<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    Your School's secretary / administrator will be able to take your contact details and add you as a user, at which point you can 
-                    use our login form to request a password.
-                </dd>-->
-                <dt>I never received my email<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    <p>While we receive the contact details for all Guardians recorded by your School for each child, by default we only initially send emails to those 
-                        signified as a child's primary contact person. Remaining guardians can be included simply by logging in, thereby activating their account.</p>
-                    <p>If you have already activated your account, but are still not receiving any emails from our system, try the following steps:</p>
-                    <ol>
-                        <li>Check your Spam / Trash folder - if the emails are there, make sure to mark them as 'not spam' to avoid the same happening in the future.</li>
-                        <li>Check the spam settings for your email client (e.g. Outlook, GMail, etc.). Make sure that emails it thinks are spam are not automatically deleted!</li>
-                        <li>Check that the email address you use to log in is correctly spelled.</li>
-                    </ol>
-                </dd>
-                <dt>I've forgotten my Password<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    That's not a problem - just use our login form to request a new one.
-                </dd>
-                <dt>Who else knows my Password?<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    No one. Your password is stored in a one-way encrypted format, so even DataBiz Solutions employees cannot know what it is. 
-                    So, if you forget your password, just request a new one.
-                </dd>
-                <dt>How can I change my Password?<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    Once you log in, click on the 'User' link (top right of your screen) to update your password.
-                </dd>
-                <dt>Can I change my email?<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    Once you log in, click on the 'User' link (top right of your screen) to update your email address.
-                </dd>
-                <dt>What is my contact information used for?<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    <p>DataBiz Solutions has only two purposes for your contact information:</p>
-                    <ul>
-                        <li>To match you with your User Account.</li>
-                        <li>To allow your School to contact you with appropriate email or SMS notifications.</li>
-                    </ul>
-                    We do not use your information for any form of advertising, and we do not share your information. 
-                    Your details and those of your family members are only available to us, your School, and you.
-                </dd>
-                <dt>Who can see my family's information?<i class="fa fa-chevron-down faq-expand" aria-hidden="true"></i></dt>
-                <dd>
-                    <ol>
-                        <li>You, and any other persons identified by your School as Guardians for your children.</li>
-                        <li>Your School's staff members, should the School administrators have given them access and permission.</li>
-                        <li>Appropriate DataBiz Solutions employees.</li>
-                    </ol>
-                </dd>
-            </dl>
-            
             <div class="contact">
+                <br/>
                 <p>Still need help?</p>
                 <a class="regular" href="contact-us">Contact Us</a>
             </div>

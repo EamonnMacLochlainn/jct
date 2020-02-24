@@ -57,7 +57,7 @@ class SessionManager
     function init_session_args()
     {
         $this->session_args = [
-            'user' => [],
+            'person' => [],
             'org' => []
         ];
     }
@@ -65,10 +65,13 @@ class SessionManager
 
 
 
-    function clear_user_session_record($user_id)
+    function clear_user_session_record($person_guid)
     {
         $db = $this->_DB;
-        $db->query(" UPDATE user SET token = NULL, session_id = NULL, cookie_created = NULL, cookie_expiry = NULL WHERE ( id = {$user_id} ) ");
+        $db->query(" UPDATE person_cookie SET 
+        token = NULL, session_id = NULL, created = NULL, expiry = NULL 
+        WHERE ( person_guid = :person_guid ) ");
+        $db->bind(':person_guid', $person_guid);
         $db->execute();
     }
 
@@ -87,9 +90,9 @@ class SessionManager
         $this->cookie_expiry_obj->modify('+ ' . $this::COOKIE_EXPIRY);
     }
 
-    function create_cookie_value($user_id, $guid, $role_id, $session_id, $token)
+    function create_cookie_value($person_guid, $org_guid, $org_type_id, $org_sub_type_id, $role_id, $session_id, $token)
     {
-        $str = $user_id . '|' . $guid . '|' . $role_id . '|' . $token . '|' . $session_id;
+        $str = $person_guid . '|' . $org_guid . '|' . $org_type_id . '|' . $org_sub_type_id . '|' . $role_id . '|' . $token . '|' . $session_id;
         return Cryptor::Encrypt($str);
     }
 
@@ -103,15 +106,17 @@ class SessionManager
 
             $split = explode('|',$raw);
 
-            if(count($split) !== 5)
+            if(count($split) !== 7)
                 throw new Exception('Incomplete Cookie values.');
 
             return [
-                'user_id' => $split[0],
+                'person_guid' => $split[0],
                 'org_guid' => $split[1],
-                'role_id' => $split[2],
-                'token' => $split[3],
-                'session_id' => $split[4]
+                'org_type_id' => $split[2],
+                'org_sub_type_id' => $split[3],
+                'role_id' => $split[4],
+                'token' => $split[5],
+                'session_id' => $split[6]
             ];
         }
         catch(Exception $e)
@@ -136,12 +141,28 @@ class SessionManager
         return $tmp;
     }
 
-    function save_user_session_record($user_id, $token)
+    function save_user_session_record($person_guid, $token)
     {
         $db = $this->_DB;
 
-        $db->query(" UPDATE user SET 
-        token = :token, session_id = :session_id, cookie_created = NOW(), cookie_expiry = :expiry WHERE ( id = {$user_id} ) ");
+        $db->query(" SELECT tbl_id FROM person_cookie WHERE ( person_guid = :person_guid ) ");
+        $db->bind(':person_guid', $person_guid);
+        $db->execute();
+        $x = intval($db->fetchSingleColumn());
+
+        if($x === 0)
+        {
+            $db->query(" INSERT INTO person_cookie 
+            ( person_guid, token, session_id, created, expiry ) VALUES 
+            ( :person_guid, :token, :session_id, NOW(), :expiry )" );
+        }
+        else
+        {
+            $db->query(" UPDATE person_cookie SET 
+            token = :token, session_id = :session_id, created = NOW(), expiry = :expiry 
+            WHERE ( person_guid = :person_guid ) ");
+        }
+        $db->bind(':person_guid', $person_guid);
         $db->bind(':token', $token);
         $db->bind(':session_id', $this->session_id);
         $db->bind(':expiry', $this->cookie_expiry_obj->format('Y-m-d H:i:s'));
@@ -150,7 +171,7 @@ class SessionManager
 
     function check_current_session_is_valid()
     {
-        $user_id = 0;
+        $person_guid = 0;
         try
         {
             if(!isset($_COOKIE[self::SESSION_NAME]))
@@ -158,8 +179,8 @@ class SessionManager
 
             $c = $this->get_cookie_values($_COOKIE[self::SESSION_NAME]);
 
-            if(empty($c['user_id']))
-                throw new Exception('User\'s ID missing from COOKIE.');
+            if(empty($c['person_guid']))
+                throw new Exception('User\'s GUID missing from COOKIE.');
             if(empty($c['org_guid']))
                 throw new Exception('User\'s Organisation GUID missing from COOKIE.');
             if(empty($c['role_id']))
@@ -170,8 +191,8 @@ class SessionManager
                 throw new Exception('SESSION ID missing from COOKIE.');
 
             $db = $this->_DB;
-            $db->query(" SELECT session_id, cookie_expiry FROM user WHERE ( id = :user_id ) ");
-            $db->bind(':user_id', $c['user_id']);
+            $db->query(" SELECT session_id, expiry FROM person_cookie WHERE ( person_guid = :person_guid ) ");
+            $db->bind(':person_guid', $c['person_guid']);
             $db->execute();
             $tmp = $db->fetchSingleAssoc();
 
@@ -179,7 +200,7 @@ class SessionManager
                 throw new Exception('User login not recorded.');
 
 
-            $user_id = $c['user_id'];
+            $person_guid = $c['person_guid'];
             $stored_session_id = $tmp['session_id'];
             $stored_expiry = DateTime::createFromFormat('Y-m-d H:i:s', $tmp['expiry'], new DateTimeZone(self::SESSION_TIMEZONE));
 
@@ -195,57 +216,65 @@ class SessionManager
 
             $s = $_SESSION[self::SESSION_NAME];
 
-            if(empty($s['user']['id']))
+            if(empty($s['person']['guid']))
                 throw new Exception('User\'s ID missing from SESSION.');
+            if(empty($s['person']['role_id']))
+                throw new Exception('User\'s Role ID missing from SESSION.');
             if(empty($s['org']['guid']))
                 throw new Exception('User\'s Organisation GUID missing from SESSION.');
-            if(empty($s['user']['role_id']))
-                throw new Exception('User\'s Role ID missing from SESSION.');
 
             if($stored_session_id != $this->session_id)
                 throw new Exception('SESSION ID does not match stored value.');
 
-            if($c['user_id'] != $s['user']['id'])
+            if($c['person_guid'] != $s['person']['guid'])
                 throw new Exception('COOKIE User ID does not match SESSION value.');
+            if($c['role_id'] != $s['person']['role_id'])
+                throw new Exception('COOKIE User Role ID does not match SESSION value.');
             if($c['org_guid'] != $s['org']['guid'])
                 throw new Exception('COOKIE Organisation GUID does not match SESSION value.');
-            if($c['role_id'] != $s['user']['role_id'])
-                throw new Exception('COOKIE User Role ID does not match SESSION value.');
 
             return ['success'=>1];
         }
         catch(Exception $e)
         {
-            return ['error'=>$e->getMessage(), 'user_id'=>$user_id];
+            return ['error'=>$e->getMessage(), 'person_guid'=>$person_guid];
         }
     }
 
     function get_available_user_parameters()
     {
-        $user_id = null;
+        $person_guid = null;
         $user_role_id = null;
         $org_guid = null;
+        $org_type_id = null;
+        $org_sub_type_id = null;
 
         if(!empty($_COOKIE[self::SESSION_NAME]))
         {
             $c = $this->get_cookie_values($_COOKIE[self::SESSION_NAME]);
-            $user_id = (!empty($c['user_id'])) ? $c['user_id'] : null;
+            $person_guid = (!empty($c['person_guid'])) ? $c['person_guid'] : null;
             $user_role_id = (!empty($c['role_id'])) ? $c['role_id'] : null;
             $org_guid = (!empty($c['org_guid'])) ? $c['org_guid'] : null;
+            $org_type_id = (!empty($c['org_type_id'])) ? $c['org_type_id'] : null;
+            $org_sub_type_id = (!empty($c['org_sub_type_id'])) ? $c['org_sub_type_id'] : null;
         }
 
         if(!empty($_SESSION[self::SESSION_NAME]))
         {
             $s = $_SESSION[self::SESSION_NAME];
-            $user_id = (!empty($s['user']['id'])) ? $s['user']['id'] : $user_id;
+            $person_guid = (!empty($s['person']['guid'])) ? $s['person']['guid'] : $person_guid;
             $user_role_id = (!empty($s['user']['role_id'])) ? $s['user']['role_id'] : $user_role_id;
             $org_guid = (!empty($s['org']['guid'])) ? $s['org']['guid'] : $org_guid;
+            $org_type_id = (!empty($s['org']['type_id'])) ? $s['org']['type_id'] : $org_type_id;
+            $org_sub_type_id = (!empty($s['org']['sub_type_id'])) ? $s['org']['sub_type_id'] : $org_sub_type_id;
         }
 
         return [
-            'id' => $user_id,
+            'person_guid' => $person_guid,
             'role_id' => $user_role_id,
-            'org_guid' => $org_guid
+            'org_guid' => $org_guid,
+            'org_type_id' => $org_type_id,
+            'org_sub_type_id' => $org_sub_type_id
         ];
     }
 
@@ -254,8 +283,8 @@ class SessionManager
         $cookie_values = $this->get_cookie_values($_COOKIE[self::SESSION_NAME]);
 
         $db = $this->_DB;
-        $db->query(" UPDATE user SET cookie_expiry = :expiry WHERE id = :user_id ");
-        $db->bind(':user_id', $cookie_values['user_id']);
+        $db->query(" UPDATE person_cookie SET expiry = :expiry WHERE person_guid = :person_guid ");
+        $db->bind(':person_guid', $cookie_values['person_guid']);
         $db->bind(':expiry', $this->cookie_expiry_obj->format('Y-m-d H:i:s'));
         $db->execute();
     }

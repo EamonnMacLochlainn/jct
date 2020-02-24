@@ -75,12 +75,12 @@ input[type="submit"] {
 
 @media (min-width: 768px)
 {
-    label.contact-number {
-        display: inline-block;
+    label {
+        max-width: 14em;
         margin-right: 1rem;
     }
-    label.contact-by-phone {
-        display: inline-block;
+    label.subject, label.message {
+        max-width: 100%;
     }
 
     .g-recaptcha > div {

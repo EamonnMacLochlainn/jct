@@ -57,7 +57,7 @@ class HomeController
 
             $username = (!empty($args['username'])) ? trim(strtolower($args['username'])) : null;
             $password = (!empty($args['password'])) ? trim($args['password']) : null;
-            $set_org_id = (!empty($args['org_id'])) ? intval($args['org_id']) : 0;
+            $set_org_guid = (!empty($args['org_guid'])) ? strtolower($args['org_guid']) : 0;
             $set_org = null;
             $set_role_id = (!empty($args['role_id'])) ? intval($args['role_id']) : 0;
 
@@ -80,60 +80,60 @@ class HomeController
             if(isset($tmp['error']))
                 throw new Exception($tmp['error']);
 
-            $user_id = $tmp['user_id'];
+            $person_guid = $tmp['person_guid'];
 
 
 
 
             // check user orgs
 
-            $user_orgs = $this->model->get_user_orgs($user_id);
+            $user_orgs = $this->model->get_user_orgs($person_guid);
             $num_user_orgs = count($user_orgs);
 
             if($num_user_orgs < 1)
                 throw new Exception('This account is not currently registered for any Organisation.');
             elseif($num_user_orgs == 1)
             {
-                if(empty($set_org_id))
+                if(empty($set_org_guid))
                 {
-                    $set_org_id = $user_orgs[0]['id'];
+                    $set_org_guid = $user_orgs[0]['guid'];
                     $set_org = $user_orgs[0];
                 }
                 else
                 {
-                    if($set_org_id != intval($user_orgs[0]['id']))
-                        return ['error'=> 'You appear to be logging in for an Organisation you are not registered to.'];
+                    if($set_org_guid !== $user_orgs[0]['guid'])
+                        return ['error'=> 'You appear to be logging in for an Organisation you are not registered to. (1)'];
                 }
             }
             else
             {
-                if(empty($set_org_id))
+                if(empty($set_org_guid))
                     return ['org_choice'=>$user_orgs];
                 else
                 {
-                    $k = null;
+                    $k = -1;
                     foreach($user_orgs as $i => $org)
                     {
-                        if($set_org_id == intval($org['id']))
+                        if($set_org_guid == $org['guid'])
                         {
                             $set_org = $org;
                             $k = $i;
                         }
                     }
 
-                    if($k == null)
-                        return ['error'=> 'You appear to be logging in for an Organisation you are not registered to. ' . json_encode($user_orgs)];
+                    if($k == -1)
+                        return ['error'=> 'You appear to be logging in for an Organisation you are not registered to. (2)'];
                 }
             }
 
-            if(empty($set_org_id))
+            if(empty($set_org_guid))
                 throw new Exception('User logging in without a set Organisation.');
 
 
             // user roles
 
 
-            $user_roles = $this->model->get_user_roles_for_org($user_id, $set_org_id);
+            $user_roles = $this->model->get_user_roles_for_org($person_guid, $set_org_guid);
             $num_user_org_roles = count($user_roles);
 
             if($num_user_org_roles < 1)
@@ -174,7 +174,7 @@ class HomeController
 
             // user preferences
 
-            $prefs = $this->model->get_user_settings_in_org($user_id, $set_org_id);
+            $prefs = $this->model->get_user_settings_in_org($person_guid, $set_org_guid);
             $prefs['locale'] = (empty($prefs['locale'])) ? 'en_GB' : $prefs['locale'];
 
 
@@ -183,22 +183,24 @@ class HomeController
             $session_manager = new SessionManager($this->model->get_connection());
             $session_manager->set_session_id($session_id);
 
-            $session_manager->clear_user_session_record($user_id);
+            $session_manager->clear_user_session_record($person_guid);
             $session_manager->clear_user_from_session_globals();
 
             $cookie_token = Helper::generate_random_string(32);
             $cookie_value = $session_manager->create_cookie_value(
-                $user_id,
+                $person_guid,
                 $set_org['guid'],
+                $set_org['type_id'],
+                $set_org['sub_type_id'],
                 $set_role_id,
                 $session_id,
                 $cookie_token
             );
 
             $session_manager->init_session_args();
-            $session_manager->session_args['user']['id'] = $user_id;
-            $session_manager->session_args['user']['role_id'] = $set_role_id;
-            $session_manager->session_args['user']['prefs'] = $prefs;
+            $session_manager->session_args['person']['guid'] = $person_guid;
+            $session_manager->session_args['person']['role_id'] = $set_role_id;
+            $session_manager->session_args['person']['prefs'] = $prefs;
             $session_manager->session_args['org']['guid'] = $set_org['guid'];
             $session_manager->session_args['org']['type_id'] = $set_org['type_id'];
             $session_manager->session_args['org']['sub_type_id'] = $set_org['sub_type_id'];
@@ -208,7 +210,7 @@ class HomeController
             if($tmp === false)
                 throw new Exception('Login Cookie could not set. Login is not possible.');
 
-            $session_manager->save_user_session_record($user_id, $cookie_token);
+            $session_manager->save_user_session_record($person_guid, $cookie_token);
 
             $resp = [
                 'success'=>1,
@@ -224,7 +226,7 @@ class HomeController
                         $redirect = substr($redirect, 0, -1);
 
                     $redirect_user_id = (!empty($args['redirect_user_id'])) ? intval(base64_decode($args['redirect_user_id'])) : 0;
-                    $redirect = ($redirect_user_id === $user_id) ? $redirect : 'Dashboard';
+                    $redirect = ($redirect_user_id === $person_guid) ? $redirect : 'Dashboard';
 
                     $resp['redirect'] = $redirect;
                 }
@@ -242,7 +244,7 @@ class HomeController
 
 
 
-    function request_password($args)
+    /*function request_password($args)
     {
         try
         {
@@ -552,5 +554,5 @@ EOS;
             unset($_SESSION['databiz']);
             return ['error'=>$e->getMessage()];
         }
-    }
+    }*/
 }
