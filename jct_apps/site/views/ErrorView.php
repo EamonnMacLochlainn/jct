@@ -10,6 +10,7 @@ namespace JCT\site;
 
 
 use JCT\BaseView;
+use JCT\Helper;
 use JCT\ViewInterface;
 
 class ErrorView extends BaseView implements ViewInterface

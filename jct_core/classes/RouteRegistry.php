@@ -100,8 +100,15 @@ class RouteRegistry
                     'titles' => ['en_GB'=>'Dashboard','ga_IE'=>'Dashboard'],
                     'user_modules' => [
                         'admin' => [
-                            'role_ids' => [],
-                            'destinations' => [],
+                            'role_ids' => [1,2],
+                            'destinations' => [
+                                'home' => [
+                                    'titles'=>['en_GB'=>'Home','ga_IE'=>'Home'],
+                                    'model'=>'Home',
+                                    'method'=>'index',
+                                    'show_in_nav' => false
+                                ]
+                            ],
                             'destination_aliases' => []
                         ],
                         'team_leader' => [

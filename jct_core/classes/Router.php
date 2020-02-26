@@ -46,6 +46,9 @@ class Router extends User
     const ERR_INVALID_APP_SLUG = 5;
     const ERR_INVALID_CLASS_NAME = 6;
     const ERR_INVALID_METHOD_NAME = 7;
+    const ERR_INVALID_DESTINATION = 8;
+    const ERR_INVALID_ORG_SECTION = 9;
+    const ERR_INVALID_USER_MODULE = 9;
 
 
 
@@ -133,6 +136,18 @@ class Router extends User
                 $err['error_type'] = 'routing';
                 $err['error_msg'] = 'Invalid Method name';
                 break;
+            case(self::ERR_INVALID_DESTINATION):
+                $err['error_type'] = 'routing';
+                $err['error_msg'] = 'Invalid Destination';
+                break;
+            case(self::ERR_INVALID_ORG_SECTION):
+                $err['error_type'] = 'routing';
+                $err['error_msg'] = 'Invalid Org Section';
+                break;
+            case(self::ERR_INVALID_USER_MODULE):
+                $err['error_type'] = 'routing';
+                $err['error_msg'] = 'Invalid User Module';
+                break;
         }
         $err['error_msg'] = (!empty($args['error_msg'])) ? $args['error_msg'] : $err['error_msg'];
         $err['error_msg'] = base64_encode($err['error_msg']);
@@ -194,46 +209,74 @@ class Router extends User
         }
 
 
-        // determine org section
-        // if org_section segment is unrecognised, put it back and set that property to default (all)
-        $org_section_slug = array_shift($uri_parts);
-        if(!array_key_exists($org_section_slug, $this->route_properties['org_sections']))
+        // if only one uri part is submitted (e.g. /help, /contact, etc.), then we can
+        // set the default properties for the 'site' app
+        if(count($uri_parts) < 2)
         {
-            array_unshift($uri_parts, $org_section_slug);
-            $org_section_slug = self::DEFAULT_ORG_SECTION_SLUG;
+            $this->org_section_slug = 'all';
+            $this->user_module_slug = 'all';
         }
-        $this->org_section_slug = $org_section_slug;
-
-
-        // determine user module
-        // if user_module segment is unrecognised, put it back and set that property to default (all)
-        $user_module_slug = array_shift($uri_parts);
-        if(!array_key_exists($user_module_slug, $this->route_properties['org_sections'][$org_section_slug]['user_modules']))
+        else
         {
-            array_unshift($uri_parts, $user_module_slug);
-            $user_module_slug = self::DEFAULT_USER_MODULE_SLUG;
-        }
-        $this->user_module_slug = $user_module_slug;
+            // if the app is not accessed per org type, we can set the org_section_slug to 'all'
+            if($this->route_properties['accessed_per_org_type'] === false)
+                $this->org_section_slug = 'all';
+            else
+            {
+                $org_section_slug = array_shift($uri_parts);
+                if(!array_key_exists($org_section_slug, $this->route_properties['org_sections']))
+                {
+                    $this->set_to_error(self::ERR_INVALID_ORG_SECTION);
+                    return true;
+                }
+                $this->org_section_slug = $org_section_slug;
+            }
 
+            // if the app is not accessed per user role, we can set the user_module_slug to 'all'
+            if($this->route_properties['accessed_per_role'] === false)
+                $this->user_module_slug = 'all';
+            else
+            {
+                $user_module_slug = array_shift($uri_parts);
+                if(!array_key_exists($user_module_slug, $this->route_properties['org_sections'][$this->org_section_slug]['user_modules']))
+                {
+                    $this->set_to_error(self::ERR_INVALID_USER_MODULE);
+                    return true;
+                }
+                $this->user_module_slug = $user_module_slug;
+            }
+        }
+
+        // last checks before destination
+        if(!isset($this->route_properties['org_sections'][$this->org_section_slug]))
+        {
+            $this->set_to_error(self::ERR_INVALID_ORG_SECTION);
+            return true;
+        }
+        if(!isset($this->route_properties['org_sections'][$this->org_section_slug]['user_modules'][$this->user_module_slug]))
+        {
+            $this->set_to_error(self::ERR_INVALID_USER_MODULE);
+            return true;
+        }
 
         // determine destination
         // if destination segment is unrecognised, put it back and set that property to default (home)
         $destination_slug = array_shift($uri_parts);
-        if(!array_key_exists($destination_slug, $this->route_properties['org_sections'][$org_section_slug]['user_modules'][$user_module_slug]['destinations']))
+        if(!array_key_exists($destination_slug, $this->route_properties['org_sections'][$this->org_section_slug]['user_modules'][$this->user_module_slug]['destinations']))
         {
-            array_unshift($uri_parts, $destination_slug);
-            $destination_slug = self::DEFAULT_DESTINATION_SLUG;
+            $this->set_to_error(self::ERR_INVALID_DESTINATION);
+            return true;
         }
         $this->destination_slug = $destination_slug;
 
 
         // determine model & method
         // these are not set from the URI, but are properties of the destination
-        $this->model_title = $this->route_properties['org_sections'][$org_section_slug]['user_modules'][$user_module_slug]['destinations'][$this->destination_slug]['model'];
-        $this->method_title = $this->route_properties['org_sections'][$org_section_slug]['user_modules'][$user_module_slug]['destinations'][$this->destination_slug]['method'];
+        $this->model_title = $this->route_properties['org_sections'][$this->org_section_slug]['user_modules'][$this->user_module_slug]['destinations'][$this->destination_slug]['model'];
+        $this->method_title = $this->route_properties['org_sections'][$this->org_section_slug]['user_modules'][$this->user_module_slug]['destinations'][$this->destination_slug]['method'];
 
 
-        // store remaining URI parameters as method arguments
+        // store remaining URI segments as method arguments
         $args = [];
         if(!empty($uri_parts))
         {
