@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="d8152c63-f973-46cb-ba21-c546bdf4563c" name="Default" comment="updated AjaxHandler and Autoloader for new site structure">
+    <list default="true" id="d8152c63-f973-46cb-ba21-c546bdf4563c" name="Default" comment="updated Router for proper Error handling">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/site/models/ErrorModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/models/ErrorModel.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/jct_apps/site/views/ErrorView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/views/ErrorView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/models/HomeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/models/HomeModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/views/HomeView.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/jct/dashboard/admin/views/HomeView.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/assets/js/home.js" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/assets/js/home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/controllers/HomeController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_apps/site/models/HomeModel.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_apps/site/models/HomeModel.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/jct_core/classes/Render.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Render.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/classes/RouteRegistry.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/RouteRegistry.php" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/jct_core/classes/Router.php" beforeDir="false" afterPath="$PROJECT_DIR$/jct_core/classes/Router.php" afterDir="false" />
     </list>
@@ -152,7 +156,7 @@
       <workItem from="1581855224107" duration="12649000" />
       <workItem from="1582191402451" duration="128000" />
       <workItem from="1582535606994" duration="17293000" />
-      <workItem from="1582713695165" duration="2630000" />
+      <workItem from="1582713695165" duration="6900000" />
     </task>
     <task id="LOCAL-00001" summary="refresh">
       <created>1581318326012</created>
@@ -175,7 +179,14 @@
       <option name="project" value="LOCAL" />
       <updated>1582556378388</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="updated Router for proper Error handling">
+      <created>1582716401571</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1582716401571</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -185,25 +196,26 @@
     <MESSAGE value="refresh" />
     <MESSAGE value="updated entire routing paradigm; divided files by org and role types, updated Router accordingly" />
     <MESSAGE value="updated AjaxHandler and Autoloader for new site structure" />
-    <option name="LAST_COMMIT_MESSAGE" value="updated AjaxHandler and Autoloader for new site structure" />
+    <MESSAGE value="updated Router for proper Error handling" />
+    <option name="LAST_COMMIT_MESSAGE" value="updated Router for proper Error handling" />
   </component>
   <component name="WindowStateProjectService">
     <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1581941670615">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="640" y="247" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581941670615" />
-    <state x="440" y="113" key="CommitChangelistDialog2" timestamp="1582556374343">
+    <state x="440" y="113" key="CommitChangelistDialog2" timestamp="1582716398795">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="440" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582556374343" />
+    <state x="440" y="113" key="CommitChangelistDialog2/0.0.1920.1040@0.0.1920.1040" timestamp="1582716398795" />
     <state x="775" y="334" key="NewPhpClassDialog" timestamp="1581944054285">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="775" y="334" key="NewPhpClassDialog/0.0.1920.1040@0.0.1920.1040" timestamp="1581944054285" />
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1582556381181">
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2" timestamp="1582716404659">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582556381181" />
+    <state x="552" y="252" key="Vcs.Push.Dialog.v2/0.0.1920.1040@0.0.1920.1040" timestamp="1582716404659" />
     <state x="656" y="343" key="com.intellij.ide.util.TipDialog" timestamp="1581855874153">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>

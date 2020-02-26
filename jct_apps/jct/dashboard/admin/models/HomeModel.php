@@ -6,7 +6,7 @@
  * Time: 11:25
  */
 
-namespace JCT\JCT\dashboard;
+namespace JCT\jct\dashboard\admin;
 
 
 use JCT\BaseModel;

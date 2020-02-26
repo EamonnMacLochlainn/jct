@@ -57,9 +57,14 @@ class HomeController
 
             $username = (!empty($args['username'])) ? trim(strtolower($args['username'])) : null;
             $password = (!empty($args['password'])) ? trim($args['password']) : null;
+
             $set_org_guid = (!empty($args['org_guid'])) ? strtolower($args['org_guid']) : 0;
             $set_org = null;
+            $set_org_type_slug = null;
+
             $set_role_id = (!empty($args['role_id'])) ? intval($args['role_id']) : 0;
+            $set_role = null;
+            $set_role_slug = null;
 
             if($username === null)
                 throw new Exception('No Username was detected.');
@@ -95,10 +100,7 @@ class HomeController
             elseif($num_user_orgs == 1)
             {
                 if(empty($set_org_guid))
-                {
-                    $set_org_guid = $user_orgs[0]['guid'];
                     $set_org = $user_orgs[0];
-                }
                 else
                 {
                     if($set_org_guid !== $user_orgs[0]['guid'])
@@ -122,13 +124,15 @@ class HomeController
                     }
 
                     if($k == -1)
-                        return ['error'=> 'You appear to be logging in for an Organisation you are not registered to. (2)'];
+                        throw new Exception('You appear to be logging in for an Organisation you are not registered to. (2)');
                 }
             }
 
-            if(empty($set_org_guid))
+            if(empty($set_org))
                 throw new Exception('User logging in without a set Organisation.');
 
+            $set_org_guid = $set_org['guid'];
+            $set_org_type_slug = $set_org['org_type_slug'];
 
             // user roles
 
@@ -141,11 +145,11 @@ class HomeController
             elseif($num_user_org_roles == 1)
             {
                 if(empty($set_role_id))
-                    $set_role_id = $user_roles[0]['id'];
+                    $set_role = $user_roles[0];
                 else
                 {
                     if($set_role_id != $user_roles[0]['id'])
-                        return ['error'=> 'You appear to be logging in for a role you are not registered to.'];
+                        return ['error'=> 'You appear to be logging in for a role you are not registered to. (1)'];
                 }
             }
             else
@@ -158,18 +162,22 @@ class HomeController
                     foreach($user_roles as $i => $role)
                     {
                         if($set_role_id == $role['id'])
+                        {
+                            $set_role = $role;
                             $k = $i;
+                        }
                     }
 
                     if($k == null)
-                        return ['error'=> 'You appear to be logging in for a role you are not registered to.'];
+                        return ['error'=> 'You appear to be logging in for a role you are not registered to. (2)'];
                 }
             }
 
-            if(empty($set_role_id))
+            if(empty($set_role))
                 throw new Exception('User logging in without a set Role.');
 
-
+            $set_role_id = $set_role['id'];
+            $set_role_slug = $set_role['user_role_slug'];
 
 
             // user preferences
@@ -197,13 +205,21 @@ class HomeController
                 $cookie_token
             );
 
+            $session_args = [
+                'person' => [
+                    'guid' => $person_guid,
+                    'role_id' => $set_role_id,
+                    'prefs' => $prefs,
+                ],
+                'org' => [
+                    'guid' => $set_org['guid'],
+                    'type_id' => $set_org['type_id'],
+                    'sub_type_id' => $set_org['sub_type_id']
+                ]
+            ];
+
             $session_manager->init_session_args();
-            $session_manager->session_args['person']['guid'] = $person_guid;
-            $session_manager->session_args['person']['role_id'] = $set_role_id;
-            $session_manager->session_args['person']['prefs'] = $prefs;
-            $session_manager->session_args['org']['guid'] = $set_org['guid'];
-            $session_manager->session_args['org']['type_id'] = $set_org['type_id'];
-            $session_manager->session_args['org']['sub_type_id'] = $set_org['sub_type_id'];
+            $session_manager->session_args = $session_args;
 
             $session_manager->recalc_cookie_expiry_times();
             $tmp = $session_manager->insert_user_into_session_globals($cookie_value);
@@ -212,33 +228,32 @@ class HomeController
 
             $session_manager->save_user_session_record($person_guid, $cookie_token);
 
-            $resp = [
+            // not setting redirects atm., only redirecting to dashboard
+
+            return [
                 'success'=>1,
-                'complete'=>1
+                'complete'=>1,
+                'redirect'=>$this->set_destination($set_org_type_slug, $set_role_slug, null)
             ];
-
-            if(!empty($args['redirect']))
-            {
-                $redirect = (!empty($args['redirect'])) ? base64_decode($args['redirect']) : null;
-                if($redirect !== null)
-                {
-                    if(substr($redirect, -1) === '?')
-                        $redirect = substr($redirect, 0, -1);
-
-                    $redirect_user_id = (!empty($args['redirect_user_id'])) ? intval(base64_decode($args['redirect_user_id'])) : 0;
-                    $redirect = ($redirect_user_id === $person_guid) ? $redirect : 'Dashboard';
-
-                    $resp['redirect'] = $redirect;
-                }
-            }
-
-            return $resp;
         }
         catch(Exception $e)
         {
             unset($_SESSION['databiz']);
             return ['error'=>$e->getMessage()];
         }
+    }
+
+    private function set_destination($set_org_type_slug, $set_role_slug, $redirect_uri = null)
+    {
+        if($redirect_uri === null)
+            return $this->get_dashboard_for_user($set_org_type_slug, $set_role_slug);
+        else
+            return $redirect_uri;
+    }
+
+    private function get_dashboard_for_user($set_org_type_slug, $set_role_slug)
+    {
+        return $set_org_type_slug . '/dashboard/' . $set_role_slug . '/home';
     }
 
 

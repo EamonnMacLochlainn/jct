@@ -24,7 +24,7 @@ class RouteRegistry
         'site' => [
             'is_functional' => true,  // whether or not the app actually works yet
             'requires_login' => false, // whether or not the app requires a User to be logged in
-            'has_internal_navigation' => false, // whether or not the app has its own navigation menu
+            'has_internal_navigation' => false, // whether or not the app has any navigation menus
             'icon' => null, // the FA icon class used for this app's icon
             'accessed_per_org_type' => false, // whether or not this app is directly accessed, or accessed by org type
             'accessed_per_role' => false, // whether or not this app has just one module (all), or modules accessed by role
@@ -36,6 +36,7 @@ class RouteRegistry
                     'user_modules' => [
                         'all' => [
                             'role_ids' => [],
+                            'has_internal_navigation' => false, // whether or not this module has internal navigation
                             'destinations' => [
                                 'home' => [
                                     'titles'=>['en_GB'=>'Home','ga_IE'=>'Home'],
@@ -89,8 +90,8 @@ class RouteRegistry
         'dashboard' => [
             'is_functional' => true,
             'requires_login' => true,
-            'has_internal_navigation' => false,
             'icon' => null,
+            'has_internal_navigation' => false,
             'accessed_per_org_type' => true,
             'accessed_per_role' => true,
             'titles' => ['en_GB'=>'Dashboard','ga_IE'=>'Dashboard'],
@@ -101,6 +102,7 @@ class RouteRegistry
                     'user_modules' => [
                         'admin' => [
                             'role_ids' => [1,2],
+                            'has_internal_navigation' => false,
                             'destinations' => [
                                 'home' => [
                                     'titles'=>['en_GB'=>'Home','ga_IE'=>'Home'],
@@ -113,11 +115,13 @@ class RouteRegistry
                         ],
                         'team_leader' => [
                             'role_ids' => [],
+                            'has_internal_navigation' => false,
                             'destinations' => [],
                             'destination_aliases' => []
                         ],
                         'associate' => [
                             'role_ids' => [],
+                            'has_internal_navigation' => false,
                             'destinations' => [],
                             'destination_aliases' => []
                         ]
@@ -129,11 +133,13 @@ class RouteRegistry
                     'user_modules' => [
                         'admin' => [
                             'role_ids' => [],
+                            'has_internal_navigation' => false,
                             'destinations' => [],
                             'destination_aliases' => []
                         ],
                         'cpd_coordinator' => [
                             'role_ids' => [],
+                            'has_internal_navigation' => false,
                             'destinations' => [],
                             'destination_aliases' => []
                         ]

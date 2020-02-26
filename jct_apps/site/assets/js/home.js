@@ -60,6 +60,7 @@ function login_result(r)
         return false;
     }
 
-    window.location.href = __core.root_url + '/dashboard';
+    //console.log(__core.root_url + '/' + r.redirect);
+    window.location.href = __core.root_url + '/' + r.redirect;
 }
 

@@ -161,6 +161,13 @@ class Router extends User
         $this->model = $model;
     }
 
+    private function get_org_type_slugs(Database $db)
+    {
+        $db->query(" SELECT slug FROM prm_org_type WHERE 1 ");
+        $db->execute();
+        return $db->fetchAllColumn();
+    }
+
     private function set_route_from_requested_url()
     {
         if(empty($_GET))
@@ -191,15 +198,34 @@ class Router extends User
         $uri_parts = explode('/', $this->requested_uri);
 
         // determine app
-        // if app_slug segment is unrecognised, put it back and set that property to default (site)
-        $app_slug = array_shift($uri_parts);
-        if(!in_array($app_slug, RouteRegistry::get_app_slugs()))
+        // The first segment could either be an actual app slug (site, feedback, etc.) or a user role slug (jct, school, etc.)
+        // if the first segment is neither of these, put it back and set that property to default (site)
+        $segment = array_shift($uri_parts);
+        $app_slugs = RouteRegistry::get_app_slugs();
+        $role_slugs = $this->get_org_type_slugs($this->default_db_connection);
+
+        $app_slug = null;
+        if( (!in_array($segment, $app_slugs)) && (!in_array($segment, $role_slugs)) )
         {
-            array_unshift($uri_parts, $app_slug);
+            array_unshift($uri_parts, $segment);
             $app_slug = self::DEFAULT_APP_SLUG;
         }
-        $this->app_slug = $app_slug;
 
+        if($app_slug === null)
+        {
+            if(in_array($segment, $app_slugs))
+                $app_slug = $segment;
+            else
+            {
+                if(in_array($segment, $role_slugs))
+                {
+                    // effectively: jct/dashboard/... becomes dashboard/jct/...
+                    $app_slug = array_shift($uri_parts);
+                    array_unshift($uri_parts, $segment);
+                }
+            }
+        }
+        $this->app_slug = $app_slug;
 
         $this->route_properties = RouteRegistry::get_route_properties($this->app_slug);
         if(isset($this->route_properties['error']))
@@ -213,17 +239,17 @@ class Router extends User
         // set the default properties for the 'site' app
         if(count($uri_parts) < 2)
         {
-            $this->org_section_slug = 'all';
-            $this->user_module_slug = 'all';
+            $this->org_section_slug = self::DEFAULT_ORG_SECTION_SLUG;
+            $this->user_module_slug = self::DEFAULT_USER_MODULE_SLUG;
         }
         else
         {
             // if the app is not accessed per org type, we can set the org_section_slug to 'all'
             if($this->route_properties['accessed_per_org_type'] === false)
-                $this->org_section_slug = 'all';
+                $this->org_section_slug = self::DEFAULT_ORG_SECTION_SLUG;
             else
             {
-                $org_section_slug = array_shift($uri_parts);
+                $org_section_slug = strtolower(array_shift($uri_parts));
                 if(!array_key_exists($org_section_slug, $this->route_properties['org_sections']))
                 {
                     $this->set_to_error(self::ERR_INVALID_ORG_SECTION);
@@ -234,10 +260,10 @@ class Router extends User
 
             // if the app is not accessed per user role, we can set the user_module_slug to 'all'
             if($this->route_properties['accessed_per_role'] === false)
-                $this->user_module_slug = 'all';
+                $this->user_module_slug = self::DEFAULT_USER_MODULE_SLUG;
             else
             {
-                $user_module_slug = array_shift($uri_parts);
+                $user_module_slug = strtolower(array_shift($uri_parts));
                 if(!array_key_exists($user_module_slug, $this->route_properties['org_sections'][$this->org_section_slug]['user_modules']))
                 {
                     $this->set_to_error(self::ERR_INVALID_USER_MODULE);
@@ -362,8 +388,8 @@ class Router extends User
         }
 
         // namespace\app_slug\[org_section_slug\][user_module_slug\]model_name
-        $model_class_name = __NAMESPACE__ . '\\' . $this->app_slug . '\\';
-        $model_class_name.= ($accessed_per_org_type) ? $this->org_section_slug . '\\' : '';
+        $model_class_name = __NAMESPACE__ . '\\';
+        $model_class_name.= ($accessed_per_org_type) ? $this->org_section_slug . '\\' . $this->app_slug . '\\' : $this->app_slug . '\\';
         $model_class_name.= ($accessed_per_role) ? $this->user_module_slug . '\\' : '';
         $model_class_name.= $this->model_title . 'Model';
         $this->model_class_name = $model_class_name;

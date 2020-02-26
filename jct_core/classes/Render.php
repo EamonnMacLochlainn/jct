@@ -412,6 +412,13 @@ HTML;
 
     private function get_navigation()
     {
+        return false;
+
+        $accessed_per_org_type = $this->route_properties['accessed_per_org_type'];
+        $accessed_per_role = $this->route_properties['accessed_per_role'];
+
+        //Helper::show($this->route_properties);
+
         $module_slug = ($this->route_properties['is_modular']) ? parent::DEFAULT_MODULAR_MODULE_SLUG : parent::DEFAULT_USER_MODULE_SLUG;
 
         // show nothing if application has no internal navigation
